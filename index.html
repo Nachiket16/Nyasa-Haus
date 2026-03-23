@@ -1,1590 +1,2575 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nyasa Haus — Reinvent Furniture</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nyasa Haus — Reinvent Furniture</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  :root {
-    --cream: #f9f4ee;
-    --warm-white: #fdfaf6;
-    --teak: #b5651d;
-    --teak-dark: #8b4513;
-    --teak-light: #d4894a;
-    --gold: #c8963c;
-    --charcoal: #1e1a16;
-    --mid: #5a4a3a;
-    --light-mid: #8a7060;
-    --border: rgba(181,101,29,0.18);
-    --section-gap: 120px;
-  }
+    :root {
+      --cream: #f9f4ee;
+      --warm-white: #fdfaf6;
+      --teak: #b5651d;
+      --teak-dark: #8b4513;
+      --teak-light: #d4894a;
+      --gold: #c8963c;
+      --charcoal: #1e1a16;
+      --mid: #5a4a3a;
+      --light-mid: #8a7060;
+      --border: rgba(181, 101, 29, 0.18);
+      --section-gap: 120px;
+    }
 
-  html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--warm-white);
-    color: var(--charcoal);
-    overflow-x: hidden;
-  }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
 
-  /* ── CURSOR ── */
-  body { cursor: none; }
-  #cursor {
-    width: 10px; height: 10px;
-    background: var(--teak);
-    border-radius: 50%;
-    position: fixed; top: 0; left: 0;
-    pointer-events: none; z-index: 9999;
-    transform: translate(-50%,-50%);
-    transition: transform 0.08s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
-  }
-  #cursor.big {
-    width: 44px; height: 44px;
-    background: transparent;
-    border: 1.5px solid var(--teak);
-  }
+    /* ── CURSOR ── */
+    body {
+      cursor: none;
+    }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 22px 60px;
-    transition: background 0.4s, padding 0.4s;
-  }
-  nav.scrolled {
-    background: rgba(253,250,246,0.95);
-    backdrop-filter: blur(12px);
-    padding: 14px 60px;
-    box-shadow: 0 1px 0 var(--border);
-  }
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-  .nav-logo img {
-    height: 56px;
-    width: auto;
-    object-fit: contain;
-    transition: opacity 0.3s, height 0.3s;
-  }
-  nav.scrolled .nav-logo img {
-    height: 42px;
-  }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--mid);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute; bottom: -3px; left: 0;
-    width: 0; height: 1px;
-    background: var(--teak);
-    transition: width 0.3s;
-  }
-  .nav-links a:hover { color: var(--teak); }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-cta {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--warm-white) !important;
-    background: var(--teak);
-    padding: 10px 24px;
-    border-radius: 2px;
-    transition: background 0.3s !important;
-  }
-  .nav-cta:hover { background: var(--teak-dark) !important; color: var(--warm-white) !important; }
-  .nav-cta::after { display: none !important; }
+    #cursor {
+      width: 10px;
+      height: 10px;
+      background: var(--teak);
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+    }
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-left {
-    background: var(--charcoal);
-    display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding: 100px 70px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-left::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b5651d' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .hero-tag {
-    font-size: 1.0rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.3s forwards;
-  }
-  .hero-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.2rem, 5.5vw, 5.5rem);
-    font-weight: 300;
-    line-height: 1.08;
-    color: var(--cream);
-    margin-bottom: 30px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.5s forwards;
-  }
-  .hero-headline em { color: var(--teak-light); font-style: italic; }
-  .hero-desc {
-    font-size: 0.92rem;
-    line-height: 1.8;
-    color: rgba(249,244,238,0.6);
-    max-width: 380px;
-    margin-bottom: 24px;
-    font-weight: 300;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.7s forwards;
-  }
-  .hero-urgency {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 8px 16px;
-    border-radius: 30px;
-    background: rgba(200, 150, 60, 0.15);
-    border: 1px solid rgba(200, 150, 60, 0.3);
-    color: var(--cream);
-    font-size: 0.8rem;
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-    width: fit-content;
-  }
-  .urgency-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
-    animation: pulseDot 2s infinite;
-  }
-  @keyframes pulseDot {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.2); opacity: 0.6; }
-    100% { transform: scale(1); opacity: 1; }
-  }
+    #cursor.big {
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1.5px solid var(--teak);
+    }
 
-  .hero-buttons {
-    display: flex; gap: 16px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.9s forwards;
-  }
-  .btn-primary {
-    display: inline-block;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--charcoal);
-    background: var(--gold);
-    padding: 14px 32px;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background 0.3s, transform 0.2s;
-  }
-  .btn-primary:hover { background: var(--teak-light); transform: translateY(-2px); }
-  .btn-outline {
-    display: inline-block;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--cream);
-    border: 1px solid rgba(249,244,238,0.35);
-    padding: 14px 32px;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: border-color 0.3s, background 0.3s;
-  }
-  .btn-outline:hover { border-color: var(--gold); background: rgba(200,150,60,0.1); }
-  .hero-right {
-    position: relative;
-    background: var(--cream);
-    overflow: hidden;
-  }
-  .hero-right-img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    animation: fadeIn 1.2s 0.4s forwards;
-  }
-  /* Placeholder gradient for hero image */
-  .hero-img-placeholder {
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, #d4894a 0%, #8b4513 40%, #1e1a16 100%);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
-    gap: 12px;
-    opacity: 0;
-    animation: fadeIn 1.2s 0.4s forwards;
-  }
-  .hero-img-placeholder svg { width: 120px; opacity: 0.18; }
-  .hero-scroll-hint {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    color: rgba(249,244,238,0.4);
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    opacity: 0; animation: fadeIn 1s 1.4s forwards;
-  }
-  .scroll-line {
-    width: 1px; height: 48px;
-    background: linear-gradient(to bottom, transparent, rgba(181,101,29,0.6));
-    animation: scrollPulse 2s infinite;
-  }
-  @keyframes scrollPulse {
-    0%,100% { opacity: 0.4; } 50% { opacity: 1; }
-  }
-  .hero-stats {
-    position: absolute; bottom: 40px; right: 40px;
-    display: flex; gap: 28px;
-    opacity: 0; animation: fadeUp 0.8s 1.1s forwards;
-  }
-  .hero-stat { text-align: center; }
-  .hero-stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem; font-weight: 500;
-    color: var(--teak-dark);
-    line-height: 1;
-  }
-  .hero-stat-label {
-    font-size: 0.62rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--light-mid);
-    margin-top: 4px;
-  }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 60px;
+      transition: background 0.4s, padding 0.4s;
+    }
 
-  /* ── MARQUEE ── */
-  .marquee-strip {
-    background: var(--teak);
-    padding: 14px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .marquee-inner {
-    display: inline-flex; gap: 0;
-    animation: marquee 22s linear infinite;
-  }
-  .marquee-inner span {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--cream);
-    padding: 0 32px;
-  }
-  .marquee-inner .dot { color: var(--gold); font-size: 1rem; }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
+    nav.scrolled {
+      background: rgba(253, 250, 246, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 14px 60px;
+      box-shadow: 0 1px 0 var(--border);
+    }
 
-  /* ── SECTION COMMONS ── */
-  section { padding: var(--section-gap) 0; }
-  .container { max-width: 1240px; margin: 0 auto; padding: 0 60px; }
-  .section-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--teak);
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before {
-    content: ''; display: block;
-    width: 28px; height: 1px; background: var(--teak);
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 3.5vw, 3.4rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--charcoal);
-  }
-  .section-title em { font-style: italic; color: var(--teak); }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
 
-  /* ── ABOUT ── */
-  #about { background: var(--warm-white); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    margin-top: 70px;
-  }
-  .about-visual {
-    position: relative;
-    height: 520px;
-  }
-  .about-card {
-    position: absolute;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(30,26,22,0.15);
-  }
-  .about-card-main {
-    width: 78%; height: 78%;
-    top: 0; left: 0;
-    background: linear-gradient(145deg, #c8903c 0%, #8b4513 60%, #1e1a16 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .about-card-accent {
-    width: 52%; height: 46%;
-    bottom: 0; right: 0;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 6px;
-  }
-  .about-card-accent .big-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem; font-weight: 300;
-    color: var(--teak); line-height: 1;
-  }
-  .about-card-accent .big-label {
-    font-size: 0.7rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--mid);
-    text-align: center; padding: 0 16px;
-  }
-  .wood-icon { width: 80px; opacity: 0.25; }
-  .about-text p {
-    font-size: 1rem;
-    line-height: 1.85;
-    color: var(--mid);
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-  .about-pillars {
-    margin-top: 36px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .pillar {
-    padding: 20px;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    background: var(--cream);
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .pillar:hover { border-color: var(--teak); transform: translateY(-3px); }
-  .pillar-icon {
-    font-size: 1.4rem; margin-bottom: 10px;
-  }
-  .pillar h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; font-weight: 500;
-    color: var(--charcoal); margin-bottom: 6px;
-  }
-  .pillar p {
-    font-size: 0.8rem; line-height: 1.6;
-    color: var(--light-mid); margin: 0 !important;
-  }
+    .nav-logo img {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+      transition: opacity 0.3s, height 0.3s;
+    }
 
-  /* ── CATEGORIES ── */
-  #categories { background: var(--charcoal); }
-  #categories .section-label { color: var(--gold); }
-  #categories .section-label::before { background: var(--gold); }
-  #categories .section-title { color: var(--cream); }
-  .cat-grid {
-    margin-top: 60px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-  .cat-card {
-    position: relative;
-    height: 400px;
-    overflow: hidden;
-    cursor: none;
-  }
-  .cat-bg {
-    position: absolute; inset: 0;
-    transition: transform 0.6s ease;
-  }
-  .cat-card:hover .cat-bg { transform: scale(1.06); }
-  .cat-bg-1 { background: linear-gradient(160deg, #6b3a1f 0%, #2c1810 100%); }
-  .cat-bg-2 { background: linear-gradient(160deg, #2a3a2a 0%, #1a2520 100%); }
-  .cat-bg-3 { background: linear-gradient(160deg, #3a2a1a 0%, #1e1510 100%); }
-  .cat-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%);
-    display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding: 36px 32px;
-    transition: background 0.4s;
-  }
-  .cat-card:hover .cat-overlay {
-    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 50%);
-  }
-  .cat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem; font-weight: 300;
-    color: rgba(200,150,60,0.25);
-    line-height: 1;
-    margin-bottom: 8px;
-    transition: color 0.4s;
-  }
-  .cat-card:hover .cat-num { color: rgba(200,150,60,0.5); }
-  .cat-icon { font-size: 2rem; margin-bottom: 12px; }
-  .cat-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem; font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 10px;
-  }
-  .cat-desc {
-    font-size: 0.82rem; line-height: 1.6;
-    color: rgba(249,244,238,0.65);
-    font-weight: 300;
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s ease;
-  }
-  .cat-card:hover .cat-desc { max-height: 80px; }
-  .cat-arrow {
-    margin-top: 16px;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.3s, transform 0.3s;
-  }
-  .cat-card:hover .cat-arrow { opacity: 1; transform: translateY(0); }
+    nav.scrolled .nav-logo img {
+      height: 42px;
+    }
 
-  /* ── MATERIALS ── */
-  #materials { background: var(--cream); }
-  .materials-intro {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center;
-    margin-bottom: 60px;
-  }
-  .materials-intro p {
-    font-size: 1rem; line-height: 1.85;
-    color: var(--mid); font-weight: 300;
-  }
-  .mat-tabs {
-    display: flex; gap: 6px;
-    margin-bottom: 36px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0;
-  }
-  .mat-tab {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--light-mid);
-    padding: 10px 20px;
-    border: none; background: none;
-    cursor: none;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    transition: color 0.3s, border-color 0.3s;
-  }
-  .mat-tab.active { color: var(--teak); border-bottom-color: var(--teak); }
-  .mat-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
-  }
-  .mat-swatch {
-    display: none;
-    flex-direction: column; gap: 8px;
-  }
-  .mat-swatch.visible { display: flex; }
-  .mat-swatch-color {
-    height: 88px;
-    border-radius: 3px;
-    border: 1px solid var(--border);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .mat-swatch:hover .mat-swatch-color { transform: scale(1.04); box-shadow: 0 8px 24px rgba(30,26,22,0.12); }
-  .mat-swatch-name {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    color: var(--mid);
-    text-align: center;
-  }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
 
-  /* Swatch colors */
-  .s-teak     { background: linear-gradient(135deg, #c8903c, #8B5E3C); }
-  .s-mango    { background: linear-gradient(135deg, #d4a96a, #a0724a); }
-  .s-shesham  { background: linear-gradient(135deg, #7a3828, #4a2015); }
-  .s-mahogany { background: linear-gradient(135deg, #6e2b1e, #3d1208); }
-  .s-acacia   { background: linear-gradient(135deg, #e8cda0, #c4a06a); }
-  .s-pine     { background: linear-gradient(135deg, #f0deb0, #d4b880); }
-  .s-cherry   { background: linear-gradient(135deg, #9b3a2a, #5c1a10); }
-  .s-rosewood { background: linear-gradient(135deg, #7a3020, #4a1808); }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
 
-  .s-black-granite { background: linear-gradient(135deg, #1a1a1a, #3a3a3a); }
-  .s-red-granite   { background: linear-gradient(135deg, #8b2020, #b03030); }
-  .s-brown-granite { background: linear-gradient(135deg, #6b4a30, #4a2a18); }
-  .s-white-marble  { background: linear-gradient(135deg, #f5f0ea, #e0d8d0); }
-  .s-black-marble  { background: linear-gradient(135deg, #1a1a2a, #2a2a3a); }
-  .s-epoxy         { background: linear-gradient(135deg, #2a7a6a, #1a5a50); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--teak);
+      transition: width 0.3s;
+    }
 
-  .s-matte   { background: linear-gradient(135deg, #8b5e3c, #6b4020); }
-  .s-glossy  { background: linear-gradient(135deg, #c8903c, #a06020); background-image: linear-gradient(135deg, #c8903c 0%, #ffd080 50%, #c8903c 100%); }
-  .s-satin   { background: linear-gradient(135deg, #a07840, #7a5828); }
-  .s-lacquer { background: linear-gradient(135deg, #e0a860, #c08040); }
-  .s-pu      { background: linear-gradient(135deg, #d4b880, #b09060); }
-  .s-antique { background: linear-gradient(135deg, #7a5830, #503820); }
+    .nav-links a:hover {
+      color: var(--teak);
+    }
 
-  .s-cotton  { background: linear-gradient(135deg, #c8c8c0, #a8a8a0); }
-  .s-velvet  { background: linear-gradient(135deg, #c8a030, #d4a850); }
-  .s-linen   { background: linear-gradient(135deg, #d8c8a8, #b8a888); }
-  .s-leather { background: linear-gradient(135deg, #8b4513, #5a2a0a); }
-  .s-suede   { background: linear-gradient(135deg, #b8906a, #907050); }
-  .s-jute    { background: linear-gradient(135deg, #c8b080, #a89060); }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
 
-  /* ── PROCESS ── */
-  #process { background: var(--warm-white); }
-  .process-steps {
-    margin-top: 70px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    position: relative;
-  }
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 28px; left: 8.33%; right: 8.33%;
-    height: 1px;
-    background: var(--border);
-  }
-  .process-step {
-    display: flex; flex-direction: column;
-    align-items: center; text-align: center;
-    padding: 0 12px;
-    position: relative;
-  }
-  .step-dot {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border);
-    background: var(--warm-white);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    position: relative; z-index: 1;
-    transition: border-color 0.3s, background 0.3s, transform 0.3s;
-  }
-  .process-step:hover .step-dot {
-    border-color: var(--teak);
-    background: var(--teak);
-    transform: scale(1.1);
-  }
-  .step-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.65rem; letter-spacing: 0.2em;
-    color: var(--teak); margin-bottom: 8px;
-  }
-  .step-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; font-weight: 500;
-    color: var(--charcoal); margin-bottom: 8px;
-  }
-  .step-desc {
-    font-size: 0.75rem; line-height: 1.6;
-    color: var(--light-mid);
-  }
+    .nav-cta {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-white) !important;
+      background: var(--teak);
+      padding: 10px 24px;
+      border-radius: 2px;
+      transition: background 0.3s !important;
+    }
 
-  /* ── MANUFACTURING ── */
-  #manufacturing { background: var(--charcoal); }
-  #manufacturing .section-label { color: var(--gold); }
-  #manufacturing .section-label::before { background: var(--gold); }
-  #manufacturing .section-title { color: var(--cream); }
-  .mfg-grid {
-    margin-top: 60px;
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 60px;
-    align-items: start;
-  }
-  .mfg-locations { display: flex; flex-direction: column; gap: 16px; }
-  .mfg-location-card {
-    padding: 24px;
-    border: 1px solid rgba(181,101,29,0.2);
-    border-radius: 3px;
-    background: rgba(255,255,255,0.03);
-    display: flex; gap: 16px;
-    align-items: center;
-    transition: border-color 0.3s, background 0.3s;
-    cursor: none;
-  }
-  .mfg-location-card:hover { border-color: var(--gold); background: rgba(200,150,60,0.05); }
-  .mfg-loc-icon {
-    font-size: 1.8rem;
-    flex-shrink: 0;
-  }
-  .mfg-loc-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem; font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 4px;
-  }
-  .mfg-loc-desc {
-    font-size: 0.78rem; line-height: 1.5;
-    color: rgba(249,244,238,0.5);
-  }
-  .mfg-timeline-box {
-    border: 1px solid rgba(181,101,29,0.2);
-    border-radius: 3px;
-    padding: 36px;
-    background: rgba(255,255,255,0.02);
-  }
-  .mfg-timeline-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem; color: var(--cream);
-    margin-bottom: 28px;
-    font-weight: 300;
-  }
-  .timeline-row {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 12px;
-    margin-bottom: 14px;
-    align-items: center;
-  }
-  .timeline-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(249,244,238,0.55);
-    text-align: right;
-    padding-right: 16px;
-  }
-  .timeline-bar-track {
-    height: 6px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .timeline-bar-fill {
-    height: 100%;
-    background: var(--teak);
-    border-radius: 3px;
-    transform-origin: left;
-    transform: scaleX(0);
-    transition: transform 1s ease;
-  }
-  .timeline-bar-fill.animate { transform: scaleX(1); }
-  .mfg-note {
-    margin-top: 28px;
-    padding: 16px 20px;
-    background: rgba(200,150,60,0.08);
-    border-left: 2px solid var(--gold);
-    border-radius: 2px;
-  }
-  .mfg-note p {
-    font-size: 0.82rem;
-    line-height: 1.6;
-    color: rgba(249,244,238,0.65);
-  }
-  .mfg-note strong { color: var(--gold); }
+    .nav-cta:hover {
+      background: var(--teak-dark) !important;
+      color: var(--warm-white) !important;
+    }
 
-  /* ── GALLERY ── */
-  #gallery { background: var(--cream); padding-top: 0; }
-  .gallery-header {
-    padding: var(--section-gap) 0 50px;
-  }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    gap: 3px;
-  }
-  .gallery-item {
-    overflow: hidden;
-    position: relative;
-    cursor: none;
-  }
-  .gallery-item.tall { grid-row: span 2; }
-  .gallery-item.wide { grid-column: span 2; }
-  .gallery-bg {
-    width: 100%; height: 100%; min-height: 220px;
-    transition: transform 0.6s ease;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem;
-    color: rgba(255,255,255,0.2);
-  }
-  .gallery-item:hover .gallery-bg { transform: scale(1.05); }
-  .g1 { background: linear-gradient(145deg, #8b4513, #2c1810); min-height: 280px; }
-  .g2 { background: linear-gradient(145deg, #4a6040, #2a3a28); }
-  .g3 { background: linear-gradient(145deg, #2a2a3a, #1a1a2a); min-height: 280px; }
-  .g4 { background: linear-gradient(145deg, #7a5030, #3a2818); }
-  .g5 { background: linear-gradient(145deg, #5a3a28, #1e1410); }
-  .g6 { background: linear-gradient(145deg, #3a4a30, #202a18); }
-  .g7 { background: linear-gradient(145deg, #6b4020, #3a2010); }
-  .g8 { background: linear-gradient(145deg, #3a3a5a, #1a1a30); }
-  .gallery-overlay {
-    position: absolute; inset: 0;
-    background: rgba(0,0,0,0);
-    display: flex; align-items: flex-end;
-    padding: 20px;
-    transition: background 0.4s;
-  }
-  .gallery-item:hover .gallery-overlay { background: rgba(0,0,0,0.4); }
-  .gallery-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cream);
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.3s, transform 0.3s;
-  }
-  .gallery-item:hover .gallery-label { opacity: 1; transform: translateY(0); }
+    .nav-cta::after {
+      display: none !important;
+    }
 
-  /* ── CONTACT ── */
-  #contact { background: var(--charcoal); }
-  #contact .section-label { color: var(--gold); }
-  #contact .section-label::before { background: var(--gold); }
-  #contact .section-title { color: var(--cream); }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    margin-top: 60px;
-  }
-  .contact-info { display: flex; flex-direction: column; gap: 32px; }
-  .contact-block {}
-  .contact-block-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 10px;
-  }
-  .contact-block-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    color: var(--cream);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-  .contact-form { display: flex; flex-direction: column; gap: 16px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-group label {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(249,244,238,0.5);
-  }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(181,101,29,0.2);
-    border-radius: 2px;
-    padding: 12px 16px;
-    color: var(--cream);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 300;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: var(--teak);
-  }
-  .form-group textarea { height: 100px; resize: none; }
-  .form-group select option { background: var(--charcoal); }
-  .form-submit {
-    background: var(--gold);
-    color: var(--charcoal);
-    border: none;
-    padding: 14px 36px;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    border-radius: 2px;
-    cursor: none;
-    align-self: flex-start;
-    transition: background 0.3s, transform 0.2s;
-  }
-  .form-submit:hover { background: var(--teak-light); transform: translateY(-2px); }
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* ── FOOTER ── */
-  footer {
-    background: #0e0c0a;
-    padding: 40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(181,101,29,0.12);
-  }
-  .footer-logo {
-    display: flex;
-    align-items: center;
-  }
-  .footer-logo img {
-    height: 44px;
-    width: auto;
-    object-fit: contain;
-    opacity: 0.9;
-  }
-  .footer-copy {
-    font-size: 0.72rem;
-    color: rgba(249,244,238,0.3);
-    letter-spacing: 0.08em;
-  }
-  .footer-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.95rem;
-    font-style: italic;
-    color: rgba(249,244,238,0.4);
-  }
+    .hero-left {
+      background: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 100px 70px 80px;
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b5651d' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 1024px) {
-    nav { padding: 18px 30px; }
-    nav.scrolled { padding: 12px 30px; }
-    .container { padding: 0 30px; }
-    #hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { min-height: 80vh; padding: 100px 40px 80px; }
-    .hero-right { height: 50vh; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
-    .cat-grid { grid-template-columns: 1fr; }
-    .cat-card { height: 300px; }
-    .mat-grid { grid-template-columns: repeat(3, 1fr); }
-    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-    .process-steps::before { display: none; }
-    .mfg-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    .gallery-item.tall { grid-row: span 1; }
-    .gallery-item.wide { grid-column: span 1; }
-    footer { flex-direction: column; gap: 16px; text-align: center; }
-    .nav-links { display: none; }
-  }
+    .hero-tag {
+      font-size: 1.0rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
 
-  @media (max-width: 768px) {
-    :root { --section-gap: 80px; }
-    nav { padding: 16px 20px; }
-    nav.scrolled { padding: 10px 20px; }
-    .container { padding: 0 20px; overflow-x: hidden; }
-    .hero-left { padding: 100px 20px 60px; min-height: auto; }
-    .hero-headline { font-size: 2.8rem; }
-    .hero-desc { font-size: 0.9rem; margin-bottom: 24px; }
-    .hero-buttons { flex-direction: column; gap: 12px; }
-    .btn-primary, .btn-outline { width: 100%; text-align: center; }
-    .hero-right { height: auto; }
-    .hero-img-placeholder, .hero-right-img { height: 300px; }
-    .hero-stats { position: relative; bottom: auto; right: auto; left: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 30px 20px; background: var(--cream); opacity: 1; animation: fadeIn 0.8s 1.1s forwards; width: 100%; }
-    .hero-stat { text-align: center; }
-    .hero-stat-num { font-size: 2rem; }
-    .hero-scroll-hint { display: none; }
-    .about-visual { height: 350px; margin-bottom: 20px; }
-    .about-pillars { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
-    .mat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .mat-tabs { flex-wrap: wrap; border-bottom: none; gap: 0; }
-    .mat-tab { width: 33.33%; text-align: center; border-bottom: 1px solid var(--border); margin-bottom: 0; padding: 10px 0; font-size: 0.65rem; }
-    .mat-tab.active { border-bottom: 2px solid var(--teak); }
-    .process-steps { grid-template-columns: 1fr; gap: 30px; margin-top: 40px; }
-    .mfg-location-card { flex-direction: column; align-items: flex-start; text-align: left; gap: 12px; }
-    .mfg-timeline-box { padding: 20px; }
-    .timeline-row { grid-template-columns: 1fr; gap: 6px; margin-bottom: 16px; }
-    .timeline-label { text-align: left; padding-right: 0; font-size: 0.8rem; }
-    .gallery-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; gap: 16px; }
-    .contact-grid { margin-top: 40px; gap: 40px; }
-    #setupGuide { margin: 30px 20px 0; }
-    .wa-float { bottom: 20px; right: 20px; padding: 12px; border-radius: 50%; width: 50px; height: 50px; justify-content: center; }
-    .wa-float .wa-text { display: none; }
-    .wa-float svg { width: 26px; height: 26px; margin: 0; }
-    .marquee-inner span { font-size: 0.65rem; padding: 0 20px; }
-  }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      color: var(--cream);
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
 
-  @media (hover: none) and (pointer: coarse) {
-    body { cursor: auto; }
-    #cursor { display: none; }
-    .cat-card, .pillar, .gallery-item, .mfg-location-card, .btn-primary, .btn-outline, .nav-cta, .form-submit { cursor: pointer; }
-    .cat-desc { max-height: 80px; }
-    .cat-arrow { opacity: 1; transform: translateY(0); }
-    .gallery-overlay { background: rgba(0,0,0,0.4); }
-    .gallery-label { opacity: 1; transform: translateY(0); }
-  }
+    .hero-headline em {
+      color: var(--teak-light);
+      font-style: italic;
+    }
 
-  /* ── FORM STATUS ── */
-  .form-status {
-    transition: all 0.3s;
-    line-height: 1.5;
-  }
+    .hero-desc {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: rgba(249, 244, 238, 0.6);
+      max-width: 380px;
+      margin-bottom: 24px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s forwards;
+    }
 
-  /* ── SETUP GUIDE ── */
-  #setupGuide { margin: 40px 60px 0; }
-  @media (max-width: 1024px) { #setupGuide { margin: 30px 20px 0; } }
+    .hero-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: rgba(200, 150, 60, 0.15);
+      border: 1px solid rgba(200, 150, 60, 0.3);
+      color: var(--cream);
+      font-size: 0.8rem;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+      width: fit-content;
+    }
 
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--charcoal); }
-  ::-webkit-scrollbar-thumb { background: var(--teak); border-radius: 2px; }
+    .urgency-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+      animation: pulseDot 2s infinite;
+    }
 
-  /* ── WHATSAPP FLOAT ── */
-  .wa-float {
-    position: fixed;
-    bottom: 32px; right: 32px;
-    z-index: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #25D366;
-    color: #fff;
-    text-decoration: none;
-    padding: 13px 20px 13px 16px;
-    border-radius: 50px;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    box-shadow: 0 6px 24px rgba(37,211,102,0.35);
-    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
-    animation: fadeUp 0.8s 1.5s both;
-  }
-  .wa-float:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(37,211,102,0.45);
-    background: #1ebe5a;
-  }
-  .wa-float svg { width: 22px; height: 22px; flex-shrink: 0; }
+    @keyframes pulseDot {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
 
-</style>
+      50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.9s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--gold);
+      padding: 14px 32px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--teak-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream);
+      border: 1px solid rgba(249, 244, 238, 0.35);
+      padding: 14px 32px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(200, 150, 60, 0.1);
+    }
+
+    .hero-right {
+      position: relative;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .hero-right-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: fadeIn 1.2s 0.4s forwards;
+    }
+
+    /* Placeholder gradient for hero image */
+    .hero-img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #d4894a 0%, #8b4513 40%, #1e1a16 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeIn 1.2s 0.4s forwards;
+    }
+
+    .hero-img-placeholder svg {
+      width: 120px;
+      opacity: 0.18;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(249, 244, 238, 0.4);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeIn 1s 1.4s forwards;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, transparent, rgba(181, 101, 29, 0.6));
+      animation: scrollPulse 2s infinite;
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      display: flex;
+      gap: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.1s forwards;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--teak-dark);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-mid);
+      margin-top: 4px;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-strip {
+      background: var(--teak);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-inner {
+      display: inline-flex;
+      gap: 0;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-inner span {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      padding: 0 32px;
+    }
+
+    .marquee-inner .dot {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ── SECTION COMMONS ── */
+    section {
+      padding: var(--section-gap) 0;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--teak);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--teak);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--charcoal);
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--teak);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--warm-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 70px;
+    }
+
+    .about-visual {
+      position: relative;
+      height: 520px;
+    }
+
+    .about-card {
+      position: absolute;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(30, 26, 22, 0.15);
+    }
+
+    .about-card-main {
+      width: 78%;
+      height: 78%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(145deg, #c8903c 0%, #8b4513 60%, #1e1a16 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-card-accent {
+      width: 52%;
+      height: 46%;
+      bottom: 0;
+      right: 0;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .about-card-accent .big-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--teak);
+      line-height: 1;
+    }
+
+    .about-card-accent .big-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .wood-icon {
+      width: 80px;
+      opacity: 0.25;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--mid);
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .about-pillars {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .pillar {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: var(--cream);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .pillar:hover {
+      border-color: var(--teak);
+      transform: translateY(-3px);
+    }
+
+    .pillar-icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .pillar h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+
+    .pillar p {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--light-mid);
+      margin: 0 !important;
+    }
+
+    /* ── CATEGORIES ── */
+    #categories {
+      background: var(--charcoal);
+    }
+
+    #categories .section-label {
+      color: var(--gold);
+    }
+
+    #categories .section-label::before {
+      background: var(--gold);
+    }
+
+    #categories .section-title {
+      color: var(--cream);
+    }
+
+    .cat-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .cat-card {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      cursor: none;
+    }
+
+    .cat-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s ease;
+    }
+
+    .cat-card:hover .cat-bg {
+      transform: scale(1.06);
+    }
+
+    .cat-bg-1 {
+      background: linear-gradient(160deg, #6b3a1f 0%, #2c1810 100%);
+    }
+
+    .cat-bg-2 {
+      background: linear-gradient(160deg, #2a3a2a 0%, #1a2520 100%);
+    }
+
+    .cat-bg-3 {
+      background: linear-gradient(160deg, #3a2a1a 0%, #1e1510 100%);
+    }
+
+    .cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px 32px;
+      transition: background 0.4s;
+    }
+
+    .cat-card:hover .cat-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.2) 50%);
+    }
+
+    .cat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: rgba(200, 150, 60, 0.25);
+      line-height: 1;
+      margin-bottom: 8px;
+      transition: color 0.4s;
+    }
+
+    .cat-card:hover .cat-num {
+      color: rgba(200, 150, 60, 0.5);
+    }
+
+    .cat-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .cat-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .cat-desc {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: rgba(249, 244, 238, 0.65);
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .cat-card:hover .cat-desc {
+      max-height: 80px;
+    }
+
+    .cat-arrow {
+      margin-top: 16px;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .cat-card:hover .cat-arrow {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MATERIALS ── */
+    #materials {
+      background: var(--cream);
+    }
+
+    .materials-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .materials-intro p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
+    .mat-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
+    }
+
+    .mat-tab {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-mid);
+      padding: 10px 20px;
+      border: none;
+      background: none;
+      cursor: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .mat-tab.active {
+      color: var(--teak);
+      border-bottom-color: var(--teak);
+    }
+
+    .mat-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+
+    .mat-swatch {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mat-swatch.visible {
+      display: flex;
+    }
+
+    .mat-swatch-color {
+      height: 88px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--cream);
+    }
+
+    .mat-swatch:hover .mat-swatch-color {
+      transform: scale(1.04);
+      box-shadow: 0 8px 24px rgba(30, 26, 22, 0.12);
+    }
+
+    .mat-swatch-name {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      text-align: center;
+    }
+
+    /* Swatch images */
+    .s-teak {
+      background-image: url('https://media.istockphoto.com/id/1263121103/photo/clean-teak-wood-texture-banner.webp?a=1&b=1&s=612x612&w=0&k=20&c=mJvuiZZ4ToPUc9C4iwBzsuNjMol3YVL3gQjBc6z8cjw=');
+    }
+
+    .s-mango {
+      background-image: url('https://images.unsplash.com/photo-1644931551533-02906718127f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFuZ28lMjB3b29kJTIwdGV4dHVyZXxlbnwwfHwwfHx8MA%3D%3D');
+    }
+
+    .s-shesham {
+      background-image: url('https://media.istockphoto.com/id/1320686433/photo/sheesham-wood-veneer-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=CdkMxT3TIFg4a_Yv_w0IWsPysVffw7l5FfjVkM7xN1g=');
+    }
+
+    .s-mahogany {
+      background-image: url('https://images.unsplash.com/photo-1678794792916-e5cb1217bed1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFob2dhbnklMjB3b29kJTIwdGV4dHVyZXxlbnwwfHwwfHx8MA%3D%3D');
+    }
+
+    .s-acacia {
+      background-image: url('https://images.unsplash.com/photo-1677338003679-b422eb979c5d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWNhY2lhJTIwd29vZCUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D');
+    }
+
+    .s-pine {
+      background-image: url('https://media.istockphoto.com/id/928697568/photo/natural-wood-texture-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=49zxIXphNEnEvBMiXc6_wlimiQ1dEt2uBeFmaxUL-8U=');
+    }
+
+    .s-cherry {
+      background-image: url('https://images.unsplash.com/photo-1736506159776-22ca388780fa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNoZXJyeSUyMHdvb2QlMjB0ZXh0dXJlfGVufDB8fDB8fHww');
+    }
+
+    .s-black-granite {
+      background-image: url('https://images.unsplash.com/photo-1694381559665-a24ccb0d41c3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJsYWNrJTIwZ3Jhbml0ZSUyMHN1cmZhY2UlMjB0ZXh0dXJlfGVufDB8fDB8fHww');
+    }
+
+    .s-red-granite {
+      background-image: url('https://images.unsplash.com/photo-1585749864763-de34e7afde1b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVkJTIwZ3Jhbml0ZSUyMHN1cmZhY2UlMjB0ZXh0dXJlfGVufDB8fDB8fHww');
+    }
+
+    .s-brown-granite {
+      background-image: url('https://images.unsplash.com/photo-1679407263861-fd418ef4b5c7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJyb3duJTIwZ3Jhbml0ZSUyMHN1cmZhY2UlMjB0ZXh0dXJlfGVufDB8fDB8fHww');
+    }
+
+    .s-white-marble {
+      background-image: url('https://images.unsplash.com/photo-1694378061128-d3df24b1ae47?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2hpdGUlMjBtYXJiZWwlMjBzdXJmYWNlJTIwdGV4dHVyZXxlbnwwfHwwfHx8MA%3D%3D');
+    }
+
+    .s-black-marble {
+      background-image: url('https://media.istockphoto.com/id/647750330/photo/black-background.jpg?s=612x612&w=0&k=20&c=kS2WRqf3bjTcwfmWhANTanFH6UHbO4zjEwDL6iC7gPg=');
+    }
+
+    .s-epoxy {
+      background-image: url('https://images.unsplash.com/photo-1544880506-65996e8be978?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZXBveHklMjBmdXJuaXR1cmUlMjB0ZXh0dXJlfGVufDB8fDB8fHww');
+    }
+
+    .s-matte {
+      background-image: url('https://images.unsplash.com/photo-1736506159920-aa3701dc1ee6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWF0dCUyMGZ1cm5pdHVyZSUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D');
+    }
+
+    .s-glossy {
+      background-image: url('https://images.unsplash.com/photo-1573864960999-2b9e0d3db575?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGdsb3NzeSUyMGZ1cm5pdHVyZSUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D');
+    }
+
+    .s-satin {
+      background-image: url('https://images.unsplash.com/photo-1667227283849-24396056348f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHNhdGluJTIwZmluaXNoJTIwZnVybml0dXJlJTIwdGV4dHVyZXxlbnwwfHwwfHx8MA%3D%3D');
+    }
+
+    .s-lacquer {
+      background-image: url('https://media.istockphoto.com/id/2235524318/photo/a-detailed-macro-photograph-capturing-the-warm-flecked-texture-and-prominent-horizontal-grain.webp?a=1&b=1&s=612x612&w=0&k=20&c=1xV47VPgcFs3uTPMAcs5KyfTgi6ok-kHj9vGSeMrQ9w=');
+    }
+
+    .s-pu {
+      background-image: url('https://media.istockphoto.com/id/542957646/photo/wood-oak-effect.webp?a=1&b=1&s=612x612&w=0&k=20&c=juBmJU3RfvpHHDLzvT63jNIerKcKgknDt0PnHbrbjsI=');
+    }
+
+    .s-antique {
+      background-image: url('https://images.unsplash.com/photo-1614535683569-129faaa108f7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YW50aXF1ZSUyMGZpbmlzaCUyMGZ1cm5pdHVyZSUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D');
+    }
+
+    .s-cotton {
+      background-image: url('https://media.istockphoto.com/id/183815050/photo/high-resolution-white-textile.webp?a=1&b=1&s=612x612&w=0&k=20&c=M6HC3XmO9spWZ3wA_awxT5-wjPqbflYwib3g-DSQBm8=');
+    }
+
+    .s-velvet {
+      background-image: url('https://images.unsplash.com/photo-1634225162109-f9ae3675d164?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHZlbHZldCUyMGNvdHRvbiUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D');
+    }
+
+    .s-linen {
+      background-image: url('https://plus.unsplash.com/premium_photo-1756717252847-9f074371434a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGluZW4lMjBjb3R0b24lMjB0ZXh0dXJlfGVufDB8fDB8fHww');
+    }
+
+    .s-leather {
+      background-image: url('https://images.unsplash.com/photo-1571829604981-ea159f94e5ad?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGVhdGhlciUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D');
+    }
+
+    .s-suede {
+      background-image: url('https://images.unsplash.com/photo-1599568723850-14196ee0f991?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3VlZGUlMjB0ZXh0dXJlfGVufDB8fDB8fHww');
+    }
+
+    .s-jute {
+      background-image: url('https://images.unsplash.com/photo-1608424371207-ab70d9d68e80?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anV0ZSUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D');
+    }
+
+    /* ── PROCESS ── */
+    #process {
+      background: var(--warm-white);
+    }
+
+    .process-steps {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 8.33%;
+      right: 8.33%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+    }
+
+    .step-dot {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--warm-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+    }
+
+    .process-step:hover .step-dot {
+      border-color: var(--teak);
+      background: var(--teak);
+      transform: scale(1.1);
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--teak);
+      margin-bottom: 8px;
+    }
+
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: var(--light-mid);
+    }
+
+    /* ── MANUFACTURING ── */
+    #manufacturing {
+      background: var(--charcoal);
+    }
+
+    #manufacturing .section-label {
+      color: var(--gold);
+    }
+
+    #manufacturing .section-label::before {
+      background: var(--gold);
+    }
+
+    #manufacturing .section-title {
+      color: var(--cream);
+    }
+
+    .mfg-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .mfg-locations {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mfg-location-card {
+      padding: 24px;
+      border: 1px solid rgba(181, 101, 29, 0.2);
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.03);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      transition: border-color 0.3s, background 0.3s;
+      cursor: none;
+    }
+
+    .mfg-location-card:hover {
+      border-color: var(--gold);
+      background: rgba(200, 150, 60, 0.05);
+    }
+
+    .mfg-loc-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .mfg-loc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .mfg-loc-desc {
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: rgba(249, 244, 238, 0.5);
+    }
+
+    .mfg-timeline-box {
+      border: 1px solid rgba(181, 101, 29, 0.2);
+      border-radius: 3px;
+      padding: 36px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .mfg-timeline-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: center;
+    }
+
+    .timeline-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(249, 244, 238, 0.55);
+      text-align: right;
+      padding-right: 16px;
+    }
+
+    .timeline-bar-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .timeline-bar-fill {
+      height: 100%;
+      background: var(--teak);
+      border-radius: 3px;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1s ease;
+    }
+
+    .timeline-bar-fill.animate {
+      transform: scaleX(1);
+    }
+
+    .mfg-note {
+      margin-top: 28px;
+      padding: 16px 20px;
+      background: rgba(200, 150, 60, 0.08);
+      border-left: 2px solid var(--gold);
+      border-radius: 2px;
+    }
+
+    .mfg-note p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: rgba(249, 244, 238, 0.65);
+    }
+
+    .mfg-note strong {
+      color: var(--gold);
+    }
+
+    /* ── GALLERY ── */
+    #gallery {
+      background: var(--cream);
+      padding-top: 0;
+    }
+
+    .gallery-header {
+      padding: var(--section-gap) 0 50px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 3px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: none;
+    }
+
+    .gallery-item.tall {
+      grid-row: span 2;
+    }
+
+    .gallery-item.wide {
+      grid-column: span 2;
+    }
+
+    .gallery-bg {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      transition: transform 0.6s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .gallery-item:hover .gallery-bg {
+      transform: scale(1.05);
+    }
+
+    .g1 {
+      background: linear-gradient(145deg, #8b4513, #2c1810);
+      min-height: 280px;
+    }
+
+    .g2 {
+      background: linear-gradient(145deg, #4a6040, #2a3a28);
+    }
+
+    .g3 {
+      background: linear-gradient(145deg, #2a2a3a, #1a1a2a);
+      min-height: 280px;
+    }
+
+    .g4 {
+      background: linear-gradient(145deg, #7a5030, #3a2818);
+    }
+
+    .g5 {
+      background: linear-gradient(145deg, #5a3a28, #1e1410);
+    }
+
+    .g6 {
+      background: linear-gradient(145deg, #3a4a30, #202a18);
+    }
+
+    .g7 {
+      background: linear-gradient(145deg, #6b4020, #3a2010);
+    }
+
+    .g8 {
+      background: linear-gradient(145deg, #3a3a5a, #1a1a30);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      transition: background 0.4s;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .gallery-item:hover .gallery-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--charcoal);
+    }
+
+    #contact .section-label {
+      color: var(--gold);
+    }
+
+    #contact .section-label::before {
+      background: var(--gold);
+    }
+
+    #contact .section-title {
+      color: var(--cream);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 60px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .contact-block {}
+
+    .contact-block-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .contact-block-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--cream);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(249, 244, 238, 0.5);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(181, 101, 29, 0.2);
+      border-radius: 2px;
+      padding: 12px 16px;
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--teak);
+    }
+
+    .form-group textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .form-group select option {
+      background: var(--charcoal);
+    }
+
+    .form-submit {
+      background: var(--gold);
+      color: var(--charcoal);
+      border: none;
+      padding: 14px 36px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: none;
+      align-self: flex-start;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .form-submit:hover {
+      background: var(--teak-light);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0e0c0a;
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(181, 101, 29, 0.12);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.9;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(249, 244, 238, 0.3);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: rgba(249, 244, 238, 0.4);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 18px 30px;
+      }
+
+      nav.scrolled {
+        padding: 12px 30px;
+      }
+
+      .container {
+        padding: 0 30px;
+      }
+
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-left {
+        min-height: 80vh;
+        padding: 100px 40px 80px;
+      }
+
+      .hero-right {
+        height: 50vh;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .cat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cat-card {
+        height: 300px;
+      }
+
+      .mat-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .process-steps::before {
+        display: none;
+      }
+
+      .mfg-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item.tall {
+        grid-row: span 1;
+      }
+
+      .gallery-item.wide {
+        grid-column: span 1;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --section-gap: 80px;
+      }
+
+      nav {
+        padding: 16px 20px;
+      }
+
+      nav.scrolled {
+        padding: 10px 20px;
+      }
+
+      .container {
+        padding: 0 20px;
+        overflow-x: hidden;
+      }
+
+      .hero-left {
+        padding: 100px 20px 60px;
+        min-height: auto;
+      }
+
+      .hero-headline {
+        font-size: 2.8rem;
+      }
+
+      .hero-desc {
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-right {
+        height: auto;
+      }
+
+      .hero-img-placeholder,
+      .hero-right-img {
+        height: 300px;
+      }
+
+      .hero-stats {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 30px 20px;
+        background: var(--cream);
+        opacity: 1;
+        animation: fadeIn 0.8s 1.1s forwards;
+        width: 100%;
+      }
+
+      .hero-stat {
+        text-align: center;
+      }
+
+      .hero-stat-num {
+        font-size: 2rem;
+      }
+
+      .hero-scroll-hint {
+        display: none;
+      }
+
+      .about-visual {
+        height: 350px;
+        margin-bottom: 20px;
+      }
+
+      .about-pillars {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .mat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .mat-tabs {
+        flex-wrap: wrap;
+        border-bottom: none;
+        gap: 0;
+      }
+
+      .mat-tab {
+        width: 33.33%;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 0;
+        padding: 10px 0;
+        font-size: 0.65rem;
+      }
+
+      .mat-tab.active {
+        border-bottom: 2px solid var(--teak);
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .mfg-location-card {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 12px;
+      }
+
+      .mfg-timeline-box {
+        padding: 20px;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .timeline-label {
+        text-align: left;
+        padding-right: 0;
+        font-size: 0.8rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .contact-grid {
+        margin-top: 40px;
+        gap: 40px;
+      }
+
+      #setupGuide {
+        margin: 30px 20px 0;
+      }
+
+      .wa-float {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        justify-content: center;
+      }
+
+      .wa-float .wa-text {
+        display: none;
+      }
+
+      .wa-float svg {
+        width: 26px;
+        height: 26px;
+        margin: 0;
+      }
+
+      .marquee-inner span {
+        font-size: 0.65rem;
+        padding: 0 20px;
+      }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      body {
+        cursor: auto;
+      }
+
+      #cursor {
+        display: none;
+      }
+
+      .cat-card,
+      .pillar,
+      .gallery-item,
+      .mfg-location-card,
+      .btn-primary,
+      .btn-outline,
+      .nav-cta,
+      .form-submit {
+        cursor: pointer;
+      }
+
+      .cat-desc {
+        max-height: 80px;
+      }
+
+      .cat-arrow {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .gallery-overlay {
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .gallery-label {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── FORM STATUS ── */
+    .form-status {
+      transition: all 0.3s;
+      line-height: 1.5;
+    }
+
+    /* ── SETUP GUIDE ── */
+    #setupGuide {
+      margin: 40px 60px 0;
+    }
+
+    @media (max-width: 1024px) {
+      #setupGuide {
+        margin: 30px 20px 0;
+      }
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--charcoal);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--teak);
+      border-radius: 2px;
+    }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      padding: 13px 20px 13px 16px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+      animation: fadeUp 0.8s 1.5s both;
+    }
+
+    .wa-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.45);
+      background: #1ebe5a;
+    }
+
+    .wa-float svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Custom Cursor -->
-<div id="cursor"></div>
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
 
-<!-- ── NAV ── -->
-<nav id="nav">
-  <a href="#" class="nav-logo"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAH0AfQDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAYHBAUIAwIB/8QAUBAAAQQBAgMEBQYJCAkDBQEAAAECAwQFBhESITEHE0FRFCJhcYEIMkKRobEVIzZSc3SywdEWMzQ1N3LC8CVDU1RidYKSlSSzwydjZaLh8f/EABoBAQADAQEBAAAAAAAAAAAAAAADBAUCAQb/xAAwEQEAAgECAwUIAgMBAQAAAAAAAQIDBBEFITESE0FR8BQiMjRhcYGxkcEjodHhQv/aAAwDAQACEQMRAD8A4yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfqIrlRERVVeiIelivPXcjZ4ZInKm6I9qpugHkAAABYPYFBDY106OxDHKz0SReF7UcnVvmRZsvdY5vMdEmHHOXJFI8VfAuLtl7OkhSXUWBgRI/nW60afN6qr2p5eZTpzptTTUUi9Heo099PfsXAAToH7svkfhaWlsxHlOyTUNC3DA+1j66d1KsacfdqqIib7eCov1la425Pj78F2sqJLC9Ht3TdN0808UIceSbzaJjbadkt8cVisxO+8PDZfJT8OodMy6f1ppJLKY+qjbMaxWI2xoixu8U3ROXPn9Rz1rfT1nTGoZ8XY3c1q8UMn58aquylfS66ue9scxtaPBY1OithpXJE71nxaMAF5SfqIqn50J/wBjMsWOu5TOZBGLjKdRe+R7Ucj3qqcDU38V2XYimqcxNnc3YyU0bIkkdtHGxERGMTo1NiKuSZyTXblHj/SSaRFItvznwasAuLsD0hXtQWNQ5Ku2Vi8UNZj03avLZzlT7E+JzqdRXT45yW8HWnwWz5IpXxU6CRdoun36a1Xax+y9wq97XVfGNyrt9XT4EdJKXjJWLV6SjvSaWmtusAB6V4ZLFiOCFivkkcjGNTqqquyIduXmZVfHZCym9ejamTzjhc77kLij07pbs405DldQ1GZTKzbcET2o5EftvwtReSIni4hWY7T9U3ZFSnZjxkCL6kVViN2T3rzUp49VbNP+KvLznl/C3fTVxR/ktz8o/tELNK5WVUsVLEKp17yNW7fWY5Ik1xqvpJmrM7VXdWTbSNd70ci7noyfG6lX0eWnWxuVd/MzV28EM7vzXM6NVfBU2T2eJYi1o+KP4QTWs/DKMg+pY3xSvikarXscrXIvVFTqh8kiMAAAF69nHZ/Vn7OrLcjDH6Xlo0e16t3dCn+r/jy80KSyVOxj8hPRtMVk8EixvavgqKVsGrx5r2pXrVYzaa+Klb26WY4ALKuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAelaCazYZXgjdJLI5Gsa1N1VTzJ/wBkWn3Wb65uw1zYa67Q8tke/pv7k3OMmSMdZtKXBinNkikeLa6O0JdxszL1qWt6QrfVRWK5YF80ReTnfYnXmTptevWrb2JEkRiKqyzqir9a8kPS7brUoFsW52QxJsiueuyc+hXmudRvyOPjkx+NlfXr20Tv5tljkci/NRv0+e/1GTXvdTbeej6G3caLHtHOfJLJ5tK2d4XtoT+aMjR22/tTfb3kE7SMXpLGxq2mj4sg5EVIYXbtRPBXIvQ12q8xdhljSPLWEuKxrZooYVgjjaibom3VV59SJSyPlkdJK9z3uXdznLuqqXcGnmkxbtSzNVrK3rNOxG/m+SU9nUssE+anhkdHLHiZnMc1dlRUVvNFIsSfQHXO/wDJ5/vaWMsb0lQxTteFydlGvINUUfwXk1jbk42bORyJtYbtzcnt80/ykG7Xuzl+JfNncLErqDl4poWpzhVfFPNv3e4rOjasUbkVupM+GeJyPje1dlaqHSHZlrapq/Fei3O7Zko2cM8C9JG7bK5EXwXxQxdRhvoMnf4fhnrHr1DXwZqa7H3Gb4o6T69S5pBY/bBoFdP2ly2Kic7FzO9Zic/R3eX91fArg2cGamekXpPKWTmw3w3ml45wlOhpXNxWqIkX1X4lyqntSRm33qRYkuif6v1L/wApf/7kZGj2nxW9eDy3w1Tbsm1lJpbNdzYcrsbbc1s7fzF8Hp7i3u1rScWq9NpbpI19+szvKz0/1jdt1Z8fD4eZzWXt2CauW9j103elT0iq3irK53N8f5vtVv3L7DK4lp7Y7RqsXWOv2aXD81clZ02XpPT7qKe1zHqxyKjmrsqL4KZeGx1rLZODH04+OaZ3C1PBPNV9iJzLM7d9GNoW11Jjo19HsP2ssanJj1+l7EX7yJzuXSun0qR7NzOTi3sO+lWgXoxPJz05r7Nk8TQw6mufHF6ePr/Slm01sOSaX8PX+3jqzIU61KLTOGmSWhWfxzzom3pU/RX/AN1OiIRkAnrXsxsgtbtTuzcJjp8tlq2Or7d5O9Goq9Gp4uX2Im6/AsLR+uIsXr+GrWl4MBwtoxtXpwovqyL7Vcqqq/8AERfDr+BNJW8uvq3Miq06a+LY0/nXp70VG/FSMEOTFXPFq26dEuPLbDMWr16uhO3nTf4V003MVmI6zj/WcqJzdD9L37cl+s57Ol+yPPs1NolkNvhfPWb6LYaq/PbsmyqnkqfbuUV2iaek01qq1j1Y5IFcsldyp86Nen1dPgZ3Cslsc20t+ten2X+JY63iupp0t1+6Okl7L2xv7QcK2VEVvpTV2VPHw+3YjR607EtS3DagcrJYXtkY7yci7oa2SvbpNfNmY7dm0W8lzfKQxt6WHG5OJrpKkPFHJwpujHLtsq/Vt8ClDp/s/wBY4zWGHRkixMutZw2ar1Rd/NURerV+w1OpuyPTmUkdPRdLi5nc9ovWjVf7q9PhsYWj4hGkj2fURtMeLa1WhnVT3+Cd9/BzsfrXOa5HNVUci7oqeClgai7JdT4zeSmyLJQp4wrs9P8ApX9xBbtS1SndBcrTV5WrsrJGK1U+Cm3iz480b0tEsfJhyYp2vGxfsuuXJbUjUR8ruJ+3i5eq/FTwAJUQbzR2KiyOSfPc9XHUWLYuO329RPop7XLyT3mjJLnFXD6ap4Rm7bFxG3Lvmm+/dxr7k9b/AKji8zttHWXdIjfefBY3YprWW/qHIYrIPRPTXrPVTfkxUTmxPYjUTb3GB8oLSzq95mp6rPxM+0dpET5r05I74py96FWYu7PjsjXv1X8E0EiPYvtQ6jYtDW2iEVyItfIVuey/Mcqfe1xiayPYtTXPSPdnlLY0k+2ae2C0+9HOHKYMrL0bGMylnH2mKyavK6N6L5opim7E784YkxtyAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH61qucjWoqqq7IiJzU/DeaCmZBq/HSSNa5ve8Ko7bbmipvz955ado3dUr2rRDa4zQlyen3tyZK0y7OWJU5xx+Ln/m8t9k8Sead1Fp2rVr4yu+SsxrNoe9j4e92dw7oviqrzNq6pHWxa1Jpmek3HbOe9eb5HddvPZOieSIQSHMVXZqGnkoadSLCK96d2nFxORdk+ry8V2M6Le0RMW8G12Y0VomvWfNt9cySSZqGvLMxuzOKBkv8ANRJ9KZ+/VU5o1vs3Izj2QUIrUlaZzsVYjc+KV0Kd+vCnrI1V5MRV5b/VzJFmstBlcNLBYayVj0761Iqb+js6tjbt1k5J9qr5Ee1FbyTNIubcjgq98+OJIWxpxK1G8Xua3ZW7Inv333JMMTFYrPr166oNRatrzeJ38f8Az1/SESPfJIr5HOc5V3VVXdVPkAvMoJPoDrnf+Tz/AHtIwSfs9RXS5tqeOHsf4SPL8EpMXxQjBlYrIXMXkIb9Cd8FiF3Ex7V/zyMUHcxExtLiJ25w6a0FqvGa6wMla1FF6UjOC3VdzRUXlxIi9W/cVF2q6An0tZ9Oo8c+Kmd6rl+dC78137lIjgMveweVhyWOmWKeJd/Y5PFFTxRTpTSWocNrzTkjHxMermd3bqyc+FV8fd5KYOXHfhuTvMfPHPWPJt4704hj7vJyvHSfNQOiv6v1J/yl/wD7kZGi1M5ouzpOxqVYmPkxk+LkWvL12/GM9RV80+0qs18GWmXe9J3if+MrNjti2raNpgMvEZC1isnXyNKRY54Ho9jkXxQxATzETG0oYmYneHWVu029oh9+evC9ZKHfrFI3iZvwcSbovVNzlO9asXbktu1K6WeZyve9y81VTqKH+zJn/KP/AIjlcxOCxEd5EebZ4vMzGOZ8gz8Bi7OZy9fG1UTvJnbcS9GonNXL7ETdTAJbiVTAaNnyr2MW5lXrWrI7qkLecj/cq7N+s2clpiOXVkUiJnn0fupKc2VuMWtJXp4ipGlek61M2NHsb1ciLzVXLu7kniaxumrkyf8AormMuv8ACOG23jX3NXZVNTasTWplmnkdI9fFV6exPJDyRVRd0PIraI23JtEzvsnfZVmrWkdax1slHLWgt7QWGStVqt3X1XbL5L9iqWh246aTN6VXI1o0dcx6LI1W9Xx8uJvTy5/ApLFagVY46GcjdkMci7Ijl/Gw+2N/VNvLodHaAuMyWk6zvTYr7GtWJJU+m1OScSdUdtyVDF4nFsGWmprHOOv1hscOmM2K2nmeU84cpgk3aXp52m9XW6LWKlZ697XXzY7nt8F3T4EdhifLx8Cb8DVevuQ26XrkrFq9JY16TS01nrBXnmrzNmryvikau7XscqKnxQsLS/a7qLFtbBkUjykCct5eUiJ/e8fiVyDjNgx5o2yV3d4s+TDO9J2dJab7VNLZbgjnsPx07l2VllERu/sd0+sk2awmE1HRSPIVK9yJzd2SbIqp7WuTp9ZyOTbst1rkdPZutUksSSYyeRGSwuXdG78uJvkqGNqOD9iJvp7TEx66tfBxbt+5qKxMT4v3tR0HPpG2yxXkdYxs7lSJ6p6zF/Nd/HxIQdLdtzIpOzbIPeiKrXRuYq9UXjam/wBSnNJf4ZqbajB2r9YnZS4jp64M3Zp0mN270dj4beTdauNVaNFnpFhE+miLyYntcuzfie+Vx2RyORnyOUtUqU1h6vWOxOjXtReicHNURE5Jy8DLyE8mnNNUsXBsy9dRLlp/0o2qm0TfYqJu72KqeKETe5z3K57lc5V3VVXdVLdd7TNlW21Y7LdLpjKSMV1FauR2TdW07DZXp/0ovF9hYPYDqd9LIy6WvqrI5lV9fj5cMni3n03RPrQqWKSSKRskT3Rvau6Oauyp8SVYbUkVu1AmdXhsROR1fJxt/HRPRUVqv2/nG+e/Mh1WHvsU0tzhLpc3dZYvXlMJp8ofTPdWYNS1Y/Ul2hs7J0d9F31cvghT51pfpQam0g6pZfDKy7VT1413ZxKm6OavsU5UytGxjclYoWmKyavIsb0XzRSpwjUzkxTjt1r+lrimCKZO8r0t+2MADWZYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEo7NcG/L6hilexfRarkkld4KqdE395Fy5tCPSpoCCahVVbD2uXhXlxP4lTiVfLx38iDUZJpTl1nkt6LFGTL73SObyzuWlp23qlhtjilWpXldsr4XKicbkaibO2TluvPdPLmVFYcjrEjmuc5Fcqoruq8+q+0k2ra1vuEtWZoklgXu2pEuzVavRfNXO34l9m3mhrKeDms0q8kcrXW7UqMgrN5uVnPd7vzURfP2jDSuOpqMl8t9vJIezlsS15HZKOVMerlar9tmuXb5u/NVVV8Gom/ivgYPaPcuWMjXhuwNhkhj2Tn6zm7+qrvbt9RMNLSQ0bMNG4xHuigc2pYj5NVU2R3dt6eK7vXqVzqyaOfUV18TUazvOFESTj6JtvxeKrtvucY/eyzOyTLHY08V36tWAC0oBPuwusy5q+zTk5tnx80aptvui7IQEysZkb2Ms+k4+3NVm4VbxxPVq7L4boRZ8c5Mc1idt0uG8Y8kWmN9n1m8fYxWWs460xzJYJFYqKnXZeS/EwzKyeQvZOz6TkLU1qbZG95K7idsntMUkrvtG/VHO2/INrpXPZDTmYiyeOk4ZGLs9i/Nkb4tX2KaoC1YtG09CtprO8OidRanx+qeyLL5Ck7Z/o/DNCq+tE7dN0X2eSnOxkVrtutDPDXsSxR2GcEzWu2R7euy+ZjlbSaWumrNa9JndZ1WptqJi1usRsAAtKrqeFf/pi1f/xH/wARywblNU6jSp6ImbvJX7vu+7SZeHh22228jTFDRaOdNN5md95XtZq41EViI22hsNO4uxms3UxdZquksSozl9FPFfgm6kq7aq6Y/VFXExRrHUo0Yoq6eCt5qrveqqv1EOxt+7jbSWqFqWtOiK1JI3cLkReqbnplstk8tIyTJ3p7b2Js10r1cqJ5cyzNLzli2/uxH+1eL0jFNducz/phAAmQhMuyXVUmmtSxJLLtj7SpHYaq8k8n/Bfs3IaDjLjrlpNLdJd48lsd4vXrDontz043NaV/ClZnHbx6LI3bq6JfnJ+/4FCYS5HRyDZZ4u9rva6OZnirHJs7byXZd09qGa3Vup2wJAmeyCRI3gRnfLtw7bbe7Y0hV0Wmvp8Xd3nePBZ1mopnyd5WNp8W5yuAs14vTaO97GvXeOxEm+3seic2u9immXkuymVjcjfxs/f4+3NWk/Ojeqb+/wAyQs1xbkbtkMNhMgu3zpqbUcvt3bsWZm9ekbq8RSes7IqiKq7IiqvkhPuzXQWRymRgymUhWlia70lkkm9TvETnsm/h7THrdotuo1PQdPYCq5Pmujq82r5pupptSav1DqBdsnkZXxf7Jnqx/wDanIhv3+SOzWIr9eqWnc0ntTM2+nRNu2rXlPNRMwOGkWSpFJxTzJ0e5OiJ5onmRrsl02uo9XV45Wb06qpNYXw2To34qRA2GJzWWxKSJjMjZppJsr+5kVvFt032955XTd1gnFh5fX+3ttT3uaMmXn66Nh2jyzy66zDrCKj0tPaiL4NRdm/DZEI+ZGRvXMjadavWZbM7tkdJI7icvxMcs0r2axXyV727VpnzAAdOVu9gGrJIbrtMXZlWGbd9RXfRf4t9ypz96e0yflD6a/mNTVY/KG3wp/2uX7vqKdqzzVbEdivK+KaNyOY9i7K1U8UNpe1RqK9Vkq3M1esQSJs+OSZVa5PanwM62hmNVGoxzt5x5r9dZWdNOC8b+U+TTgA0VAAAAAAAAAAAAAAAAAAAAAAAAAAAA9atea1YZXrxOlleuzWtTdVUz9K4eTO5uDHMfwNeu8j/AM1qdVLrwGnsRp2s51WJrXI3eSeRd3qidd18PgV8+pri5dZXNJor6jnHKEO0l2cNarbeecjl23SsxeSf3l/chssnQdj734KrWkZjpNnsq8Xrouyrsu/+qTh3VPeSDLZ2GpWuzxtWRtJjZJeabOReaI3fxXfffp4EPo3XZ+1Hkbci05JI3yvVN1SCq3ltt48bt/gnuKlLZcnv36NHJjwYtseP4vXi1GqMPLkcfBcpzySTcSd5Ve5HORz9kReXLiXZXL5Jy8DJ0rj347BelJCjp55Uika5FR0jlXZsCeSL1cvlsnmbvS1GWe1KyRJHyRotiRz0RO8dJzaq+Hzdm8umzvM+nNkfm5shXkZKzEr3EUKbb2LL+qqvTq7r4dORNOTl2PJWrh5xk26+t2dJWpObYdlWslr1GcVh7WbNVURVRqf8LU+invXmUtZekliSRE2Rz1VPipbkvd3MTO6SRq1abXq2JzfxstnZ3Erk8uLfl7PIp8700bbotdO/ZAAWlAJn2TaVoaszdmlkJZ444oO8RYXIi77oniikMLS+Th+VV/8AVP8AEhW1l7Y8F7VnaYhY0lK3z1rbpMvrtU7O8LpXTLMlQsXZJnWGxbSvardlRV6IieRVZ0N8of8AIOP9dj+5xzyV+FZr5tPFrzvPNPxLFTFnmtI2gABoqAWN2Q6GxOrqWQmyU1uN9eRjWdy9qJsqKvPdF8iuS7/k0f1dmf00f7LijxLLfFprXpO08v2u8Px0y6itbxvH/iGdr+jsbpC1josdNZlSyx7n985F22VOmyJ5qQMuD5S/9Pwi/wD2pfvaU+dcPyWyaat7TvMuddjrj1Fq1jlAAC4qBYHZh2epqzF5C9Znkrsj/F1lbts6Tbfnv4JyIPjac+RyFejVYr5rEjY2N81Vdjpfstt4f8By4bErumLlWvM7/av25vT2OXczeJ6m+DDvj6/pocO09M2Xa/T9uZ79Waldmp2GKyaF6se1fBUXY8C1flB6a9CzEWoK0e0Nz1J9k5NkROS/FPtQqot6bPGfFGSPFV1GGcOSaT4AAJ0K6tHdlOn8zpfHZSzbyDJbMCSPRj2o1FXy9VSr9c4qvg9WZDFVXyPhrScLHSKiuVNkXnt7zo/sv/s+wn6q395QHa3/AGjZn9On7KGJw/U5cmqyUtbeI3/bZ1+nx49NjvWOc7fpFQAbbGCweyjS+mdWrPRvTX6+Qhb3n4uRvDIzdE5Ireqb+fiV8SfssyL8Zr3FTNdwtknSF/ta/l+9CDVVtOK3YnaU+mmsZa9uN4ajUdKLHZ+/QgV7oq9h8TFcvNURVTma83WuvyzzH67L+0psuyfARah1pVqWW8VaJFnmb+c1vh8V2PZyxTF27eEbuYxzfL2K+M7NnoDsxympa7MhbmShj3c2vVu75E82p5deam6y1Xsp0tI6nLDczdyP1ZEbJuiO357qio1PgSjt11HPgNP1cRjHJXkubtV0fJWRNTmjfLfdE395z+qqqqqruqlDTd7q4729pis9Ijl/Mr2o7rSz3VK72jrM/wBQnNjU+iXOVItDRtb052nb7fxMHfQmS9RrMphJl32erknh38N05OT7SJgvxgrXpM/zP9qM5pt1iP4j+m41Dp+3h0inc+K1Rsc4LcC8Ucns38F9i8zTm90tlWwPficg5ZMVdXgmYq8o3LybK3yc1eftTkae5A6tbmrPVFdFI5iqnmi7HdZnpLi0R1h5AA7cgAAAAAAAAAAAAAAAAAAAAAAAAAAl/ZHPHDq9jHqiLLC9jd/Pkv7i4cnUbeoTVHvVjZW8LlTy8fsOdKdiapaiswPVksTkexyeCoXfonVVbUNFyuRIbULfxzFXlt+cnsM3W4rbxkjwbfC89OzOG09Vda9uSVdRZilJCjm2HxKi77cLW80T7TctmkrsyccdZbMd1sFaJ0OyNZEiM5Im+/ST6zG1hTTPZdFbYrtdE50XpP8AtGqiujV31Obv5mlkszY3SWLnq2ZmzWJZXORWorW8Lm7Ki+fqpy5lqte1SsevXJRveaZLTH19f7TzF5yykc8qxOZatI1rGIm/DI9VSJi+SNY3f4qZcNWLH0YvRWI6RXoyB6puskrt0R6+eyK9/uX2EI0dPPbx9h86qjK6pHE5qqirJJs3iVd+fCxq+5CcUqNqa1VZWuPakFBZWd56zWyyKqNX4Ijk9ibe0q5qxSZXtPe2WInqws0kSRWXQLHJPXrvq0WLsrnu2/GyKvknNN/YvmU+XRJVdFYsywx1pIoo242urlVHKrtuN3tXdfZ4lO3a8lS5NWlTaSJ6scntRSxpZjaYVOIVmLRM+vX6eIALTPC0vk4/lTf/AFT/ABIVaWl8nD8qr/6p/iQp8Q+Wv9lvQ/MU+6afKH/ISL9dZ+y455OhvlD/AJBx/rsf7Ljnkq8F+Vj7yscX+Zn7QAA1mYF4fJqd/orMN8p2L/8AqpR5d/yaf6tzP6aP9lxm8WnbSX/H7aHC+eqr+f0wflMf03Cfo5vvaU8XB8pj+nYT9FL97SnzvhfylPXi54l81f14ABl4ehYymUrY+q3eWeRGN8k38V9idS/M7KMRukOlE/Aun7+p3ptO5Fp4/fl+McnrPT+637VPXsl1N/JzVsUtiRUp2vxNjn0RV5O+C/vMLXd6o65BhsXJx43GM7mJ3+1f9OT4r9iIRsr91GWkxePi/Xgn7ycV4mv/AMutdX4WvqTTVrFy8Ktnj3jf14XJza7f3/Ycn2681S1LVsRujmierHtcmyoqdTovsT1L+HdKtqWJOK5j9opOfNzPou+zb3oQP5QGmHUswzUNWJfR7ezbHCnJkiJ1X3p9qKYvC8k6bPbS3/Hr6tfiVI1GGupp+fX0VWAD6JguqOzD+z7Cfqrf3lA9rX9o2Z/Tp+yhf/Zf/Z9hP1Vv7ygO1r+0bM/p0/ZQ+d4X87l/P7b/ABL5TF+P0ioAPomAGw02qt1DjnNXZUtR7L/1Ia8z9O/1/j/1mP8AaQ8t0l7XrDL11+WeZ/XZf2lJh8ni3FBrWWvIqNdYquaxVXxRUXb6tyH66/LPM/rsv7SmBhsjaxOUr5Gm/gnrvR7F/cvsXoV8mLvtPNPOE+PL3WeL+Ur/AO2/SlnUOChuY6NZLlFXOSNE3WRipzRPamyKnmc7yMfFI6ORjmPauzmuTZUU6e7Ptc4zVdJjWvZXyLWp31Zy89/Nvmnt8DL1NorTeoXLJkMczv15d/F6j1+KdfiYWk4hbRf4M9Z5NvVaCus/zYLRvLlQFx57sSlRXPwmXa9PCO0my/8Ac1P3EAz+htUYRHPu4mdYm9ZYk42J8U6fE3MOtwZvgsxc2jz4fiqjZ+vc57lc5VVyruqr4hUVF2Xkp+FpWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmnY5x/wArXcPzfRn8Xu3aQstjstwlqhgLGUSNrbdtn4jjXZOFE5b+W68/cQam0Vxzv4reipNs1Zjw5vrXdZchaySR2YoIYq8aTSK3dUWPieu223P12J/1Fd147mRwkjO8jZVxjXS+ty3V7kTb3rt9hur2UdQjpUb0kc8Np3pN3u2LxKiy7qm6rz3RqeXLY8Nd5L8M2X5LHROgxKLHXazk3d7Wb82/FeYw1mkRU1F65Jm/j5evJtdKQyM0zBAsTWpb7+VH77q5U4YU/wDcX6izaSV68jmInArnNgZunXhZuiftFa4WS6kWOrtrt7iHHJO1r5UTl3zXPdyTx26ewmPpFuxk6/fzwIkOUfGjU3dsiwKrU35eCr4eKFPU1m0/y0tDkilY/D9hSF1zHUJoJHyLamtJJwepuiuXkvnzTkV92pY+KPJQ5isxWQ3kdxJxb7Pauy/XyUsKvI1H4lj5Gzo27NC523JVVsmxG9ZVKM+j4/8A0yx2omTSxbM4eHhlajkX4Kp7gt2bx683Orp28U/Tn+lXgA0mIFpfJw/Km/8Aqn+JCrS0vk4/lVf/AFT/ABIU+IfLX+y3ofmKfdYXbZlLGJ0ey1WjrSP9KY3aeFsjdlR30XcviUp/LrL/AO54b/xsX8C3flD/AJCR/rsf3OOeSlwfHS2liZjxlb4tktGpmInwhKU11l/9zw3/AI2L+AXXWX/3PDf+Ni/gRYGr3VPJm97fzSn+XOX/ANzw3/jYv4Fs9g+atZmhlJLUVSNYpWIiV67Yk2VF5rwom5z6Xf8AJo/q7M/po/2XGdxXHSNLaYjy/a/wzJedTWJnz/TA+Uv/AE7CfopvvaU+XB8pf+n4T9FL97SnybhfylPXii4l81f14BLNNf6E0xf1C9OG1ZRaWPXxRV/nHp7m8viR7EULGUydfHVG8U1iRGMT2r4+4leq8viqlyGpj44rseOj9HppIm8cey+vIrfpOc7defJE26+FnJO8xSPXr/qtjjaJvKIVqdyy1XV6s8yJ1WONXbfUfE8M0D1jmifE9PovaqL9ps7OptQWFbx5e21G/NbE/u2t9yN2RDIravz0be7sXEvweMN2NszV/wC5FVPhsd738nO1PNm9lWov5OavrWZX8NSde5seXCvRfguy/WdGaqxEGoNO28ZNwq2xEvA7rwu23a769jnGKPTmoVSOJI8Bkl+ajnq6rMvvXnGv1p7i8uyrJ3bGCXEZeJ0OTxu0UrX9XMX5j0XoqKninkYPGMcxNdRTlavrdt8KybxbBbnW3rZzXkak9C/PSssVk0EixvavgqLsY5bXyhdNejZGHUdWPaKztFY2TkkiJyd8U5fD2lSm1pc8ajFGSPFkanBODLOOfB1T2X/2fYT9Ub+8oDtb/tGzP6dP2UL77KZGy9neFc3miV+Ffeiqi/cpRXbJXfX7Rspxpt3jmyN9ytQxOGctblifr+2xxHno8U/b9IeAD6JgBn6d/r/H/rMf7SGAbXSNd9rVOLrsRVdJbjRNv7yHNuVZdV5zD111+WeZ/XZf2lNKbTV07bOqsrOxd2yXJXNX2ca7GrFPhgv8UvSvPNWmbPXlfFKxd2vY5UVF9ioWXpDtgy2NY2tm4fwlCmyJIi8MrU9/0vs95WAI82nx569nJG7vDnyYZ3pOzqHTfaHpbOcMcORbXsL/AKmwnAvwVeSkr5Ob4Ki/acZki0zrXUennsShkZFgavOCX141T3L0+BiZ+BVnnhtt9J/62cHGpjllr+Y/4vrWvZ3gdR15HtrR0rypuyxC3bn/AMSJ1T/O5z7q/TOU0vk1pZKLbi3WKVvzZG79UL+7N+0Ghq2Nar40qZJjd3w77o9PFWr48/Dqg7acPBlNB3Zns/HUk7+F3kqbb/WhBotXn0uaNPm6Ty5+H2+ibV6XBqcM58PXr9/v9XM4APqHzYAAAAAAAAAAAAAAAAAAAAAAAAAAPWnGk1uGJV2R8jWqvvXY6DyLmVcctdjJXN7hzWrGiud0ROX1/Yc8NcrXI5OqLuhfGGvzZ/TdW1RsMgfInDO5W7uZtycjefJeXIo62PhnwavC7R79Y6z0VLqpr7EmJ7pHyu/BsTeFG7uThVzdlRPd9pi4e7VhqPr243yp6TFKjUait4U4kfv8FQs7MYSarai/BlXvLNdyzVHubujkXlJFIvlzVU9/sI9S01Ekf4SpcbcokrkWgqI5rHbrvG5F+ireW/T6yWmelqoMmkyVvt4sbT0yvnfwSMmr1YJKEz2Lu7uXKvDKieTeW6+RvmRJTqzWERzZpHRyKiKrv/WM5t2XmvDInRfaR6rhX1VmtUH2I54Xqr+6TeSuviyRn0m+1u/LwMerqeJ8L6FqNYoZkWKRGpu2Pyc3fmiIvPh8OqbHlq9ud6vceSMcbXjn4JlYys13guV4moyVG2IGovrJPH/ORL/xKxFTb2H5rKNk2n7z4Z+FiRut1lRf5xr02kT7d/ihGqHpUV2WCRf9IQ7ScnbNev0J2/WiO82ruZ2v7PcaaSv3G0c0ypFs7nXenOSP2t8vD6kIu7it67LEZpvivNvXr/itwAX2QFpfJx/Kq/8Aqn+JCrS0vk4flVf/AFT/ABIU+IfLX+y1ofmKfdNPlD/kHH+ux/c455OhvlDfkHH+ux/suOeSrwX5WPvKzxb5mQAGszAvH5NSp+CMunj37P2VKOLw+TTyxmZXdOc0f3KZ3FvlLfj9w0OF/NV/P6a/5S/9Pwn6KX72lPlwfKX/AKfhf0Uv3tKswWNsZfMVcZVTeWzKkbfZv4/A94bMRpKTPrm84jG+qvEeuSTaUrS4TSuQ1dI1WyORaePXovG/k5/wbv8AEhhePbbglx3Z3iaePiVatCZEkVE8OFU4l+K/aUcS6PNGek5I8Z/SLV4pw2jHPhH7AAW1ULO7JtfMx2RqY7ONR8KNWCvaVdnQtcu/A7zZv59CsQQ58FM1JpdLhzWw3i9XW2rMPBqLTlvFyKnDYi/Fv/Nd1a769jlHI1J6F+elaYsc0EixvaqdFRdjoPsM1Mua0x+D7Miut4/aNVcu6uj+ivw6fBCJ/KF0wyvYh1LUi4Wzu7q0ifnbeq749PgYfDMltLntpb/j19W1xGldThrqafn19G9+Txmo7Wmp8K96d9SkVzGqvNWPXfdPcu/u3Q0vyi9PyJZqaigjcsbm9xYVE3Rqpzav1cvqK00jn7um85DlKS7uYuz2KvqyMXq1To7T2f0/rzATQtRsjJGKyxVl24mbp4/xT7DrVY76LVe01jes9f7c6bJTV6b2e07Wjo5aBZ+s+yHM0bT5sAn4QqOVVbHxIkjPYu/JfehCXaW1I2x6OuDv95vtw9w42MWqw5a9qloZOXTZcVuzastMS3s/iTHtu6rspww46Nza+/LvLLk2Y1Pduqr7jLp9ntynXTJarsxYWg1d3I9yOmf7GtTxU0+rs/Fk+4x2Mr+h4enyrQeLl8ZH+b1E5K5fdpzjxkik4vetynwaB7le9z3Lurl3U2VKmljT2Qss3WWtLC5UROjF4mqvu3VqfFDWGwwOUkxN9LDYmTxOasc0L/mysXq1f88l2Jrb7ckNdt+bXglS6br5zisaUmSZypxPx00iJYj8+HfZHp7U5+wjt6lcozuguVZq8jV2VsjFaqL8Tyt625eL21JjmxwDd4HSuoM5KjMdi7EjVVEWRzeFjfe5eR7a1axvaditZtO1Y3ZPZhJZj19hlqIqyLZa1UT81fnfZuX92tX4sf2f5R0r0R00XcsT85zuX8VIjpLTWD7N6q53U1+F2Rc1Wxsbz4PY1OqqvmV52l65t6vuMY2Na+PgVVih35uX853t2+oxcmL27VVvSPdr4+fjya+PJ7HprUt8VvDyQ4AG4xgAAAAAAAAAAAAAAAAAAAAAAAAAACYdnOq24Gy6pd4lozO3VU6xu8/d5kPBzekXr2ZSYstsV4vXrDpGlbq3YGz1bEc0TujmO3NZk8ZbdkG36UsaSomy7pwvRPJHbc0/4XIvsVCiKdy3Tk7ypZlgd13Y5U3N1W1pqaBERuVle1F32e1rvvTcoexWrO9Ja8cVpeNslf4T7WWQdjKyrm8PBZa/dIrdZ/du49uW6fOT3oqkS/k7Wz1GC5hJZ1tOYqzx2H78ciIqqjVXbiXp9aEqwmTXVWlH+m02W7LXrXnSNERyNdza5N+my7KvsQx9MyS4JPQ7bklZRdvKjlTlGu/rN804VVyezjTyO8czSsxHWEWWK5bxafhn+YajR00eSiixttqw5Wk5yU5Xerxt5o6JV9m69eX3Gu7SZ3OyFeu9islZHvMioqKruibpvtuiJtv9q8lJlmreKq3Xo9tZ7bCI/uXzI1HuRPnNX6DtttndHJ4opD9dQy24K+TjtTXI407l7313Nczy4ndHeKb+7qSY7b332Q5q9nFNd95hEQAWmeHtVtWaj1fVszQOVNldG9WqqfA8QBlWcjkLUXdWb1qePffhklc5N/PZVMUJzXZDLo0JrbkRskEaK9GbySI3Zfd1+w85Q95yxAbxdN2nwyupysvPie1j0rscrW8XirlRDEzWFv4iZIrjI0cqb+pIj9vft0PItE8t3U47RG8w1xkVL12ojkq27ECO+ckcit3+oxwdOOj3t3blxWrbtz2FZyb3siu29258QTTV5UlglkikTo5jlaqfFDzA2N2ZLlcnNE6GXI3JI3Js5jpnKi+9NzDAPIiI6PZmZ6gAPXgAAParbtVHq+rZmgcqbKsb1aqp8D1s5LI2YlisX7U0a81bJM5yfUqmIDzaN93u89AyMfeuY+y2zRtTVpm9HxvVq/YY4PZjd50T3HdrWsakSRvtV7SIm3FNCnFt7023Pq92uaxsxqyOerW38YoE3+3cgAK3sen337Efwse159tu3P8ALMyuUyGVsLYyNya1Kv0pHqphgFiIiOUIJnfqAA9ePqN743o+N7mORd0c1dlQkNHW+qKcaRsysk0bU2Rs7Gyon/cikcBzalbxtaN3Vb2r8M7JrF2maijVVSDEqq+PoTEX38jxvdpOsbbFjXLugYv0YI2s2+KJuRAEXs2Hffsx/CT2jLtt2p/l73Ldq7Ms1uzLPIvV0j1cv2ngAT9EIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJz2M21i1HNU2RWzwKu/kref71JxqPGQXMpUsVqve2q8ndStXkiRqnE1V9m6beO26+RDuxWj3uXt316QRJGnvcv/8ACc5vIvrW70MaKj/RI+7cxvrLI5z0an1on1mZqLTGf3fJu6OkTpff6byh9rHtuw2KsUS2KkTuOasyJFsVfWRFSJee/NPm+CJ7t/WtUx/FFi6TIJKsruOzG3ZJOFu3JySKjmKq7ct18VTY1TdS8TkmputRTNsK6ZrU4pU6+ungvL1XIvXZFNrUya3cw+1Zx1a3NOxkUKyVUasm26oqcTtk33+wmtF4VaWxWnkiuoNMTVsjHBjI552yrs1r+FHcS7+qiIq78vE01jGZGu9WT0bMbk8HRKhbWmtHrSzL89kpWNsbq5kUWyRx7pz3VE25e7YldO5Tutc6rYhnRq7OVjkdscW1nZ2iI3+qWnDO852nszM8o+jnlcdfSu+wtOwkLPnSLGqNT4mVXw1lay3bKd1VjSN8i7pxcD12RzU8fH6i3dZpXy9R+n4EZLakeiL6yo2FduJFdt47IuyFTVO+dkoaeR7yWpTf3MqMXkxvGvP2+sqqWcOacld9tlPUaaMN+zE7x5/VtKv4Mw9pk8lK3YpNfvDfh4Vdx7dE3ThVOnJU3TmZ+Uy/GyhYw0k1m26XvGMmotRXPVFRVRWt2VU969EM6rI6lZkSnFEkTovSJ8XZREa9en4rqiryXp48jYQQ45mThrwfhLDSNhc90CMdIsb3bcKt2RyIi+t5b7EdskdZhJXFMxtE+vp/7zfGOtXLlevHNQylq3M1PSFmeteFFciqm/Dsqp6qpv8AaejqK3q8+Milhlje1PxdKHu4oX9d5JFVVXbkip1Nzi/RrVqNY48pdjcjo3yWf5tVa7qvFtvz35e/keD6ENS5NBfc+0jn97VoVk4WbKvPdvjz6q7kV5yc+XJejDO3Pn69eaAak0m9jfTsLIzIQK5UlbWY5WxO8URee6fHcibmq1ytcioqLsqKnNC9q9JW2ZaXeOoQ3I++SKB3zZN/WVj0228FVNvFV8zXap0xjrslq1kIPxr0ayp6Mu0kjkTnum3N37vIlx6uIns2Vs3DpmJtRTIJBb01M2/LVrSPe6ColidJGcKxrt81U8/4nld01ksdepwZCFWMtKitexeL1fHp5IXIvWfFmzjvHg0hvtM6Uy2elb6PD3Nf6U8vqsT3ea+4sLROisTBSju3IWXJnqro1cqObw7rwrt05obypadkM270VGtx1Dia56ckklVNlRNvBqb/ABXl0KmTV85ikdPFo4OHb7WyT18FXa/0xBpxlBkMskzpWv717uW7kVOieHJTQU8Zft13WK9dz4mu4XP3RERdt9uZJ+03OV8pYirV5++SCaVXL4ddk2Xx6KvxPnTNOG/oy1UnuMqNlvRokr27tReFdt/L3lnD2ppHb6qOp7EZJ7voi12lbpK1LUD4uNN2qvR3uXop4xsdJI2NvNzlRE96k1bTibSmw9iCR/4IR9mRJXIzvXOVGoiLvyZz368zVQ1qNuCKWVKdayyzGzuYZEVJo3O2Xluuyp9xIhaK1BJWsSV5kRJI3K1yIu/P3oeRMMjQxtKLPTuptkWpkWwwtVy7I1eLkvn0+w95Mfh1s4OxLTihiycDmSNRV4Y3rya5OfnsBCASXFYBr77cbbTad80iKqclRkaKq7e9eXwPKX0K5BZZJVoUWxRufXdHM1XqqdGO5+tv57dQI+CZ2I8TT1JTx/4HikjsxQd5xuXdONqbq3yXnufN+vXx+l8jEypXc+PIOgSRzd3cPPZd/NAIjDG+aZkMTVdI9yNa1PFV5IhmWcPka0ckk9bu2xcn7vbui+W2406m+oMcnnbi/bQkXoOOs9ojoJZnTrLkntkhdFs3biXf1t+f1AQ4Ei0/RqWMrlYpoWvZDBM6NF+iqdD11BDi6EdNkVJr5LVJjldvsjFX6SeaqBGDIfTnZRjuuancyPVjV357p15EydUw6awgwv4LiWOzHG171cu7VcxF3b5GJQpUoamLk9FildJkZYJO8Ti3YnDtv7efUCIAlWVrVpl1TM6tEySlM1kKsaqbfjlaq9eqoZGAxWPnxOElmqI99nIrDK/nsrNl9X7fsAhoJVRqY24t9Y6DeDHNdLzk4Vl9bZGu3XZGp7+iGuuMrWMXLPIylVsxOb3bIJGqkrV3ReSKvNOX1gaYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXD2N1mxaYln+lNYdvz8kRD31jQyEuchkpzNh7+JjGPVm6d7G9Xtaq+G+/X2bEJ7O9YJgVdRusV9KV/Ejm/OjXxX3fwLhqWa9ysyxWmZNE9EVr2run/APpk6jt4ss325S+i0k4tRp4xRO0x1VZPgf8ATVq2jUhtTIsjIUmWCSCTfnw7orX/AFoi7kowGCq1Fdms3UVs7I0cs1udJHoqeKonJPtX3EpvWa1Sq+xbkZHCxOJznryT/PkhTevNYT56ZatbeLHsd6rfGT2r/A7x3yajl0jxlFmx4dH73WfCHtrzWljLzSUsfK+LHp6q8tll9q+SewjGIyNnGXG2K8sjOez2tereNvii7GGDQpjrSvZiOTHyZr5L9u083QzYa+SxtSasrY4+KOdqt8fZv7UIDqHHVL1yzjq7I6U6vRznr6kUeyNXbdeu6NfyTfmimH2f64TFQx4vJo59VHbRSpzWPdei+aFhamxlTL45JnRun4Go9vcu2c9E9ZOFU8eu3tXbzM2O1p8m1uk9JbUzTV4d6/FHWEO04zHZ58zbs9aWWJyMdTfuvEqN2fJG5NnIrlTfl8eu5McHiZanBZbdsqsjGI5k6I53CjV9VV68lVfEj0OLxMVqfPvsIyRVbDVm4tnNlRPnvRE9Vyry2VPBfMlmAnyNjFwy5SCOCw5ObWOVfdv5f55nOotO3u9EmipXfa3X6PuhVfFjG15OCOVyKsiwJwojnKquVN9/FVMPF0Me7b0ZHNZXkfHK13PvXpyRXL9Llz+PsM+9NNG1rYEh7x3RZX8LU6cvPfn9h5Jdhqq2vetQekrsqo1OFFRyqibIqry5Lz3K8Tbbl4rtopFoifB9ZJbS145KLYHvSRF3kTiTh6Kqc058zV6jsU6sjcg3ilyNeFXwt7xWs4ejt+fCiL4r16beBpFyb2XYqGLgt22x25XV5YJWtjezk5zOJeS7Ku2xtEgyd6VrlwzKrmOVYpLM6PbEq9VaxvVd+fPxJYx9iYmVacvexMU6o5VoOyz1fDE2O1fa11qZzt1rxb7qq+HG5U5J4JshNrWOfZlr+kujVsET0SZE2XdfV6eXD+4/KWLhox7LIqQtcs0z3qm8snVXvX2f56Fb9omtZMlK/GYqVW0mrtJI3ksq+z/h+8lr2s9tq9EFuxpcczk5zPh5t/rvWtShSfi8NK2Syqd2r2fNiTbbkvn9xWsGZykGNkxsN2VlWV3E+NNua+/qa8Ghiw1x17MMfPqb5r9qeQZ0WTnjws2Ka1nczStlcqpzRUMEEqu3kGpr8TIHcLH2IY1h716b8cS/QcnRUQwpsgxbTJ69GvW4JEk2Yiruqe9eSexDAAG1u5y1bhyEUjI0S9YSxLsnRyb9PrPK/l7VylRqycLW0m8MStTZTXgDaXM7kLGYjyvepHZj24FYmyJt/HmfOSyjbyukdj6kM709eSNqpv7UTfZF9prQBsreZs2ctBkntjSWFsbWoictmIiJ9x6S52zLDbhmhhkZZn79Uci+q/zT6zUgD2pWH1LkFqNEV8MjZGovTdF3QyFyllM4uYYqMsrOs6KnRHb7mCAN03UM0di1PXp1YX2mubKrWqu/F16ry+GxhZPJT3313TI1FgibE3ZPBDCAG3fn7bs9BmFZF38CNRqbcl4U2Tc+Fzlv0atA1I2pWsusxrtz4nbb7+zkasAbj8Pzd7cctWusd1F9IjVF2eu/FvvvvvvzPWDU92GCnBHBWZFUsekRNazZEdsqbea9fE0QA2FLLW6eSlv11Y183F3jFbuxzXdWqnked+5FZVe6o163Eu7uDdd19m68k9iGGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGfi8zlcXxJQvz10cmyta7l9XQwAeTET1exMxO8M/J5nK5NES/fsWGp0a5/q/V0MAARER0JmZneQAHrwL40hb20RjbCO41SBrd3L1VF2VN/Dmm25Q5cXZPJHe0ZJSl3e2OR8TkVOiO57J9ZT1td8cT5S0uF2mM0xHjDC1Xk8ckTZ1xVl7p4+O46BybM57buaqcLlRUVFVU3TzTc1uhslWgnW/YmvVYmNcrGSWF7idyJ05+q1fYq7Hvcjel67NLakZJjd47aQu9eRioiJYROm+yIjmr12UieZyUDa7qVVInLtstiurmMnavP1415I72p5HuOkWp2XmXLNMneeSw8/rOtRsxwZDDTM7xnFDOj2uTZdvWaqeRh6br4vILfat2zbbOzhlmtq5FkbxcmsVeSN396+4iOBgoz4V1q3XvT2K8jUgVknqfO34efL4ITKP8KZ2J1OtThoVEe1ZnI/vnpwrvwK5eSqq+HNE8Ti2KuOu1eSXHmvlv2r8/KPXJjYitVo61reizWIsfCxzvWVVrs4kXZEc5eW/Nd9vduSTKa307QVzHXu+e3q2FOL7en2ld9omailsfgTHLw06zvxrkdussviqr47EPOvZoy7Wu49utp+1TF5+tkq1lrS9nn9xBx1KKf6prub/wC8qdfcRUAtVpFI2qz8mS2S3atO8gAOnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFldiVyNrshQfIiPfwyMaqom+26L+7oVqe9C3Yo247dWV0U0buJrk8CPLjjJSaym0+buckX8l353GXLWWSzX4Ip2xqkM6pu1zV+dFInVUXqi/5XQS6XrTK/wBO0msUjl5vpWt2r7URehi4/tSRtVG3sa586N+dE/Zqr57L0+011rtPzLpVWtTpRM8Ee1zl+vdCjTFnryiGtkz6O/vTM7z9P+wkmH0qxr/R48atGlsveSyyo+eRF6sTbkxF8V6m31lkIdPaUmWqjIXKzuYGNRNkcvLl7k5kKh7UsikSJNjKr3/nNc5E+rn95FtUajyOobLZbisZGz+bij3Rrf4r7T2NPlvkicnSHF9Zgx4pri6z/pp3KrnK5yqqqu6qp+AGixgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/9k=" alt="Nyasa Haus"></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#categories">Collections</a></li>
-    <li><a href="#materials">Materials</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#manufacturing">Manufacturing</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
-  </ul>
-</nav>
+  <!-- ── NAV ── -->
+  <nav id="nav">
+    <a href="#" class="nav-logo"><img
+        src="data:image/png;base64,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"
+        alt="Nyasa Haus"></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#categories">Collections</a></li>
+      <li><a href="#materials">Materials</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#manufacturing">Manufacturing</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
 
-<!-- ── HERO ── -->
-<section id="hero">
-  <div class="hero-left">
-    <div class="hero-tag">Reinvent Furniture</div>
-    <h1 class="hero-headline">
-      Custom Furniture.<br><em>Designed</em> with Architects.<br>Built for Life.
-    </h1>
-    <p class="hero-desc">
-      Rooted in design, tradition, and functionality — every piece we craft is a foundation for the spaces you inhabit and the life you live.
-    </p>
-    <div class="hero-urgency">
-      <span class="urgency-dot"></span> Currently booking April projects — Limited slots available
-    </div>
-    <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">Book a Free Consultation</a>
-      <a href="#contact" class="btn-outline">Get Custom Quote in 24 Hrs</a>
-    </div>
-    <div class="hero-scroll-hint">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-img-placeholder">
-      <!-- Logo art motif — wood grain rings, used consistently with the brand -->
-      <svg viewBox="0 0 220 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px;opacity:0.22;">
-        <ellipse cx="110" cy="140" rx="100" ry="130" stroke="white" stroke-width="2"/>
-        <ellipse cx="110" cy="140" rx="76" ry="100" stroke="white" stroke-width="1.5"/>
-        <ellipse cx="110" cy="140" rx="52" ry="68" stroke="white" stroke-width="1.5"/>
-        <ellipse cx="110" cy="140" rx="30" ry="40" stroke="white" stroke-width="1.5"/>
-        <ellipse cx="110" cy="140" rx="12" ry="16" stroke="white" stroke-width="1.5"/>
-        <line x1="110" y1="10" x2="110" y2="270" stroke="white" stroke-width="1" stroke-dasharray="5 5"/>
-      </svg>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:rgba(255,255,255,0.5);letter-spacing:0.22em;text-transform:uppercase;margin-top:12px;">Nyasa Haus</div>
-      <div style="font-family:'Jost',sans-serif;font-size:0.65rem;color:rgba(200,150,60,0.7);letter-spacing:0.3em;text-transform:uppercase;margin-top:6px;">Reinvent Furniture</div>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">50+</div>
-        <div class="hero-stat-label">Architects</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">3+</div>
-        <div class="hero-stat-label">Mfg. Units</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">45</div>
-        <div class="hero-stat-label">Day Turnaround</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">100%</div>
-        <div class="hero-stat-label">Customised</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── MARQUEE ── -->
-<div class="marquee-strip">
-  <div class="marquee-inner">
-    <span>Residential Furniture</span><span class="dot">◆</span>
-    <span>Office Furniture</span><span class="dot">◆</span>
-    <span>Commercial Hospitality</span><span class="dot">◆</span>
-    <span>Teak · Acacia · Mango Wood</span><span class="dot">◆</span>
-    <span>Custom Craftsmanship</span><span class="dot">◆</span>
-    <span>Timeless Design</span><span class="dot">◆</span>
-    <span>Modular Workstations</span><span class="dot">◆</span>
-    <span>Nashik · Jodhpur · Pune · Bhiwandi</span><span class="dot">◆</span>
-    <!-- duplicate for seamless loop -->
-    <span>Residential Furniture</span><span class="dot">◆</span>
-    <span>Office Furniture</span><span class="dot">◆</span>
-    <span>Commercial Hospitality</span><span class="dot">◆</span>
-    <span>Teak · Acacia · Mango Wood</span><span class="dot">◆</span>
-    <span>Custom Craftsmanship</span><span class="dot">◆</span>
-    <span>Timeless Design</span><span class="dot">◆</span>
-    <span>Modular Workstations</span><span class="dot">◆</span>
-    <span>Nashik · Jodhpur · Pune · Bhiwandi</span><span class="dot">◆</span>
-  </div>
-</div>
-
-<!-- ── ABOUT ── -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-visual reveal">
-        <div class="about-card about-card-main">
-          <svg class="wood-icon" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="60" cy="80" rx="55" ry="72" stroke="white" stroke-width="2"/>
-            <ellipse cx="60" cy="80" rx="40" ry="55" stroke="white" stroke-width="1.5"/>
-            <ellipse cx="60" cy="80" rx="25" ry="36" stroke="white" stroke-width="1.5"/>
-            <ellipse cx="60" cy="80" rx="12" ry="18" stroke="white" stroke-width="1.5"/>
-            <line x1="60" y1="8" x2="60" y2="152" stroke="white" stroke-width="1" stroke-dasharray="4 4"/>
-          </svg>
-        </div>
-        <div class="about-card about-card-accent">
-          <div class="big-num">₹</div>
-          <div class="big-label">Affordable Custom<br>Branded Furniture</div>
-        </div>
-      </div>
-      <div class="about-text">
-        <div class="section-label reveal">Our Story</div>
-        <h2 class="section-title reveal reveal-delay-1">
-          Founded on a <em>Vision</em><br>of Inspired Living
-        </h2>
-        <div class="reveal reveal-delay-2" style="margin-top:28px;">
-          <p>Nyasa Haus was founded by <strong style="color:var(--teak)">Abhijeet Wankhade</strong> with a vision to bridge the gap between affordable, customised branded furniture and genuine design excellence.</p>
-          <p>The name <em>Nyasa</em> — Sanskrit for <em>"foundation or placement"</em> — reflects our belief that furniture is the foundation of every inspired space. Every piece we create is rooted in design, tradition, and functionality.</p>
-        </div>
-        <div class="about-pillars">
-          <div class="pillar reveal reveal-delay-1">
-            <div class="pillar-icon">🪵</div>
-            <h4>Custom Craftsmanship</h4>
-            <p>Furniture uniquely tailored for every space and client requirement.</p>
-          </div>
-          <div class="pillar reveal reveal-delay-2">
-            <div class="pillar-icon">⏳</div>
-            <h4>Timeless Design</h4>
-            <p>Blending modern minimalism with elegant classical elements.</p>
-          </div>
-          <div class="pillar reveal reveal-delay-3">
-            <div class="pillar-icon">✦</div>
-            <h4>Quality Materials</h4>
-            <p>Durability, beauty, and long-lasting value in every piece.</p>
-          </div>
-          <div class="pillar reveal reveal-delay-4">
-            <div class="pillar-icon">🎯</div>
-            <h4>Attention to Detail</h4>
-            <p>From concept drawing to final installation — nothing is overlooked.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CATEGORIES ── -->
-<section id="categories">
-  <div class="container">
-    <div class="section-label reveal">What We Craft</div>
-    <h2 class="section-title reveal reveal-delay-1">Three Pillars of<br><em>Our Collections</em></h2>
-    <div class="cat-grid reveal reveal-delay-2">
-      <div class="cat-card">
-        <div class="cat-bg cat-bg-1"></div>
-        <div class="cat-overlay">
-          <div class="cat-num">01</div>
-          <div class="cat-icon">🏠</div>
-          <div class="cat-title">Residential Furniture</div>
-          <div class="cat-desc">Dining sets, living room collections, bedroom furniture, and storage solutions crafted in real hardwood for homes that feel like sanctuaries.</div>
-          <div class="cat-arrow">View Collection →</div>
-        </div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-bg cat-bg-2"></div>
-        <div class="cat-overlay">
-          <div class="cat-num">02</div>
-          <div class="cat-icon">💼</div>
-          <div class="cat-title">Office Furniture</div>
-          <div class="cat-desc">Modular workstations, conference tables, executive desks, cafeteria furniture, and complete storage systems for productive workplaces.</div>
-          <div class="cat-arrow">View Collection →</div>
-        </div>
-      </div>
-      <div class="cat-card">
-        <div class="cat-bg cat-bg-3"></div>
-        <div class="cat-overlay">
-          <div class="cat-num">03</div>
-          <div class="cat-icon">🏨</div>
-          <div class="cat-title">Commercial / Hospitality</div>
-          <div class="cat-desc">Hotel rooms, restaurant seating, lounge furniture, and bespoke hospitality collections that set the tone for memorable guest experiences.</div>
-          <div class="cat-arrow">View Collection →</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── MATERIALS ── -->
-<section id="materials">
-  <div class="container">
-    <div class="materials-intro">
-      <div>
-        <div class="section-label reveal">What We Work With</div>
-        <h2 class="section-title reveal reveal-delay-1">Premium <em>Materials</em><br>& Finishes</h2>
-      </div>
-      <p class="reveal reveal-delay-2">
-        We work with all types of hardwoods including Teak, Shesham, Pine, and Steam Beech. Every surface can be finished in Veneer, Laminate, or PU. Fabrics from Sarom and D'Decor are available, along with surface options spanning Granite, Marble, Epoxy, and Artificial Stone.
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Reinvent Furniture</div>
+      <h1 class="hero-headline">
+        Custom Furniture.<br><em>Designed</em> with Architects.<br>Built for Life.
+      </h1>
+      <p class="hero-desc">
+        Rooted in design, tradition, and functionality — every piece we craft is a foundation for the spaces you inhabit
+        and the life you live.
       </p>
-    </div>
-    <div class="reveal">
-      <div class="mat-tabs">
-        <button class="mat-tab active" onclick="showMat('wood', this)">Woods</button>
-        <button class="mat-tab" onclick="showMat('surface', this)">Surfaces</button>
-        <button class="mat-tab" onclick="showMat('finish', this)">Finishes</button>
-        <button class="mat-tab" onclick="showMat('fabric', this)">Fabrics</button>
+      <div class="hero-urgency">
+        <span class="urgency-dot"></span> Currently booking April projects — Limited slots available
       </div>
-      <div class="mat-grid">
-        <!-- WOOD -->
-        <div class="mat-swatch visible" data-cat="wood"><div class="mat-swatch-color s-teak"></div><div class="mat-swatch-name">Teak</div></div>
-        <div class="mat-swatch visible" data-cat="wood"><div class="mat-swatch-color s-mango"></div><div class="mat-swatch-name">Mango</div></div>
-        <div class="mat-swatch visible" data-cat="wood"><div class="mat-swatch-color s-shesham"></div><div class="mat-swatch-name">Shesham</div></div>
-        <div class="mat-swatch visible" data-cat="wood"><div class="mat-swatch-color s-mahogany"></div><div class="mat-swatch-name">Mahogany</div></div>
-        <div class="mat-swatch visible" data-cat="wood"><div class="mat-swatch-color s-acacia"></div><div class="mat-swatch-name">Acacia</div></div>
-        <div class="mat-swatch visible" data-cat="wood"><div class="mat-swatch-color s-cherry"></div><div class="mat-swatch-name">Cherry</div></div>
-        <!-- SURFACE -->
-        <div class="mat-swatch" data-cat="surface"><div class="mat-swatch-color s-black-granite"></div><div class="mat-swatch-name">Black Granite</div></div>
-        <div class="mat-swatch" data-cat="surface"><div class="mat-swatch-color s-red-granite"></div><div class="mat-swatch-name">Red Granite</div></div>
-        <div class="mat-swatch" data-cat="surface"><div class="mat-swatch-color s-brown-granite"></div><div class="mat-swatch-name">Brown Granite</div></div>
-        <div class="mat-swatch" data-cat="surface"><div class="mat-swatch-color s-white-marble"></div><div class="mat-swatch-name">White Marble</div></div>
-        <div class="mat-swatch" data-cat="surface"><div class="mat-swatch-color s-black-marble"></div><div class="mat-swatch-name">Black Marble</div></div>
-        <div class="mat-swatch" data-cat="surface"><div class="mat-swatch-color s-epoxy"></div><div class="mat-swatch-name">Epoxy</div></div>
-        <!-- FINISH -->
-        <div class="mat-swatch" data-cat="finish"><div class="mat-swatch-color s-matte"></div><div class="mat-swatch-name">Matte</div></div>
-        <div class="mat-swatch" data-cat="finish"><div class="mat-swatch-color s-glossy"></div><div class="mat-swatch-name">Glossy</div></div>
-        <div class="mat-swatch" data-cat="finish"><div class="mat-swatch-color s-satin"></div><div class="mat-swatch-name">Satin</div></div>
-        <div class="mat-swatch" data-cat="finish"><div class="mat-swatch-color s-lacquer"></div><div class="mat-swatch-name">Lacquer</div></div>
-        <div class="mat-swatch" data-cat="finish"><div class="mat-swatch-color s-pu"></div><div class="mat-swatch-name">PU Finish</div></div>
-        <div class="mat-swatch" data-cat="finish"><div class="mat-swatch-color s-antique"></div><div class="mat-swatch-name">Antique</div></div>
-        <!-- FABRIC -->
-        <div class="mat-swatch" data-cat="fabric"><div class="mat-swatch-color s-cotton"></div><div class="mat-swatch-name">Cotton</div></div>
-        <div class="mat-swatch" data-cat="fabric"><div class="mat-swatch-color s-velvet"></div><div class="mat-swatch-name">Velvet</div></div>
-        <div class="mat-swatch" data-cat="fabric"><div class="mat-swatch-color s-linen"></div><div class="mat-swatch-name">Linen</div></div>
-        <div class="mat-swatch" data-cat="fabric"><div class="mat-swatch-color s-leather"></div><div class="mat-swatch-name">Leather</div></div>
-        <div class="mat-swatch" data-cat="fabric"><div class="mat-swatch-color s-suede"></div><div class="mat-swatch-name">Suede</div></div>
-        <div class="mat-swatch" data-cat="fabric"><div class="mat-swatch-color s-jute"></div><div class="mat-swatch-name">Jute</div></div>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+        <a href="#contact" class="btn-outline">Get Custom Quote in 24 Hrs</a>
+      </div>
+      <div class="hero-scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ── PROCESS ── -->
-<section id="process">
-  <div class="container">
-    <div class="section-label reveal">How We Work</div>
-    <h2 class="section-title reveal reveal-delay-1">Our <em>Collaboration</em> Process</h2>
-    <div class="process-steps">
-      <div class="process-step reveal reveal-delay-1">
-        <div class="step-dot">💬</div>
-        <div class="step-num">01</div>
-        <div class="step-title">Concept & Discussion</div>
-        <div class="step-desc">Understanding client and architect needs, space requirements, and vision.</div>
+    <div class="hero-right">
+      <div class="hero-img-placeholder">
+        <!-- Logo art motif — wood grain rings, used consistently with the brand -->
+        <svg viewBox="0 0 220 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px;opacity:0.22;">
+          <ellipse cx="110" cy="140" rx="100" ry="130" stroke="white" stroke-width="2" />
+          <ellipse cx="110" cy="140" rx="76" ry="100" stroke="white" stroke-width="1.5" />
+          <ellipse cx="110" cy="140" rx="52" ry="68" stroke="white" stroke-width="1.5" />
+          <ellipse cx="110" cy="140" rx="30" ry="40" stroke="white" stroke-width="1.5" />
+          <ellipse cx="110" cy="140" rx="12" ry="16" stroke="white" stroke-width="1.5" />
+          <line x1="110" y1="10" x2="110" y2="270" stroke="white" stroke-width="1" stroke-dasharray="5 5" />
+        </svg>
+        <div
+          style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:rgba(255,255,255,0.5);letter-spacing:0.22em;text-transform:uppercase;margin-top:12px;">
+          Nyasa Haus</div>
+        <div
+          style="font-family:'Jost',sans-serif;font-size:0.65rem;color:rgba(200,150,60,0.7);letter-spacing:0.3em;text-transform:uppercase;margin-top:6px;">
+          Reinvent Furniture</div>
       </div>
-      <div class="process-step reveal reveal-delay-2">
-        <div class="step-dot">🎨</div>
-        <div class="step-num">02</div>
-        <div class="step-title">Design Inputs & Costing</div>
-        <div class="step-desc">Guiding design trends, mood boards, and material recommendations.</div>
-      </div>
-      <div class="process-step reveal reveal-delay-3">
-        <div class="step-dot">🪵</div>
-        <div class="step-num">03</div>
-        <div class="step-title">Sampling & Approvals</div>
-        <div class="step-desc">Finish samples of wood, polishes, and metal hardware for approval.</div>
-      </div>
-      <div class="process-step reveal reveal-delay-4">
-        <div class="step-dot">📐</div>
-        <div class="step-num">04</div>
-        <div class="step-title">Drawings</div>
-        <div class="step-desc">Detailed mock-up drawings shared for review before manufacturing begins.</div>
-      </div>
-      <div class="process-step reveal reveal-delay-1">
-        <div class="step-dot">⚙️</div>
-        <div class="step-num">05</div>
-        <div class="step-title">Production & QC</div>
-        <div class="step-desc">Live status updates with photos, videos, and optional factory visit.</div>
-      </div>
-      <div class="process-step reveal reveal-delay-2">
-        <div class="step-dot">🚚</div>
-        <div class="step-num">06</div>
-        <div class="step-title">Delivery & Installation</div>
-        <div class="step-desc">Transportation arranged, followed by our team installing all items on-site.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── MANUFACTURING ── -->
-<section id="manufacturing">
-  <div class="container">
-    <div class="section-label reveal">Where We Build</div>
-    <h2 class="section-title reveal reveal-delay-1">Manufacturing <em>Excellence</em><br>Across India</h2>
-    <div class="mfg-grid">
-      <div class="mfg-locations reveal reveal-delay-1">
-        <div class="mfg-location-card">
-          <div class="mfg-loc-icon">🏭</div>
-          <div>
-            <div class="mfg-loc-name">Jodhpur</div>
-            <div class="mfg-loc-desc">Real wood manufacturing — Teak, Acacia, Mango. In-house finishing unit for lacquer to antique finishes.</div>
-          </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">50+</div>
+          <div class="hero-stat-label">Architects</div>
         </div>
-        <div class="mfg-location-card">
-          <div class="mfg-loc-icon">🔧</div>
-          <div>
-            <div class="mfg-loc-name">Bhiwandi</div>
-            <div class="mfg-loc-desc">Metal fabrication, welding, and structural furniture components for commercial projects.</div>
-          </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">3+</div>
+          <div class="hero-stat-label">Mfg. Units</div>
         </div>
-        <div class="mfg-location-card">
-          <div class="mfg-loc-icon">🪑</div>
-          <div>
-            <div class="mfg-loc-name">Pune</div>
-            <div class="mfg-loc-desc">Modular office and residential furniture — upholstery, assembly, and final finishing.</div>
-          </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">45</div>
+          <div class="hero-stat-label">Day Turnaround</div>
         </div>
-        <div class="mfg-location-card" style="border-color:var(--gold);background:rgba(200,150,60,0.05);">
-          <div class="mfg-loc-icon">🏢</div>
-          <div>
-            <div class="mfg-loc-name">Head Office — Nashik</div>
-            <div class="mfg-loc-desc">Lower Ground Floor, Fine Towers, Below KNJ Jewellers, Mahatma Nagar, Nashik – 422007</div>
-          </div>
-        </div>
-      </div>
-      <div class="mfg-timeline-box reveal reveal-delay-2">
-        <div class="mfg-timeline-title">Manufacturing Timeline — 30 to 45 Days</div>
-        <div class="timeline-row">
-          <div class="timeline-label">R & D</div>
-          <div class="timeline-bar-track"><div class="timeline-bar-fill" style="width:14%"></div></div>
-        </div>
-        <div class="timeline-row">
-          <div class="timeline-label">Seasoning Wood</div>
-          <div class="timeline-bar-track"><div class="timeline-bar-fill" style="width:28%"></div></div>
-        </div>
-        <div class="timeline-row">
-          <div class="timeline-label">Carpentry</div>
-          <div class="timeline-bar-track"><div class="timeline-bar-fill" style="width:57%"></div></div>
-        </div>
-        <div class="timeline-row">
-          <div class="timeline-label">Sanding / Finishing</div>
-          <div class="timeline-bar-track"><div class="timeline-bar-fill" style="width:72%"></div></div>
-        </div>
-        <div class="timeline-row">
-          <div class="timeline-label">Paint / Polish</div>
-          <div class="timeline-bar-track"><div class="timeline-bar-fill" style="width:86%"></div></div>
-        </div>
-        <div class="timeline-row">
-          <div class="timeline-label">Packaging & Dispatch</div>
-          <div class="timeline-bar-track"><div class="timeline-bar-fill" style="width:100%"></div></div>
-        </div>
-        <div class="mfg-note">
-          <p>Since we do not keep ready stock — customers prefer customising sizes — our timelines for manufacture vary from <strong>30 – 45 days</strong> from drawing approval to dispatch.</p>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Customised</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── GALLERY ── -->
-<section id="gallery" style="padding:0;">
-  <div class="container gallery-header">
-    <div class="section-label reveal">Our Work</div>
-    <h2 class="section-title reveal reveal-delay-1">A Glimpse of<br><em>Crafted Spaces</em></h2>
+  <!-- ── MARQUEE ── -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span>Residential Furniture</span><span class="dot">◆</span>
+      <span>Office Furniture</span><span class="dot">◆</span>
+      <span>Commercial Hospitality</span><span class="dot">◆</span>
+      <span>Teak · Acacia · Mango Wood</span><span class="dot">◆</span>
+      <span>Custom Craftsmanship</span><span class="dot">◆</span>
+      <span>Timeless Design</span><span class="dot">◆</span>
+      <span>Modular Workstations</span><span class="dot">◆</span>
+      <span>Nashik · Jodhpur · Pune · Bhiwandi</span><span class="dot">◆</span>
+      <!-- duplicate for seamless loop -->
+      <span>Residential Furniture</span><span class="dot">◆</span>
+      <span>Office Furniture</span><span class="dot">◆</span>
+      <span>Commercial Hospitality</span><span class="dot">◆</span>
+      <span>Teak · Acacia · Mango Wood</span><span class="dot">◆</span>
+      <span>Custom Craftsmanship</span><span class="dot">◆</span>
+      <span>Timeless Design</span><span class="dot">◆</span>
+      <span>Modular Workstations</span><span class="dot">◆</span>
+      <span>Nashik · Jodhpur · Pune · Bhiwandi</span><span class="dot">◆</span>
+    </div>
   </div>
-  <div class="gallery-grid">
-    <div class="gallery-item tall"><div class="gallery-bg g1">🪑</div><div class="gallery-overlay"><div class="gallery-label">Residential — Living</div></div></div>
-    <div class="gallery-item"><div class="gallery-bg g2">🏢</div><div class="gallery-overlay"><div class="gallery-label">Office — Workstation</div></div></div>
-    <div class="gallery-item"><div class="gallery-bg g4">🛋️</div><div class="gallery-overlay"><div class="gallery-label">Hospitality — Lounge</div></div></div>
-    <div class="gallery-item tall"><div class="gallery-bg g3">💼</div><div class="gallery-overlay"><div class="gallery-label">Office — Modular</div></div></div>
-    <div class="gallery-item wide"><div class="gallery-bg g5" style="min-height:220px;">🍽️</div><div class="gallery-overlay"><div class="gallery-label">Commercial — Dining</div></div></div>
-    <div class="gallery-item"><div class="gallery-bg g6">🛏️</div><div class="gallery-overlay"><div class="gallery-label">Hospitality — Suite</div></div></div>
-    <div class="gallery-item"><div class="gallery-bg g7">📚</div><div class="gallery-overlay"><div class="gallery-label">Residential — Storage</div></div></div>
-    <div class="gallery-item"><div class="gallery-bg g8">🖥️</div><div class="gallery-overlay"><div class="gallery-label">Office — Executive</div></div></div>
-  </div>
-</section>
 
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="container">
-    <div class="section-label reveal">Get In Touch</div>
-    <h2 class="section-title reveal reveal-delay-1">Let's Build Something<br><em>Extraordinary</em></h2>
-    <div class="contact-grid">
-      <div class="contact-info reveal reveal-delay-1">
-        <div class="contact-block">
-          <div class="contact-block-label">Address</div>
-          <div class="contact-block-value">Lower Ground Floor, Fine Towers,<br>Below KNJ Jewellers,<br>Mahatma Nagar, Nashik – 422007</div>
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-card about-card-main">
+            <svg class="wood-icon" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="80" rx="55" ry="72" stroke="white" stroke-width="2" />
+              <ellipse cx="60" cy="80" rx="40" ry="55" stroke="white" stroke-width="1.5" />
+              <ellipse cx="60" cy="80" rx="25" ry="36" stroke="white" stroke-width="1.5" />
+              <ellipse cx="60" cy="80" rx="12" ry="18" stroke="white" stroke-width="1.5" />
+              <line x1="60" y1="8" x2="60" y2="152" stroke="white" stroke-width="1" stroke-dasharray="4 4" />
+            </svg>
+          </div>
+          <div class="about-card about-card-accent">
+            <div class="big-num">₹</div>
+            <div class="big-label">Affordable Custom<br>Branded Furniture</div>
+          </div>
         </div>
-        <div class="contact-block">
-          <div class="contact-block-label">Phone</div>
-          <div class="contact-block-value">+91 77989 00022</div>
-        </div>
-        <div class="contact-block">
-          <div class="contact-block-label">Email</div>
-          <div class="contact-block-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c22352d3f2d242d393f0c2b212d2520622f2321">abhiswankhade@gmail.com</a></div>
-        </div>
-        <div class="contact-block">
-          <div class="contact-block-label">Manufacturing Units</div>
-          <div class="contact-block-value" style="font-size:1.05rem;">Jodhpur · Bhiwandi · Pune</div>
+        <div class="about-text">
+          <div class="section-label reveal">Our Story</div>
+          <h2 class="section-title reveal reveal-delay-1">
+            Founded on a <em>Vision</em><br>of Inspired Living
+          </h2>
+          <div class="reveal reveal-delay-2" style="margin-top:28px;">
+            <p>Nyasa Haus was founded by <strong style="color:var(--teak)">Abhijeet Wankhade</strong> with a vision to
+              bridge the gap between affordable, customised branded furniture and genuine design excellence.</p>
+            <p>The name <em>Nyasa</em> — Sanskrit for <em>"foundation or placement"</em> — reflects our belief that
+              furniture is the foundation of every inspired space. Every piece we create is rooted in design, tradition,
+              and functionality.</p>
+          </div>
+          <div class="about-pillars">
+            <div class="pillar reveal reveal-delay-1">
+              <div class="pillar-icon">🪵</div>
+              <h4>Custom Craftsmanship</h4>
+              <p>Furniture uniquely tailored for every space and client requirement.</p>
+            </div>
+            <div class="pillar reveal reveal-delay-2">
+              <div class="pillar-icon">⏳</div>
+              <h4>Timeless Design</h4>
+              <p>Blending modern minimalism with elegant classical elements.</p>
+            </div>
+            <div class="pillar reveal reveal-delay-3">
+              <div class="pillar-icon">✦</div>
+              <h4>Quality Materials</h4>
+              <p>Durability, beauty, and long-lasting value in every piece.</p>
+            </div>
+            <div class="pillar reveal reveal-delay-4">
+              <div class="pillar-icon">🎯</div>
+              <h4>Attention to Detail</h4>
+              <p>From concept drawing to final installation — nothing is overlooked.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="contact-form reveal reveal-delay-2">
-        <div class="form-row">
+    </div>
+  </section>
+
+  <!-- ── CATEGORIES ── -->
+  <section id="categories">
+    <div class="container">
+      <div class="section-label reveal">What We Craft</div>
+      <h2 class="section-title reveal reveal-delay-1">Three Pillars of<br><em>Our Collections</em></h2>
+      <div class="cat-grid reveal reveal-delay-2">
+        <div class="cat-card">
+          <div class="cat-bg cat-bg-1"></div>
+          <div class="cat-overlay">
+            <div class="cat-num">01</div>
+            <div class="cat-icon">🏠</div>
+            <div class="cat-title">Residential Furniture</div>
+            <div class="cat-desc">Dining sets, living room collections, bedroom furniture, and storage solutions crafted
+              in real hardwood for homes that feel like sanctuaries.</div>
+            <div class="cat-arrow">View Collection →</div>
+          </div>
+        </div>
+        <div class="cat-card">
+          <div class="cat-bg cat-bg-2"></div>
+          <div class="cat-overlay">
+            <div class="cat-num">02</div>
+            <div class="cat-icon">💼</div>
+            <div class="cat-title">Office Furniture</div>
+            <div class="cat-desc">Modular workstations, conference tables, executive desks, cafeteria furniture, and
+              complete storage systems for productive workplaces.</div>
+            <div class="cat-arrow">View Collection →</div>
+          </div>
+        </div>
+        <div class="cat-card">
+          <div class="cat-bg cat-bg-3"></div>
+          <div class="cat-overlay">
+            <div class="cat-num">03</div>
+            <div class="cat-icon">🏨</div>
+            <div class="cat-title">Commercial / Hospitality</div>
+            <div class="cat-desc">Hotel rooms, restaurant seating, lounge furniture, and bespoke hospitality collections
+              that set the tone for memorable guest experiences.</div>
+            <div class="cat-arrow">View Collection →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MATERIALS ── -->
+  <section id="materials">
+    <div class="container">
+      <div class="materials-intro">
+        <div>
+          <div class="section-label reveal">What We Work With</div>
+          <h2 class="section-title reveal reveal-delay-1">Premium <em>Materials</em><br>& Finishes</h2>
+        </div>
+        <p class="reveal reveal-delay-2">
+          We work with all types of hardwoods including Teak, Shesham, Pine, and Steam Beech. Every surface can be
+          finished in Veneer, Laminate, or PU. Fabrics from Sarom and D'Decor are available, along with surface options
+          spanning Granite, Marble, Epoxy, and Artificial Stone.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="mat-tabs">
+          <button class="mat-tab active" onclick="showMat('wood', this)">Woods</button>
+          <button class="mat-tab" onclick="showMat('surface', this)">Surfaces</button>
+          <button class="mat-tab" onclick="showMat('finish', this)">Finishes</button>
+          <button class="mat-tab" onclick="showMat('fabric', this)">Fabrics</button>
+        </div>
+        <div class="mat-grid">
+          <!-- WOOD -->
+          <div class="mat-swatch visible" data-cat="wood">
+            <div class="mat-swatch-color s-teak"></div>
+            <div class="mat-swatch-name">Teak</div>
+          </div>
+          <div class="mat-swatch visible" data-cat="wood">
+            <div class="mat-swatch-color s-mango"></div>
+            <div class="mat-swatch-name">Mango</div>
+          </div>
+          <div class="mat-swatch visible" data-cat="wood">
+            <div class="mat-swatch-color s-shesham"></div>
+            <div class="mat-swatch-name">Shesham</div>
+          </div>
+          <div class="mat-swatch visible" data-cat="wood">
+            <div class="mat-swatch-color s-mahogany"></div>
+            <div class="mat-swatch-name">Mahogany</div>
+          </div>
+          <div class="mat-swatch visible" data-cat="wood">
+            <div class="mat-swatch-color s-acacia"></div>
+            <div class="mat-swatch-name">Acacia</div>
+          </div>
+          <div class="mat-swatch visible" data-cat="wood">
+            <div class="mat-swatch-color s-cherry"></div>
+            <div class="mat-swatch-name">Cherry</div>
+          </div>
+          <!-- SURFACE -->
+          <div class="mat-swatch" data-cat="surface">
+            <div class="mat-swatch-color s-black-granite"></div>
+            <div class="mat-swatch-name">Black Granite</div>
+          </div>
+          <div class="mat-swatch" data-cat="surface">
+            <div class="mat-swatch-color s-red-granite"></div>
+            <div class="mat-swatch-name">Red Granite</div>
+          </div>
+          <div class="mat-swatch" data-cat="surface">
+            <div class="mat-swatch-color s-brown-granite"></div>
+            <div class="mat-swatch-name">Brown Granite</div>
+          </div>
+          <div class="mat-swatch" data-cat="surface">
+            <div class="mat-swatch-color s-white-marble"></div>
+            <div class="mat-swatch-name">White Marble</div>
+          </div>
+          <div class="mat-swatch" data-cat="surface">
+            <div class="mat-swatch-color s-black-marble"></div>
+            <div class="mat-swatch-name">Black Marble</div>
+          </div>
+          <div class="mat-swatch" data-cat="surface">
+            <div class="mat-swatch-color s-epoxy"></div>
+            <div class="mat-swatch-name">Epoxy</div>
+          </div>
+          <!-- FINISH -->
+          <div class="mat-swatch" data-cat="finish">
+            <div class="mat-swatch-color s-matte"></div>
+            <div class="mat-swatch-name">Matte</div>
+          </div>
+          <div class="mat-swatch" data-cat="finish">
+            <div class="mat-swatch-color s-glossy"></div>
+            <div class="mat-swatch-name">Glossy</div>
+          </div>
+          <div class="mat-swatch" data-cat="finish">
+            <div class="mat-swatch-color s-satin"></div>
+            <div class="mat-swatch-name">Satin</div>
+          </div>
+          <div class="mat-swatch" data-cat="finish">
+            <div class="mat-swatch-color s-lacquer"></div>
+            <div class="mat-swatch-name">Lacquer</div>
+          </div>
+          <div class="mat-swatch" data-cat="finish">
+            <div class="mat-swatch-color s-pu"></div>
+            <div class="mat-swatch-name">PU Finish</div>
+          </div>
+          <div class="mat-swatch" data-cat="finish">
+            <div class="mat-swatch-color s-antique"></div>
+            <div class="mat-swatch-name">Antique</div>
+          </div>
+          <!-- FABRIC -->
+          <div class="mat-swatch" data-cat="fabric">
+            <div class="mat-swatch-color s-cotton"></div>
+            <div class="mat-swatch-name">Cotton</div>
+          </div>
+          <div class="mat-swatch" data-cat="fabric">
+            <div class="mat-swatch-color s-velvet"></div>
+            <div class="mat-swatch-name">Velvet</div>
+          </div>
+          <div class="mat-swatch" data-cat="fabric">
+            <div class="mat-swatch-color s-linen"></div>
+            <div class="mat-swatch-name">Linen</div>
+          </div>
+          <div class="mat-swatch" data-cat="fabric">
+            <div class="mat-swatch-color s-leather"></div>
+            <div class="mat-swatch-name">Leather</div>
+          </div>
+          <div class="mat-swatch" data-cat="fabric">
+            <div class="mat-swatch-color s-suede"></div>
+            <div class="mat-swatch-name">Suede</div>
+          </div>
+          <div class="mat-swatch" data-cat="fabric">
+            <div class="mat-swatch-color s-jute"></div>
+            <div class="mat-swatch-name">Jute</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ── -->
+  <section id="process">
+    <div class="container">
+      <div class="section-label reveal">How We Work</div>
+      <h2 class="section-title reveal reveal-delay-1">Our <em>Collaboration</em> Process</h2>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-dot">💬</div>
+          <div class="step-num">01</div>
+          <div class="step-title">Concept & Discussion</div>
+          <div class="step-desc">Understanding client and architect needs, space requirements, and vision.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-dot">🎨</div>
+          <div class="step-num">02</div>
+          <div class="step-title">Design Inputs & Costing</div>
+          <div class="step-desc">Guiding design trends, mood boards, and material recommendations.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-dot">🪵</div>
+          <div class="step-num">03</div>
+          <div class="step-title">Sampling & Approvals</div>
+          <div class="step-desc">Finish samples of wood, polishes, and metal hardware for approval.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="step-dot">📐</div>
+          <div class="step-num">04</div>
+          <div class="step-title">Drawings</div>
+          <div class="step-desc">Detailed mock-up drawings shared for review before manufacturing begins.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-dot">⚙️</div>
+          <div class="step-num">05</div>
+          <div class="step-title">Production & QC</div>
+          <div class="step-desc">Live status updates with photos, videos, and optional factory visit.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-dot">🚚</div>
+          <div class="step-num">06</div>
+          <div class="step-title">Delivery & Installation</div>
+          <div class="step-desc">Transportation arranged, followed by our team installing all items on-site.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MANUFACTURING ── -->
+  <section id="manufacturing">
+    <div class="container">
+      <div class="section-label reveal">Where We Build</div>
+      <h2 class="section-title reveal reveal-delay-1">Manufacturing <em>Excellence</em><br>Across India</h2>
+      <div class="mfg-grid">
+        <div class="mfg-locations reveal reveal-delay-1">
+          <div class="mfg-location-card">
+            <div class="mfg-loc-icon">🏭</div>
+            <div>
+              <div class="mfg-loc-name">Jodhpur</div>
+              <div class="mfg-loc-desc">Real wood manufacturing — Teak, Acacia, Mango. In-house finishing unit for
+                lacquer to antique finishes.</div>
+            </div>
+          </div>
+          <div class="mfg-location-card">
+            <div class="mfg-loc-icon">🔧</div>
+            <div>
+              <div class="mfg-loc-name">Bhiwandi</div>
+              <div class="mfg-loc-desc">Metal fabrication, welding, and structural furniture components for commercial
+                projects.</div>
+            </div>
+          </div>
+          <div class="mfg-location-card">
+            <div class="mfg-loc-icon">🪑</div>
+            <div>
+              <div class="mfg-loc-name">Pune</div>
+              <div class="mfg-loc-desc">Modular office and residential furniture — upholstery, assembly, and final
+                finishing.</div>
+            </div>
+          </div>
+          <div class="mfg-location-card" style="border-color:var(--gold);background:rgba(200,150,60,0.05);">
+            <div class="mfg-loc-icon">🏢</div>
+            <div>
+              <div class="mfg-loc-name">Head Office — Nashik</div>
+              <div class="mfg-loc-desc">Lower Ground Floor, Fine Towers, Below KNJ Jewellers, Mahatma Nagar, Nashik –
+                422007</div>
+            </div>
+          </div>
+        </div>
+        <div class="mfg-timeline-box reveal reveal-delay-2">
+          <div class="mfg-timeline-title">Manufacturing Timeline — 30 to 45 Days</div>
+          <div class="timeline-row">
+            <div class="timeline-label">R & D</div>
+            <div class="timeline-bar-track">
+              <div class="timeline-bar-fill" style="width:14%"></div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-label">Seasoning Wood</div>
+            <div class="timeline-bar-track">
+              <div class="timeline-bar-fill" style="width:28%"></div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-label">Carpentry</div>
+            <div class="timeline-bar-track">
+              <div class="timeline-bar-fill" style="width:57%"></div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-label">Sanding / Finishing</div>
+            <div class="timeline-bar-track">
+              <div class="timeline-bar-fill" style="width:72%"></div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-label">Paint / Polish</div>
+            <div class="timeline-bar-track">
+              <div class="timeline-bar-fill" style="width:86%"></div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-label">Packaging & Dispatch</div>
+            <div class="timeline-bar-track">
+              <div class="timeline-bar-fill" style="width:100%"></div>
+            </div>
+          </div>
+          <div class="mfg-note">
+            <p>Since we do not keep ready stock — customers prefer customising sizes — our timelines for manufacture
+              vary from <strong>30 – 45 days</strong> from drawing approval to dispatch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ── -->
+  <section id="gallery" style="padding:0;">
+    <div class="container gallery-header">
+      <div class="section-label reveal">Our Work</div>
+      <h2 class="section-title reveal reveal-delay-1">A Glimpse of<br><em>Crafted Spaces</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall">
+        <div class="gallery-bg g1">🪑</div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">Residential — Living</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g2">🏢</div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">Office — Workstation</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g4">🛋️</div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">Hospitality — Lounge</div>
+        </div>
+      </div>
+      <div class="gallery-item tall">
+        <div class="gallery-bg g3">💼</div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">Office — Modular</div>
+        </div>
+      </div>
+      <div class="gallery-item wide">
+        <div class="gallery-bg g5" style="min-height:220px;">🍽️</div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">Commercial — Dining</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g6">🛏️</div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">Hospitality — Suite</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g7">📚</div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">Residential — Storage</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-bg g8">🖥️</div>
+        <div class="gallery-overlay">
+          <div class="gallery-label">Office — Executive</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label reveal">Get In Touch</div>
+      <h2 class="section-title reveal reveal-delay-1">Let's Build Something<br><em>Extraordinary</em></h2>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <div class="contact-block">
+            <div class="contact-block-label">Address</div>
+            <div class="contact-block-value">Lower Ground Floor, Fine Towers,<br>Below KNJ Jewellers,<br>Mahatma Nagar,
+              Nashik – 422007</div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-label">Phone</div>
+            <div class="contact-block-value">+91 77989 00022</div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-label">Email</div>
+            <div class="contact-block-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                data-cfemail="4c22352d3f2d242d393f0c2b212d2520622f2321">abhiswankhade@gmail.com</a></div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-label">Manufacturing Units</div>
+            <div class="contact-block-value" style="font-size:1.05rem;">Jodhpur · Bhiwandi · Pune</div>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="fName" placeholder="Rahul Sharma" required>
+            </div>
+            <div class="form-group">
+              <label>Phone / Email</label>
+              <input type="text" id="fContact" placeholder="+91 98765 43210" required>
+            </div>
+          </div>
           <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" id="fName" placeholder="Rahul Sharma" required>
+            <label>Project Type</label>
+            <select id="fCategory">
+              <option value="">Select a category</option>
+              <option>Residential Furniture</option>
+              <option>Office Furniture</option>
+              <option>Commercial / Hospitality</option>
+              <option>Modular Furniture</option>
+            </select>
           </div>
           <div class="form-group">
-            <label>Phone / Email</label>
-            <input type="text" id="fContact" placeholder="+91 98765 43210" required>
+            <label>Tell us about your project</label>
+            <textarea id="fMessage" placeholder="Describe your space, requirements, or inspiration..."></textarea>
           </div>
+          <div id="formStatus" class="form-status" style="display:none;"></div>
+          <button id="submitBtn" class="form-submit" onclick="handleSubmit(event)">Send Enquiry →</button>
         </div>
-        <div class="form-group">
-          <label>Project Type</label>
-          <select id="fCategory">
-            <option value="">Select a category</option>
-            <option>Residential Furniture</option>
-            <option>Office Furniture</option>
-            <option>Commercial / Hospitality</option>
-            <option>Modular Furniture</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Tell us about your project</label>
-          <textarea id="fMessage" placeholder="Describe your space, requirements, or inspiration..."></textarea>
-        </div>
-        <div id="formStatus" class="form-status" style="display:none;"></div>
-        <button id="submitBtn" class="form-submit" onclick="handleSubmit(event)">Send Enquiry →</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ── WHATSAPP FLOAT ── -->
-<a href="https://wa.me/917798900022?text=Hi%20Nyasa%20Haus%2C%20I%27d%20like%20to%20enquire%20about%20custom%20furniture." class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-  <span class="wa-text">Chat on WhatsApp</span>
-</a>
+  <!-- ── WHATSAPP FLOAT ── -->
+  <a href="https://wa.me/917798900022?text=Hi%20Nyasa%20Haus%2C%20I%27d%20like%20to%20enquire%20about%20custom%20furniture."
+    class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+    <span class="wa-text">Chat on WhatsApp</span>
+  </a>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-logo">Nyasa<span> Haus</span></div>
-  <div class="footer-tagline">"Custom Furniture for Inspired Spaces"</div>
-  <div class="footer-copy">© 2025 Nyasa Haus. All rights reserved.</div>
-</footer>
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo">Nyasa<span> Haus</span></div>
+    <div class="footer-tagline">"Custom Furniture for Inspired Spaces"</div>
+    <div class="footer-copy">© 2025 Nyasa Haus. All rights reserved.</div>
+  </footer>
 
-<script>
-  // ════════════════════════════════════════════════════════════
-  //  STEP 1 of 2 — Paste your Google Apps Script Web App URL
-  // ════════════════════════════════════════════════════════════
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxzaHnN5HcerwnD_usD6DNMV7fnTsuYGlplnV79DDZs3Y3u-XAFvZsTINZbC8KXP0pirg/exec';
+  <script>
+    // ════════════════════════════════════════════════════════════
+    //  STEP 1 of 2 — Paste your Google Apps Script Web App URL
+    // ════════════════════════════════════════════════════════════
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxzaHnN5HcerwnD_usD6DNMV7fnTsuYGlplnV79DDZs3Y3u-XAFvZsTINZbC8KXP0pirg/exec';
 
-  // ════════════════════════════════════════════════════════════
-  //  STEP 2 of 2 — Paste your WhatsApp phone + Callmebot key
-  // ════════════════════════════════════════════════════════════
-  const WA_PHONE  = '9158786236'; // e.g. 917798900022
-  const WA_APIKEY = '';
+    // ════════════════════════════════════════════════════════════
+    //  STEP 2 of 2 — Paste your WhatsApp phone + Callmebot key
+    // ════════════════════════════════════════════════════════════
+    const WA_PHONE = '9158786236'; // e.g. 917798900022
+    const WA_APIKEY = '';
 
-  // ── Custom cursor ──────────────────────────────────────────
-  const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top  = e.clientY + 'px';
-  });
-  document.querySelectorAll('a, button, .cat-card, .pillar, .mat-tab, .gallery-item, .mfg-location-card').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('big'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
-  });
-
-  // ── Sticky nav ─────────────────────────────────────────────
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // ── Scroll reveal ───────────────────────────────────────────
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
-
-  // ── Timeline bars ───────────────────────────────────────────
-  const barObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.timeline-bar-fill').forEach((bar, i) => {
-          setTimeout(() => bar.classList.add('animate'), i * 120);
-        });
-      }
+    // ── Custom cursor ──────────────────────────────────────────
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
     });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.mfg-timeline-box').forEach(el => barObserver.observe(el));
-
-  // ── Materials tabs ──────────────────────────────────────────
-  function showMat(cat, btn) {
-    document.querySelectorAll('.mat-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.mat-swatch').forEach(s => {
-      s.classList.toggle('visible', s.dataset.cat === cat);
+    document.querySelectorAll('a, button, .cat-card, .pillar, .mat-tab, .gallery-item, .mfg-location-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
     });
-  }
 
-  // ── Form submit — Google Sheet + WhatsApp ───────────────────
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const btn      = document.getElementById('submitBtn');
-    const name     = document.getElementById('fName').value.trim();
-    const contact  = document.getElementById('fContact').value.trim();
-    const category = document.getElementById('fCategory').value || 'Not specified';
-    const message  = document.getElementById('fMessage').value.trim() || '(no message)';
+    // ── Sticky nav ─────────────────────────────────────────────
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
 
-    if (!name || !contact) {
-      showStatus('error', '⚠ Please fill in your name and contact details.');
-      return;
-    }
-    if (SHEET_URL === 'YOUR_GOOGLE_SHEET_WEBAPP_URL') {
-      showStatus('warn', '⚙ Not configured yet — see the setup guide on this page.');
-      return;
-    }
+    // ── Scroll reveal ───────────────────────────────────────────
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
 
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-
-    let sheetOk = false;
-    let waOk    = false;
-
-    // ── 1. Save to Google Sheet ──────────────────────────────
-    try {
-      await fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',   // Google Apps Script requires no-cors
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, contact, category, message })
+    // ── Timeline bars ───────────────────────────────────────────
+    const barObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.timeline-bar-fill').forEach((bar, i) => {
+            setTimeout(() => bar.classList.add('animate'), i * 120);
+          });
+        }
       });
-      sheetOk = true;     // no-cors means we can't read the response, assume ok
-    } catch (err) {
-      console.error('Sheet error:', err);
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.mfg-timeline-box').forEach(el => barObserver.observe(el));
+
+    // ── Materials tabs ──────────────────────────────────────────
+    function showMat(cat, btn) {
+      document.querySelectorAll('.mat-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.mat-swatch').forEach(s => {
+        s.classList.toggle('visible', s.dataset.cat === cat);
+      });
     }
 
-    // ── 2. Send WhatsApp via Callmebot ───────────────────────
-    if (WA_PHONE !== 'YOUR_PHONE_WITH_COUNTRY_CODE') {
-      try {
-        const waMsg = encodeURIComponent(
-          `🪵 New Nyasa Haus Enquiry!\nName: ${name}\nContact: ${contact}\nCategory: ${category}\nMessage: ${message}`
-        );
-        const waUrl = `https://api.callmebot.com/whatsapp.php?phone=${WA_PHONE}&text=${waMsg}&apikey=${WA_APIKEY}`;
-        // Use an image trick to avoid CORS — Callmebot supports GET via img src
-        const img = new Image();
-        img.src = waUrl;
-        waOk = true;
-      } catch (err) {
-        console.error('WhatsApp error:', err);
+    // ── Form submit — Google Sheet + WhatsApp ───────────────────
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const name = document.getElementById('fName').value.trim();
+      const contact = document.getElementById('fContact').value.trim();
+      const category = document.getElementById('fCategory').value || 'Not specified';
+      const message = document.getElementById('fMessage').value.trim() || '(no message)';
+
+      if (!name || !contact) {
+        showStatus('error', '⚠ Please fill in your name and contact details.');
+        return;
       }
+      if (SHEET_URL === 'YOUR_GOOGLE_SHEET_WEBAPP_URL') {
+        showStatus('warn', '⚙ Not configured yet — see the setup guide on this page.');
+        return;
+      }
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      let sheetOk = false;
+      let waOk = false;
+
+      // ── 1. Save to Google Sheet ──────────────────────────────
+      try {
+        await fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',   // Google Apps Script requires no-cors
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, contact, category, message })
+        });
+        sheetOk = true;     // no-cors means we can't read the response, assume ok
+      } catch (err) {
+        console.error('Sheet error:', err);
+      }
+
+      // ── 2. Send WhatsApp via Callmebot ───────────────────────
+      if (WA_PHONE !== 'YOUR_PHONE_WITH_COUNTRY_CODE') {
+        try {
+          const waMsg = encodeURIComponent(
+            `🪵 New Nyasa Haus Enquiry!\nName: ${name}\nContact: ${contact}\nCategory: ${category}\nMessage: ${message}`
+          );
+          const waUrl = `https://api.callmebot.com/whatsapp.php?phone=${WA_PHONE}&text=${waMsg}&apikey=${WA_APIKEY}`;
+          // Use an image trick to avoid CORS — Callmebot supports GET via img src
+          const img = new Image();
+          img.src = waUrl;
+          waOk = true;
+        } catch (err) {
+          console.error('WhatsApp error:', err);
+        }
+      }
+
+      // ── 3. Show result ───────────────────────────────────────
+      if (sheetOk || waOk) {
+        showStatus('success', '✓ Enquiry received! We\'ll be in touch very soon.');
+        document.getElementById('fName').value = '';
+        document.getElementById('fContact').value = '';
+        document.getElementById('fCategory').value = '';
+        document.getElementById('fMessage').value = '';
+      } else {
+        showStatus('error', '✗ Something went wrong. Please call us directly on +91 77989 00022.');
+      }
+      btn.textContent = 'Send Enquiry →';
+      btn.disabled = false;
     }
 
-    // ── 3. Show result ───────────────────────────────────────
-    if (sheetOk || waOk) {
-      showStatus('success', '✓ Enquiry received! We\'ll be in touch very soon.');
-      document.getElementById('fName').value     = '';
-      document.getElementById('fContact').value  = '';
-      document.getElementById('fCategory').value = '';
-      document.getElementById('fMessage').value  = '';
-    } else {
-      showStatus('error', '✗ Something went wrong. Please call us directly on +91 77989 00022.');
-    }
-    btn.textContent = 'Send Enquiry →';
-    btn.disabled = false;
-  }
-
-  function showStatus(type, msg) {
-    const box = document.getElementById('formStatus');
-    const c = {
-      success: { bg:'#e6f4ea', border:'#4a8a4a', color:'#2a5a2a' },
-      error:   { bg:'#fde8e8', border:'#c0392b', color:'#7a1a1a' },
-      warn:    { bg:'#fffbe6', border:'#c8963c', color:'#7a4a10' }
-    }[type];
-    box.style.cssText = `display:block;padding:12px 16px;border-radius:3px;font-size:0.85rem;
+    function showStatus(type, msg) {
+      const box = document.getElementById('formStatus');
+      const c = {
+        success: { bg: '#e6f4ea', border: '#4a8a4a', color: '#2a5a2a' },
+        error: { bg: '#fde8e8', border: '#c0392b', color: '#7a1a1a' },
+        warn: { bg: '#fffbe6', border: '#c8963c', color: '#7a4a10' }
+      }[type];
+      box.style.cssText = `display:block;padding:12px 16px;border-radius:3px;font-size:0.85rem;
       background:${c.bg};border:1px solid ${c.border};color:${c.color};margin-bottom:8px;`;
-    box.textContent = msg;
-    if (type !== 'warn') setTimeout(() => { box.style.display = 'none'; }, 7000);
-  }
+      box.textContent = msg;
+      if (type !== 'warn') setTimeout(() => { box.style.display = 'none'; }, 7000);
+    }
 
-  // ── Smooth scroll ───────────────────────────────────────────
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    // ── Smooth scroll ───────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>
