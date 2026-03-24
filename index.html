@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nyasa Haus — Reinvent Furniture</title>
+  <link rel="icon" type="image/jpeg" href="nysa_logo.jpeg">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
     rel="stylesheet">
@@ -2065,23 +2066,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-img-placeholder">
-        <!-- Logo art motif — wood grain rings, used consistently with the brand -->
-        <svg viewBox="0 0 220 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px;opacity:0.22;">
-          <ellipse cx="110" cy="140" rx="100" ry="130" stroke="white" stroke-width="2" />
-          <ellipse cx="110" cy="140" rx="76" ry="100" stroke="white" stroke-width="1.5" />
-          <ellipse cx="110" cy="140" rx="52" ry="68" stroke="white" stroke-width="1.5" />
-          <ellipse cx="110" cy="140" rx="30" ry="40" stroke="white" stroke-width="1.5" />
-          <ellipse cx="110" cy="140" rx="12" ry="16" stroke="white" stroke-width="1.5" />
-          <line x1="110" y1="10" x2="110" y2="270" stroke="white" stroke-width="1" stroke-dasharray="5 5" />
-        </svg>
-        <div
-          style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:rgba(255,255,255,0.5);letter-spacing:0.22em;text-transform:uppercase;margin-top:12px;">
-          Nyasa Haus</div>
-        <div
-          style="font-family:'Jost',sans-serif;font-size:0.65rem;color:rgba(200,150,60,0.7);letter-spacing:0.3em;text-transform:uppercase;margin-top:6px;">
-          Reinvent Furniture</div>
-      </div>
+      <img src="hero_luxury_furniture.png" class="hero-right-img" alt="Custom Luxury Furniture">
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num">50+</div>
@@ -2137,6 +2122,49 @@
     </div>
   </div>
 
+  <!-- ── CATEGORIES ── -->
+  <section id="categories">
+    <div class="container">
+      <div class="section-label reveal">What We Craft</div>
+      <h2 class="section-title reveal reveal-delay-1">Three Verticals of<br><em>Our Collections</em></h2>
+      <div class="cat-grid reveal reveal-delay-2">
+        <div class="cat-card" onclick="openCollection('residential')">
+          <div class="cat-bg cat-bg-1"></div>
+          <div class="cat-overlay">
+            <div class="cat-num">01</div>
+            <div class="cat-icon">🏠</div>
+            <div class="cat-title">Residential Furniture</div>
+            <div class="cat-desc">Dining sets, living room collections, bedroom furniture, and storage solutions crafted
+              in real hardwood for homes that feel like sanctuaries.</div>
+            <div class="cat-arrow">View Collection →</div>
+          </div>
+        </div>
+        <div class="cat-card" onclick="openCollection('office')">
+          <div class="cat-bg cat-bg-2"></div>
+          <div class="cat-overlay">
+            <div class="cat-num">02</div>
+            <div class="cat-icon">💼</div>
+            <div class="cat-title">Office Furniture</div>
+            <div class="cat-desc">Modular workstations, conference tables, executive desks, cafeteria furniture, and
+              complete storage systems for productive workplaces.</div>
+            <div class="cat-arrow">View Collection →</div>
+          </div>
+        </div>
+        <div class="cat-card" onclick="openCollection('commercial')">
+          <div class="cat-bg cat-bg-3"></div>
+          <div class="cat-overlay">
+            <div class="cat-num">03</div>
+            <div class="cat-icon">🏨</div>
+            <div class="cat-title">Commercial / Hospitality</div>
+            <div class="cat-desc">Hotel rooms, restaurant seating, lounge furniture, and bespoke hospitality collections
+              that set the tone for memorable guest experiences.</div>
+            <div class="cat-arrow">View Collection →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── ABOUT ── -->
   <section id="about">
     <div class="container">
@@ -2189,49 +2217,6 @@
               <h4>Attention to Detail</h4>
               <p>From concept drawing to final installation — nothing is overlooked.</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CATEGORIES ── -->
-  <section id="categories">
-    <div class="container">
-      <div class="section-label reveal">What We Craft</div>
-      <h2 class="section-title reveal reveal-delay-1">Three Verticals of<br><em>Our Collections</em></h2>
-      <div class="cat-grid reveal reveal-delay-2">
-        <div class="cat-card" onclick="openCollection('residential')">
-          <div class="cat-bg cat-bg-1"></div>
-          <div class="cat-overlay">
-            <div class="cat-num">01</div>
-            <div class="cat-icon">🏠</div>
-            <div class="cat-title">Residential Furniture</div>
-            <div class="cat-desc">Dining sets, living room collections, bedroom furniture, and storage solutions crafted
-              in real hardwood for homes that feel like sanctuaries.</div>
-            <div class="cat-arrow">View Collection →</div>
-          </div>
-        </div>
-        <div class="cat-card" onclick="openCollection('office')">
-          <div class="cat-bg cat-bg-2"></div>
-          <div class="cat-overlay">
-            <div class="cat-num">02</div>
-            <div class="cat-icon">💼</div>
-            <div class="cat-title">Office Furniture</div>
-            <div class="cat-desc">Modular workstations, conference tables, executive desks, cafeteria furniture, and
-              complete storage systems for productive workplaces.</div>
-            <div class="cat-arrow">View Collection →</div>
-          </div>
-        </div>
-        <div class="cat-card" onclick="openCollection('commercial')">
-          <div class="cat-bg cat-bg-3"></div>
-          <div class="cat-overlay">
-            <div class="cat-num">03</div>
-            <div class="cat-icon">🏨</div>
-            <div class="cat-title">Commercial / Hospitality</div>
-            <div class="cat-desc">Hotel rooms, restaurant seating, lounge furniture, and bespoke hospitality collections
-              that set the tone for memorable guest experiences.</div>
-            <div class="cat-arrow">View Collection →</div>
           </div>
         </div>
       </div>
@@ -2624,6 +2609,10 @@
       <div id="modal-gallery" class="modal-gallery">
         <!-- Images injected via JS -->
       </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <button class="btn-primary" onclick="closeCollection()"
+          style="padding: 12px 36px; border-radius: 30px; font-size: 0.8rem; cursor: pointer;">Close Gallery</button>
+      </div>
     </div>
   </div>
 
@@ -2827,15 +2816,32 @@
 
       modal.classList.add('active');
       document.body.style.overflow = 'hidden'; // prevent background scrolling
+
+      // Push state to support mobile swipe-back
+      history.pushState({ modalOpen: true }, '', '#collection');
     }
 
-    function closeCollection() {
+    function closeCollection(isPopState = false) {
+      if (!modal.classList.contains('active')) return;
+
       modal.classList.remove('active');
       document.body.style.overflow = '';
       setTimeout(() => {
         modalGallery.innerHTML = '';
       }, 400); // Wait for transition
+
+      // If closed manually (not via swipe-back), pop the history state
+      if (!isPopState) {
+        history.back();
+      }
     }
+
+    // Intercept swipe-back / browser back button
+    window.addEventListener('popstate', (e) => {
+      if (modal.classList.contains('active')) {
+        closeCollection(true);
+      }
+    });
 
     // Close on click outside
     modal.addEventListener('click', (e) => {
