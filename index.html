@@ -163,6 +163,79 @@
       display: none !important;
     }
 
+    /* ── MOBILE NAV ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 102;
+      /* Above overlay */
+      padding: 10px;
+    }
+
+    .hamburger span {
+      width: 32px;
+      height: 2px;
+      background: var(--charcoal);
+      display: block;
+      transition: all 0.3s ease-in-out;
+      transform-origin: center;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(249, 244, 238, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 101;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .mobile-nav-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      text-decoration: none;
+      color: var(--charcoal);
+      transition: color 0.3s;
+    }
+
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
@@ -1534,6 +1607,10 @@
       .nav-links {
         display: none;
       }
+
+      .hamburger {
+        display: flex;
+      }
     }
 
     @media (max-width: 768px) {
@@ -2031,7 +2108,7 @@
 
   <!-- ── NAV ── -->
   <nav id="nav">
-    <a href="#" class="nav-logo"><img src="nysa_logo.jpeg" alt="Nyasa Haus"></a>
+    <a href="#" class="nav-logo"><img src="nysa_logo.jpeg" alt="Nyasa Haus Logo"></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#categories">Collections</a></li>
@@ -2040,7 +2117,30 @@
       <li><a href="#manufacturing">Manufacturing</a></li>
       <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
+
+    <!-- Mobile Hamburger Toggle -->
+    <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <div onclick="toggleMobileNav()"
+      style="position: absolute; top: 20px; right: 25px; font-size: 3rem; color: var(--charcoal); cursor: pointer; line-height: 1; transition: transform 0.3s;"
+      onmouseover="this.style.transform='rotate(90deg)'" onmouseout="this.style.transform='none'">&times;</div>
+    <ul class="mobile-nav-links">
+      <li><a href="#about" onclick="toggleMobileNav()">About</a></li>
+      <li><a href="#categories" onclick="toggleMobileNav()">Collections</a></li>
+      <li><a href="#materials" onclick="toggleMobileNav()">Materials</a></li>
+      <li><a href="#process" onclick="toggleMobileNav()">Process</a></li>
+      <li><a href="#manufacturing" onclick="toggleMobileNav()">Manufacturing</a></li>
+      <li><a href="#contact" onclick="toggleMobileNav()" style="color: var(--gold); margin-top: 20px;">Get in Touch</a>
+      </li>
+    </ul>
+  </div>
 
   <!-- ── HERO ── -->
   <section id="hero">
@@ -2555,7 +2655,7 @@
           </div>
           <div class="contact-block">
             <div class="contact-block-label">Phone</div>
-            <div class="contact-block-value">+91 77989 00022</div>
+            <div class="contact-block-value">+91 77680 09961</div>
           </div>
           <div class="contact-block">
             <div class="contact-block-label">Email</div>
@@ -2864,6 +2964,19 @@
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
       });
     });
+
+    // ── Mobile Nav Toggle ───────────────────────────────────────
+    function toggleMobileNav() {
+      const hamburger = document.getElementById('hamburger');
+      const mobileNav = document.getElementById('mobileNavOverlay');
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      if (mobileNav.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
   </script>
 </body>
 
