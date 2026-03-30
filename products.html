@@ -59,720 +59,325 @@
     <div class="container">
       <div class="section-label reveal">Products</div>
       <h2 class="section-title reveal reveal-delay-1">A Glimpse of<br><em>Crafted Spaces</em></h2>
+      <!-- Product Category Cards -->
+      <div class="prod-grid">
 
-      <!-- Tables -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Tables</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+        <div class="prod-card" id="card-tables">
+          <div class="prod-previews" onclick="expandCategory('tables')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/CENTER TABLE/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/CONSOLE  TABLE/IMG 1.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Tables</h3>
+                <p class="prod-card-sub">Center &middot; Console &middot; Conference</p>
+                <span class="prod-card-count">26 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-tables">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Tables</h3>
+                <span>Center &middot; Console &middot; Conference &ndash; 26 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('tables')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-tables" data-loaded="false" data-images='["OUR PRODUCTS/CENTER TABLE/IMG 1.jpg","OUR PRODUCTS/CENTER TABLE/IMG 2.jpg","OUR PRODUCTS/CENTER TABLE/IMG 3.jpg","OUR PRODUCTS/CENTER TABLE/IMG 4.jpg","OUR PRODUCTS/CENTER TABLE/IMG 5.jpg","OUR PRODUCTS/CENTER TABLE/IMG 6.jpg","OUR PRODUCTS/CENTER TABLE/IMG 7.jpg","OUR PRODUCTS/CENTER TABLE/IMG 8.jpg","OUR PRODUCTS/CENTER TABLE/IMG 9.jpg","OUR PRODUCTS/CONFERENCE TABLE/IMG 1.jpg","OUR PRODUCTS/CONFERENCE TABLE/IMG 2.jpg","OUR PRODUCTS/CONFERENCE TABLE/IMG 3.jpg","OUR PRODUCTS/CONFERENCE TABLE/IMG 4.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 1.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 2.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 3.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 4.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 5.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 6.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 7.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 8.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 9.jpg","OUR PRODUCTS/CONSOLE  TABLE/IMG 10.jpg","1 PAGE PHOTOS/COFFEE TABLE .jpeg","1 PAGE PHOTOS/CONSOLE TABLE .jpeg","1 PAGE PHOTOS/DINING TABLE .jpeg"]'></div>
           </div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONFERENCE TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONFERENCE TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONFERENCE TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONFERENCE TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-      </div>
 
-      <!-- Dressing Table-->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Dressing Table</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+        <div class="prod-card" id="card-dining">
+          <div class="prod-previews" onclick="expandCategory('dining')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/DINING  TABLE/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/DINING  CHAIR/IMG 1.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Dining</h3>
+                <p class="prod-card-sub">Dining Tables &amp; Chairs</p>
+                <span class="prod-card-count">19 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-dining">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Dining</h3>
+                <span>Dining Tables &amp; Chairs &ndash; 19 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('dining')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-dining" data-loaded="false" data-images='["OUR PRODUCTS/DINING  TABLE/IMG 1.jpg","OUR PRODUCTS/DINING  TABLE/IMG 2.jpg","OUR PRODUCTS/DINING  TABLE/IMG 3.jpg","OUR PRODUCTS/DINING  TABLE/IMG 4.jpg","OUR PRODUCTS/DINING  TABLE/IMG 5.jpg","OUR PRODUCTS/DINING  TABLE/IMG 6.jpg","OUR PRODUCTS/DINING  TABLE/IMG 7.jpg","OUR PRODUCTS/DINING  TABLE/IMG 8.jpg","OUR PRODUCTS/DINING  TABLE/IMG 9.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 1.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 2.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 3.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 4.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 5.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 6.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 7.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 8.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 9.jpg","OUR PRODUCTS/DINING  CHAIR/IMG 10.jpg"]'></div>
           </div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-      </div>
 
-      <!-- Chairs -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Chairs</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+        <div class="prod-card" id="card-chairs">
+          <div class="prod-previews" onclick="expandCategory('chairs')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/ARM CHAIR/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/ARM CHAIR/IMG 3.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Chairs</h3>
+                <p class="prod-card-sub">Arm Chairs &amp; Accent Seating</p>
+                <span class="prod-card-count">11 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-chairs">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Chairs</h3>
+                <span>Arm Chairs &amp; Accent Seating &ndash; 11 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('chairs')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-chairs" data-loaded="false" data-images='["OUR PRODUCTS/ARM CHAIR/IMG 1.jpg","OUR PRODUCTS/ARM CHAIR/IMG 2.jpg","OUR PRODUCTS/ARM CHAIR/IMG 3.jpg","OUR PRODUCTS/ARM CHAIR/IMG 4.jpg","OUR PRODUCTS/ARM CHAIR/IMG 5.jpg","OUR PRODUCTS/ARM CHAIR/IMG 6.jpg","OUR PRODUCTS/ARM CHAIR/IMG 7.jpg","OUR PRODUCTS/ARM CHAIR/IMG 8.jpg","OUR PRODUCTS/ARM CHAIR/IMG 9.jpg","OUR PRODUCTS/ARM CHAIR/IMG 10.jpg","1 PAGE PHOTOS/CHAIRS .jpeg"]'></div>
           </div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('1 PAGE PHOTOS/CHAIRS .jpeg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-      </div>
 
-      <!-- Sofas & Lounge -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Sofas, Lounges & Ottomans
-      </h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+        <div class="prod-card" id="card-sofas">
+          <div class="prod-previews" onclick="expandCategory('sofas')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/SOFA/image (4)_.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/OTTOMAN/IMG 1.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Sofas &amp; Lounges</h3>
+                <p class="prod-card-sub">Sofas, Ottomans &amp; Lounges</p>
+                <span class="prod-card-count">22 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-sofas">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Sofas &amp; Lounges</h3>
+                <span>Sofas, Ottomans &amp; Lounges &ndash; 22 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('sofas')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-sofas" data-loaded="false" data-images='["OUR PRODUCTS/SOFA/image (4)_.jpg","OUR PRODUCTS/SOFA/image (5)_.jpg","OUR PRODUCTS/SOFA/image (6)_.jpg","OUR PRODUCTS/SOFA/image (7)_.jpg","OUR PRODUCTS/SOFA/image (8)_.jpg","OUR PRODUCTS/SOFA/image (9)_.jpg","OUR PRODUCTS/SOFA/image (10)_.jpg","OUR PRODUCTS/SOFA/image (11)_.jpg","OUR PRODUCTS/SOFA/image (12)_.jpg","OUR PRODUCTS/OTTOMAN/IMG 1.jpg","OUR PRODUCTS/OTTOMAN/IMG 2.jpg","OUR PRODUCTS/OTTOMAN/IMG 3.jpg","OUR PRODUCTS/OTTOMAN/IMG 4.jpg","OUR PRODUCTS/OTTOMAN/IMG 5.jpg","OUR PRODUCTS/OTTOMAN/IMG 6.jpg","OUR PRODUCTS/OTTOMAN/IMG 7.jpg","OUR PRODUCTS/OTTOMAN/IMG 8.jpg","OUR PRODUCTS/OTTOMAN/IMG 9.jpg","OUR PRODUCTS/OTTOMAN/IMG 10.jpg","OUR PRODUCTS/LOUNGE AREA - 1 .jpeg","OUR PRODUCTS/LOUNGE AREA .jpeg","1 PAGE PHOTOS/SOFA .jpeg"]'></div>
           </div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (10)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (11)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (12)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (4)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (5)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (6)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (7)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (8)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/SOFA/image (9)_.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/LOUNGE AREA - 1 .jpeg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/LOUNGE AREA .jpeg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('1 PAGE PHOTOS/SOFA .jpeg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-      </div>
 
-      <!-- Beds -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Beds</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('1 PAGE PHOTOS/BED .jpeg') center/cover; transition: transform 0.4s ease;"></div>
+        <div class="prod-card" id="card-beds">
+          <div class="prod-previews" onclick="expandCategory('beds')">
+            <div class="prod-thumb" style="background-image:url('1 PAGE PHOTOS/BED .jpeg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/BED/IMG 2.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Beds</h3>
+                <p class="prod-card-sub">Custom Beds &amp; Bed Frames</p>
+                <span class="prod-card-count">11 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-beds">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Beds</h3>
+                <span>Custom Beds &amp; Bed Frames &ndash; 11 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('beds')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-beds" data-loaded="false" data-images='["1 PAGE PHOTOS/BED .jpeg","OUR PRODUCTS/BED/IMG 1.jpg","OUR PRODUCTS/BED/IMG 2.jpg","OUR PRODUCTS/BED/IMG 3.jpg","OUR PRODUCTS/BED/IMG 4.jpg","OUR PRODUCTS/BED/IMG 5.jpg","OUR PRODUCTS/BED/IMG 6.jpg","OUR PRODUCTS/BED/IMG 7.jpg","OUR PRODUCTS/BED/IMG 8.jpg","OUR PRODUCTS/BED/IMG 9.jpg","OUR PRODUCTS/BED/IMG 10.jpg"]'></div>
+          </div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 1.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 2.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 3.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 4.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 5.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 6.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 7.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 8.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 9.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED/IMG 10.jpg') center/cover; transition: transform 0.4s ease;"></div>
-        </div>
-      </div>
 
-      <!-- Bed Side Table -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Bed Side Table</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+        <div class="prod-card" id="card-bed_side_tables">
+          <div class="prod-previews" onclick="expandCategory('bed_side_tables')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/BED SIDE TABLE/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/BED SIDE TABLE/IMG 4.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Bed Side Table</h3>
+                <p class="prod-card-sub">Nightstands &amp; Bedside Storage</p>
+                <span class="prod-card-count">10 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-bed_side_tables">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Bed Side Table</h3>
+                <span>Nightstands &amp; Bedside Storage &ndash; 10 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('bed_side_tables')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-bed_side_tables" data-loaded="false" data-images='["OUR PRODUCTS/BED SIDE TABLE/IMG 1.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 2.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 3.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 4.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 5.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 6.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 7.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 8.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 9.jpg","OUR PRODUCTS/BED SIDE TABLE/IMG 10.jpg"]'></div>
           </div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-      </div>
 
+        <div class="prod-card" id="card-dressing_tables">
+          <div class="prod-previews" onclick="expandCategory('dressing_tables')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/DRESSING TABLE/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/DRESSING TABLE/IMG 3.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Dressing Table</h3>
+                <p class="prod-card-sub">Vanity &amp; Dressing Units</p>
+                <span class="prod-card-count">9 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-dressing_tables">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Dressing Table</h3>
+                <span>Vanity &amp; Dressing Units &ndash; 9 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('dressing_tables')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-dressing_tables" data-loaded="false" data-images='["OUR PRODUCTS/DRESSING TABLE/IMG 1.jpg","OUR PRODUCTS/DRESSING TABLE/IMG 2.jpg","OUR PRODUCTS/DRESSING TABLE/IMG 3.jpg","OUR PRODUCTS/DRESSING TABLE/IMG 4.jpg","OUR PRODUCTS/DRESSING TABLE/IMG 5.jpg","OUR PRODUCTS/DRESSING TABLE/IMG 6.jpg","OUR PRODUCTS/DRESSING TABLE/IMG 7.jpg","OUR PRODUCTS/DRESSING TABLE/IMG 8.jpg","OUR PRODUCTS/DRESSING TABLE/IMG 9.jpg"]'></div>
+          </div>
+        </div>
 
-      <!-- Dining -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Dining</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="prod-card" id="card-storage">
+          <div class="prod-previews" onclick="expandCategory('storage')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/WARDROBE/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/WARDROBE/IMG 4.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Wardrobes</h3>
+                <p class="prod-card-sub">Storage, Wardrobes &amp; Closets</p>
+                <span class="prod-card-count">9 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-storage">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Wardrobes</h3>
+                <span>Storage, Wardrobes &amp; Closets &ndash; 9 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('storage')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-storage" data-loaded="false" data-images='["OUR PRODUCTS/WARDROBE/IMG 1.jpg","OUR PRODUCTS/WARDROBE/IMG 2.jpg","OUR PRODUCTS/WARDROBE/IMG 3.jpg","OUR PRODUCTS/WARDROBE/IMG 4.jpg","OUR PRODUCTS/WARDROBE/IMG 5.jpg","OUR PRODUCTS/WARDROBE/IMG 6.jpg","OUR PRODUCTS/WARDROBE/IMG 7.jpg","OUR PRODUCTS/WARDROBE/IMG 8.jpg","OUR PRODUCTS/WARDROBE/IMG 9.jpg"]'></div>
+          </div>
+        </div>
 
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+        <div class="prod-card" id="card-tv_units">
+          <div class="prod-previews" onclick="expandCategory('tv_units')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/TV UNIT/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/TV UNIT/IMG 3.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">TV Units</h3>
+                <p class="prod-card-sub">Media &amp; Entertainment Centers</p>
+                <span class="prod-card-count">9 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-tv_units">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>TV Units</h3>
+                <span>Media &amp; Entertainment Centers &ndash; 9 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('tv_units')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-tv_units" data-loaded="false" data-images='["OUR PRODUCTS/TV UNIT/IMG 1.jpg","OUR PRODUCTS/TV UNIT/IMG 2.jpg","OUR PRODUCTS/TV UNIT/IMG 3.jpg","OUR PRODUCTS/TV UNIT/IMG 4.jpg","OUR PRODUCTS/TV UNIT/IMG 5.jpg","OUR PRODUCTS/TV UNIT/IMG 6.jpg","OUR PRODUCTS/TV UNIT/IMG 7.jpg","OUR PRODUCTS/TV UNIT/IMG 8.jpg","OUR PRODUCTS/TV UNIT/IMG 9.jpg"]'></div>
           </div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-      </div>
 
+        <div class="prod-card" id="card-workstations">
+          <div class="prod-previews" onclick="expandCategory('workstations')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/EXECUTIVE DESK/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 1.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Workstations</h3>
+                <p class="prod-card-sub">Executive Desks &amp; Modular Offices</p>
+                <span class="prod-card-count">7 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="prod-lightbox" id="lightbox-workstations">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Workstations</h3>
+                <span>Executive Desks &amp; Modular Offices &ndash; 7 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('workstations')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-workstations" data-loaded="false" data-images='["OUR PRODUCTS/EXECUTIVE DESK/IMG 1.jpg","OUR PRODUCTS/EXECUTIVE DESK/IMG 2.jpg","OUR PRODUCTS/EXECUTIVE DESK/IMG 3.jpg","OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 1.jpg","OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 2.jpg","OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 3.jpg","OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 4.jpg"]'></div>
+          </div>
+        </div>
 
-      <!-- Storage & Wardrobes -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Storage & Wardrobes</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+        <div class="prod-card" id="card-cafeteria">
+          <div class="prod-previews" onclick="expandCategory('cafeteria')">
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 1.jpg')"></div>
+            <div class="prod-thumb" style="background-image:url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 3.jpg')"></div>
+            <div class="prod-card-overlay">
+              <div class="prod-card-info">
+                <h3 class="prod-card-title">Cafeteria</h3>
+                <p class="prod-card-sub">Commercial Dining &amp; Cafe Furniture</p>
+                <span class="prod-card-count">4 pieces</span>
+              </div>
+              <button class="prod-expand-btn" aria-label="Expand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/WARDROBE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-      </div>
-
-      <!-- TV Units -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">TV Units</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/TV UNIT/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-      </div>
-
-      <!-- Workstations & Executive Desks -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Workstations & Executive
-        Desks</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/EXECUTIVE DESK/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/EXECUTIVE DESK/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/EXECUTIVE DESK/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-      </div>
-
-      <!-- Cafeteria -->
-      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Cafeteria</h3>
-      <div class="gallery-grid" style="margin-bottom: 40px;">
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-bg"
-            style="background: url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          <div class="prod-lightbox" id="lightbox-cafeteria">
+            <div class="prod-lightbox-header">
+              <div>
+                <h3>Cafeteria</h3>
+                <span>Commercial Dining &amp; Cafe Furniture &ndash; 4 pieces</span>
+              </div>
+              <button class="prod-lightbox-close" onclick="collapseCategory('cafeteria')" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="prod-lightbox-grid" id="grid-cafeteria" data-loaded="false" data-images='["OUR PRODUCTS/CAFETERIA FURNITURE/IMG 1.jpg","OUR PRODUCTS/CAFETERIA FURNITURE/IMG 2.jpg","OUR PRODUCTS/CAFETERIA FURNITURE/IMG 3.jpg","OUR PRODUCTS/CAFETERIA FURNITURE/IMG 4.jpg"]'></div>
           </div>
         </div>
       </div>
@@ -798,7 +403,15 @@
   </a>
 
   <!-- â”€â”€ FOOTER â”€â”€ -->
-  <footer>
+  
+  <!-- Full-screen image viewer -->
+  <div id="prod-img-viewer">
+    <button id="prod-img-viewer-close" onclick="closeProdViewer()">&times;</button>
+    <button id="prod-img-viewer-prev" onclick="navProdViewer(-1)">&#8249;</button>
+    <img id="prod-img-viewer-img" src="" alt="">
+    <button id="prod-img-viewer-next" onclick="navProdViewer(1)">&#8250;</button>
+  </div>
+<footer>
     <div class="footer-content"
       style="display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 1240px; margin: 0 auto; padding: 0 60px 20px; text-align: center; gap: 32px;">
       <div class="footer-left">

@@ -267,3 +267,114 @@ function toggleMobileNav() {
     document.body.style.overflow = '';
   }
 }
+// ═══════════════════════════════════════════════════════════════
+//  PRODUCT CATEGORY CARDS — lazy-load + fullscreen viewer
+// ═══════════════════════════════════════════════════════════════
+
+let _prodViewerImages = [];
+let _prodViewerIdx    = 0;
+
+function expandCategory(id) {
+  const lightbox = document.getElementById('lightbox-' + id);
+  if (!lightbox) return;
+
+  // Toggle close if already open
+  if (lightbox.classList.contains('open')) {
+    collapseCategory(id);
+    return;
+  }
+
+  // Close any other open lightbox first (smooth)
+  document.querySelectorAll('.prod-lightbox.open').forEach(el => {
+    el.classList.remove('open');
+  });
+  document.querySelectorAll('.prod-card.expanded').forEach(el => {
+    el.classList.remove('expanded');
+  });
+  const card = document.getElementById('card-' + id);
+  if (card) {
+    card.classList.add('expanded');
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+  }
+  lightbox.classList.add('open');
+
+  // Lazy-load images only once
+  const grid = document.getElementById('grid-' + id);
+  if (!grid || grid.dataset.loaded === 'true') return;
+
+  const images = JSON.parse(grid.dataset.images || '[]');
+  grid.innerHTML = '<div class="prod-loading"><div class="prod-loading-ring"></div></div>';
+
+  // Stagger image load for a modern cascading feel
+  setTimeout(() => {
+    grid.innerHTML = '';
+    images.forEach((src, i) => {
+      const img = document.createElement('img');
+      img.alt = id + ' furniture ' + (i + 1);
+      img.loading = 'lazy';
+      img.onclick = () => openProdViewer(images, i);
+
+      // Animate in with stagger
+      setTimeout(() => {
+        img.src = src;
+        img.onload = () => img.classList.add('img-loaded');
+        img.onerror = () => { img.src = ''; img.style.display = 'none'; };
+        grid.appendChild(img);
+      }, i * 40);
+    });
+    grid.dataset.loaded = 'true';
+  }, 120);
+}
+
+function collapseCategory(id) {
+  const lightbox = document.getElementById('lightbox-' + id);
+  if (lightbox) lightbox.classList.remove('open');
+  const card = document.getElementById('card-' + id);
+  if (card) card.classList.remove('expanded');
+}
+
+// ── Full-screen image viewer ─────────────────────────────────
+function openProdViewer(images, startIdx) {
+  _prodViewerImages = images;
+  _prodViewerIdx    = startIdx;
+  const viewer = document.getElementById('prod-img-viewer');
+  if (!viewer) return;
+  _setProdViewerImg();
+  viewer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProdViewer() {
+  const viewer = document.getElementById('prod-img-viewer');
+  if (viewer) viewer.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navProdViewer(dir) {
+  _prodViewerIdx = (_prodViewerIdx + dir + _prodViewerImages.length) % _prodViewerImages.length;
+  _setProdViewerImg();
+}
+
+function _setProdViewerImg() {
+  const img = document.getElementById('prod-img-viewer-img');
+  if (img) {
+    img.style.opacity = '0';
+    img.src = _prodViewerImages[_prodViewerIdx];
+    img.onload = () => { img.style.transition = 'opacity 0.3s'; img.style.opacity = '1'; };
+  }
+}
+
+// Close viewer on backdrop click
+(function(){
+  const v = document.getElementById('prod-img-viewer');
+  if (v) v.addEventListener('click', e => { if (e.target === v) closeProdViewer(); });
+})();
+
+// Arrow key navigation for viewer
+document.addEventListener('keydown', e => {
+  const viewer = document.getElementById('prod-img-viewer');
+  if (!viewer || !viewer.classList.contains('open')) return;
+  if (e.key === 'ArrowRight') navProdViewer(1);
+  if (e.key === 'ArrowLeft')  navProdViewer(-1);
+  if (e.key === 'Escape')     closeProdViewer();
+});
