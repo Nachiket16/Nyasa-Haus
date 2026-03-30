@@ -1,0 +1,845 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nyasa Haus â€” Reinvent Furniture</title>
+  <link rel="icon" type="image/jpeg" href="nysa_logo.jpeg">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+
+  <!-- â”€â”€ NAV â”€â”€ -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><img src="nysa_logo.jpeg" alt="Nyasa Haus Logo"></a>
+    <ul class="nav-links">
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="projects.html">Our Projects</a></li>
+      <li><a href="how-we-work.html">How We Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
+    </ul>
+
+    <!-- Mobile Hamburger Toggle -->
+    <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Overlay Menu -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <div onclick="toggleMobileNav()"
+      style="position: absolute; top: 20px; right: 25px; font-size: 3rem; color: var(--charcoal); cursor: pointer; line-height: 1; transition: transform 0.3s;"
+      onmouseover="this.style.transform='rotate(90deg)'" onmouseout="this.style.transform='none'">&times;</div>
+    <ul class="mobile-nav-links">
+      <li><a href="about.html" onclick="toggleMobileNav()">Our Story</a></li>
+      <li><a href="products.html" onclick="toggleMobileNav()">Products</a></li>
+      <li><a href="projects.html" onclick="toggleMobileNav()">Our Projects</a></li>
+      <li><a href="how-we-work.html" onclick="toggleMobileNav()">How We Work</a></li>
+      <li><a href="contact.html" onclick="toggleMobileNav()">Contact</a></li>
+      <li><a href="contact.html" onclick="toggleMobileNav()" style="color: var(--gold); margin-top: 20px;">Get Quote</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- â”€â”€ PRODUCTS PAGE â”€â”€ -->
+  <section id="products" style="padding-top: 150px;">
+    <div class="container">
+      <div class="section-label reveal">Products</div>
+      <h2 class="section-title reveal reveal-delay-1">A Glimpse of<br><em>Crafted Spaces</em></h2>
+
+      <!-- Tables -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Tables</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CENTER TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONFERENCE TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONFERENCE TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONFERENCE TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONFERENCE TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CONSOLE  TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Dressing Table-->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Dressing Table</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DRESSING TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Chairs -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Chairs</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/ARM CHAIR/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  CHAIR/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('1 PAGE PHOTOS/CHAIRS .jpeg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Sofas & Lounge -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Sofas, Lounges & Ottomans
+      </h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/OTTOMAN/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (10)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (11)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (12)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (4)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (5)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (6)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (7)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (8)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/SOFA/image (9)_.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/LOUNGE AREA - 1 .jpeg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/LOUNGE AREA .jpeg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('1 PAGE PHOTOS/SOFA .jpeg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Beds -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Beds</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('1 PAGE PHOTOS/BED .jpeg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 1.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 2.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 3.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 4.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 5.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 6.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 7.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 8.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 9.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED/IMG 10.jpg') center/cover; transition: transform 0.4s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Bed Side Table -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Bed Side Table</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/BED SIDE TABLE/IMG 10.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Dining -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Dining</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/DINING  TABLE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Storage & Wardrobes -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Storage & Wardrobes</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/WARDROBE/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+      </div>
+
+      <!-- TV Units -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">TV Units</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 5.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 6.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 7.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 8.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/TV UNIT/IMG 9.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Workstations & Executive Desks -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Workstations & Executive
+        Desks</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/EXECUTIVE DESK/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/EXECUTIVE DESK/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/EXECUTIVE DESK/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/MODULAR  WORKSTATIONS/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Cafeteria -->
+      <h3 style="margin-top:60px; font-family:'Cormorant Garamond',serif; font-size:2.5rem;">Cafeteria</h3>
+      <div class="gallery-grid" style="margin-bottom: 40px;">
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 1.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 2.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 3.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-bg"
+            style="background: url('OUR PRODUCTS/CAFETERIA FURNITURE/IMG 4.jpg') center/cover; transition: transform 0.4s ease;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Get Quote Bar -->
+      <div style="background:var(--teak); padding: 40px; border-radius:4px; text-align:center; margin-top:80px;"
+        class="reveal">
+        <h3 style="color:white; font-family:'Cormorant Garamond',serif; font-size:2rem; margin-bottom:20px;">Ready to
+          start your project?</h3>
+        <a href="index.html#contact" class="btn-outline"
+          style="background:var(--gold); color:var(--charcoal); border:none;">Get Custom Quote</a>
+      </div>
+    </div>
+  </section>
+  <!-- â”€â”€ WHATSAPP FLOAT â”€â”€ -->
+  <a href="https://wa.me/917798900022?text=Hi%20Nyasa%20Haus%2C%20I%27d%20like%20to%20enquire%20about%20custom%20furniture."
+    class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+    <span class="wa-text">Chat on WhatsApp</span>
+  </a>
+
+  <!-- â”€â”€ FOOTER â”€â”€ -->
+  <footer>
+    <div class="footer-content"
+      style="display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 1240px; margin: 0 auto; padding: 0 60px 20px; text-align: center; gap: 32px;">
+      <div class="footer-left">
+        <div class="footer-logo">Nyasa<span> Haus</span></div>
+        <div class="footer-tagline" style="margin-top: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.6);">"Custom
+          Furniture for Inspired Spaces"</div>
+      </div>
+      <div class="footer-links" style="display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;">
+        <a href="index.html"
+          style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;"
+          onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Home</a>
+        <a href="about.html"
+          style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;"
+          onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Our
+          Story</a>
+        <a href="products.html"
+          style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;"
+          onmouseover="this.style.color='var(--gold)'"
+          onmouseout="this.style.color='rgba(255,255,255,0.8)'">Products</a>
+        <a href="projects.html"
+          style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;"
+          onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Our
+          Projects</a>
+        <a href="how-we-work.html"
+          style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;"
+          onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">How We
+          Work</a>
+        <a href="index.html#contact"
+          style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.3s;"
+          onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Get
+          Quote</a>
+      </div>
+    </div>
+    <div class="footer-bottom"
+      style="text-align: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 10px;">
+      <div class="footer-copy" style="font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.05em;">Â© 2026
+        Nyasa Haus. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
