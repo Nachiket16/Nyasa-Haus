@@ -378,3 +378,77 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft')  navProdViewer(-1);
   if (e.key === 'Escape')     closeProdViewer();
 });
+
+// ═══════════════════════════════════════════════════════════════
+//  HOVER IMAGE PREVIEW (desktop only — pointer: fine)
+// ═══════════════════════════════════════════════════════════════
+(function () {
+  // Only activate on devices that have a real mouse (not touch-only)
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const preview   = document.getElementById('prod-img-hover-preview');
+  const previewImg = document.getElementById('prod-img-hover-img');
+  const previewLbl = preview ? preview.querySelector('.prod-img-hover-label') : null;
+  if (!preview || !previewImg) return;
+
+  let hoverTimer = null;
+  let currentSrc = '';
+
+  // Delegate: listen on the document for mouseenter on lightbox grid images
+  document.addEventListener('mouseover', (e) => {
+    const img = e.target.closest('.prod-lightbox-grid img');
+    if (!img || !img.classList.contains('img-loaded')) return;
+
+    const src = img.src;
+    if (src === currentSrc) return;
+    currentSrc = src;
+
+    clearTimeout(hoverTimer);
+    hoverTimer = setTimeout(() => {
+      previewImg.src = src;
+      if (previewLbl) {
+        // Derive a friendly label from the src path
+        const parts = src.split('/');
+        const folder = parts[parts.length - 2] || '';
+        previewLbl.textContent = folder.replace(/_/g, ' ').toLowerCase();
+      }
+      preview.classList.add('visible');
+    }, 60); // small delay to avoid flicker on fast mouse movement
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const img = e.target.closest('.prod-lightbox-grid img');
+    if (!img) return;
+    clearTimeout(hoverTimer);
+    preview.classList.remove('visible');
+    currentSrc = '';
+  });
+
+  // Follow cursor with smart edge detection
+  document.addEventListener('mousemove', (e) => {
+    if (!preview.classList.contains('visible')) return;
+
+    const pw = 380;          // preview width
+    const gap = 18;          // gap from cursor
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    let x = e.clientX + gap;
+    let y = e.clientY - 60;  // slightly above cursor
+
+    // Flip left if too close to right edge
+    if (x + pw > vw - 12) {
+      x = e.clientX - pw - gap;
+    }
+
+    // Clamp vertically
+    const previewH = preview.offsetHeight || 350;
+    if (y + previewH > vh - 12) {
+      y = vh - previewH - 12;
+    }
+    if (y < 12) y = 12;
+
+    preview.style.left = x + 'px';
+    preview.style.top  = y + 'px';
+  });
+})();

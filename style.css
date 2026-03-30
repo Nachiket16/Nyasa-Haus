@@ -2292,29 +2292,41 @@
 }
 
 /* ── Hover zoom preview (desktop only) ── */
+/* ── Hover image float preview (desktop pointer devices only) ── */
 .prod-img-hover-preview {
   position: fixed;
   z-index: 9500;
   pointer-events: none;
   opacity: 0;
-  transform: scale(0.96);
-  transition: opacity 0.22s ease, transform 0.22s ease;
-  border-radius: 8px;
+  transform: translateY(8px) scale(0.97);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,150,60,0.25);
-  max-width: 420px;
-  max-height: 320px;
+  box-shadow:
+    0 32px 80px rgba(0,0,0,0.65),
+    0 0 0 1.5px rgba(200,150,60,0.35),
+    0 0 60px rgba(200,150,60,0.08);
   background: #0a0806;
+  width: 380px;
 }
 .prod-img-hover-preview.visible {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0) scale(1);
 }
 .prod-img-hover-preview img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
   display: block;
+  object-fit: contain;
+  max-height: 320px;
+}
+.prod-img-hover-label {
+  padding: 8px 14px;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(200,150,60,0.7);
+  font-family: 'Jost', sans-serif;
+  border-top: 1px solid rgba(200,150,60,0.12);
 }
 @media (hover: none) {
   .prod-img-hover-preview { display: none !important; }
