@@ -2284,37 +2284,36 @@ footer {
   color: var(--gold);
 }
 
-/* â”€â”€ Lazy-loaded image grid inside lightbox â”€â”€ */
+/* -- Masonry columns layout for product lightbox images -- */
 .prod-lightbox-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 4px;
+  columns: 4;
+  column-gap: 6px;
   padding: 8px;
 }
 
 @media (max-width: 1024px) {
   .prod-lightbox-grid {
-    grid-template-columns: repeat(3, 1fr);
+    columns: 3;
   }
 }
 
-/* When card is NOT expanded (mobile single col), use 2 cols */
 @media (max-width: 600px) {
   .prod-lightbox-grid {
-    grid-template-columns: repeat(2, 1fr);
+    columns: 2;
   }
 }
 
 .prod-lightbox-grid img {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
   display: block;
+  object-fit: contain;
+  border-radius: 4px;
+  margin-bottom: 6px;  /* gap between items in same column */
+  break-inside: avoid; /* prevent column breaks mid-image */
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.45s ease, transform 0.45s ease;
   cursor: zoom-in;
-  position: relative;
 }
 
 .prod-lightbox-grid img.img-loaded {
