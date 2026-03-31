@@ -1,4 +1,4 @@
-﻿*,
+*,
 *::before,
 *::after {
   margin: 0;
@@ -378,12 +378,31 @@ nav.scrolled .nav-logo img {
   overflow: hidden;
 }
 
-.hero-right-img {
+.hero-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: var(--charcoal);
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: fadeIn 1.2s 0.4s forwards;
+  transform: scale(1.05); /* Slight zoom for luxurious effect */
+  transition: opacity 1.5s ease-in-out, transform 5s linear;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1); /* Zooms out slightly while visible */
+  z-index: 2;
 }
 
 /* Placeholder gradient for hero image */
@@ -448,6 +467,7 @@ nav.scrolled .nav-logo img {
   display: flex;
   gap: 28px;
   opacity: 0;
+  z-index: 10;
   animation: fadeUp 0.8s 1.1s forwards;
 }
 
@@ -1649,7 +1669,7 @@ footer {
   }
 
   .hero-img-placeholder,
-  .hero-right-img {
+  .hero-slider {
     height: 300px;
   }
 
@@ -2015,8 +2035,6 @@ footer {
 .nav-logo img {
   height: 115px;
   margin-top: -20px;
-  mix-blend-mode: multiply;
-  border-radius: 80px;
 }
 
 .hero-tagline {

@@ -141,11 +141,14 @@ const collectionData = {
   residential: {
     title: "Residential <em>Collection</em>",
     images: [
-      "1%20PAGE%20PHOTOS/CHAIRS%20.jpeg",
-      "1%20PAGE%20PHOTOS/COFFEE%20TABLE%20.jpeg",
-      "1%20PAGE%20PHOTOS/CONSOLE%20TABLE%20.jpeg",
-      "1%20PAGE%20PHOTOS/DINING%20TABLE%20.jpeg",
-      "1%20PAGE%20PHOTOS/SOFA%20.jpeg"
+      "residential_ai.png",
+      "residential_demo.png",
+      "1%20PAGE%20PHOTOS/BED.jpeg",
+      "1%20PAGE%20PHOTOS/COFFEE%20TABLE.jpeg",
+      "1%20PAGE%20PHOTOS/CONSOLE%20TABLE.jpeg",
+      "1%20PAGE%20PHOTOS/DINING%20TABLE.jpeg",
+      "1%20PAGE%20PHOTOS/SOFA.jpeg",
+      "OUR%20PRODUCTS/BED/IMG%204.jpg"
     ]
   },
   office: {
@@ -167,12 +170,10 @@ const collectionData = {
   commercial: {
     title: "Commercial <em>Collection</em>",
     images: [
-      "OUR%20PRODUCTS/CAFETERIA%20FURNITURE/IMG%201.jpg",
+      "hospitality_ai.png",
+      "1%20PAGE%20PHOTOS/HS_IMG1.jpeg",
       "OUR%20PRODUCTS/CAFETERIA%20FURNITURE/IMG%202.jpg",
-      "OUR%20PRODUCTS/CAFETERIA%20FURNITURE/IMG%203.jpg",
-      "OUR%20PRODUCTS/CAFETERIA%20FURNITURE/IMG%204.jpg",
-      "OUR%20PRODUCTS/LOUNGE%20AREA%20-%201%20.jpeg",
-      "OUR%20PRODUCTS/LOUNGE%20AREA%20.jpeg"
+      "OUR%20PRODUCTS/CAFETERIA%20FURNITURE/IMG%204.jpg"
     ]
   }
 };
@@ -272,7 +273,7 @@ function toggleMobileNav() {
 // ═══════════════════════════════════════════════════════════════
 
 let _prodViewerImages = [];
-let _prodViewerIdx    = 0;
+let _prodViewerIdx = 0;
 
 function expandCategory(id) {
   const lightbox = document.getElementById('lightbox-' + id);
@@ -336,7 +337,7 @@ function collapseCategory(id) {
 // ── Full-screen image viewer ─────────────────────────────────
 function openProdViewer(images, startIdx) {
   _prodViewerImages = images;
-  _prodViewerIdx    = startIdx;
+  _prodViewerIdx = startIdx;
   const viewer = document.getElementById('prod-img-viewer');
   if (!viewer) return;
   _setProdViewerImg();
@@ -365,7 +366,7 @@ function _setProdViewerImg() {
 }
 
 // Close viewer on backdrop click
-(function(){
+(function () {
   const v = document.getElementById('prod-img-viewer');
   if (v) v.addEventListener('click', e => { if (e.target === v) closeProdViewer(); });
 })();
@@ -375,8 +376,8 @@ document.addEventListener('keydown', e => {
   const viewer = document.getElementById('prod-img-viewer');
   if (!viewer || !viewer.classList.contains('open')) return;
   if (e.key === 'ArrowRight') navProdViewer(1);
-  if (e.key === 'ArrowLeft')  navProdViewer(-1);
-  if (e.key === 'Escape')     closeProdViewer();
+  if (e.key === 'ArrowLeft') navProdViewer(-1);
+  if (e.key === 'Escape') closeProdViewer();
 });
 
 // ═══════════════════════════════════════════════════════════════
@@ -386,7 +387,7 @@ document.addEventListener('keydown', e => {
   // Only activate on devices that have a real mouse (not touch-only)
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
-  const preview   = document.getElementById('prod-img-hover-preview');
+  const preview = document.getElementById('prod-img-hover-preview');
   const previewImg = document.getElementById('prod-img-hover-img');
   const previewLbl = preview ? preview.querySelector('.prod-img-hover-label') : null;
   if (!preview || !previewImg) return;
@@ -449,6 +450,25 @@ document.addEventListener('keydown', e => {
     if (y < 12) y = 12;
 
     preview.style.left = x + 'px';
-    preview.style.top  = y + 'px';
+    preview.style.top = y + 'px';
   });
+})();
+
+// ═══════════════════════════════════════════════════════════════
+//  HOME PAGE HERO SLIDER
+// ═══════════════════════════════════════════════════════════════
+(function () {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length <= 1) return;
+
+  let currentSlideIdx = 0;
+
+  function advanceSlide() {
+    slides[currentSlideIdx].classList.remove('active');
+    currentSlideIdx = (currentSlideIdx + 1) % slides.length;
+    slides[currentSlideIdx].classList.add('active');
+  }
+
+  // Rotate every 2.5 seconds for a luxurious, slow-paced feel
+  setInterval(advanceSlide, 2500);
 })();

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nyasa Haus — Reinvent Furniture</title>
-  <link rel="icon" type="image/jpeg" href="nysa_logo.jpeg">
+  <link rel="icon" type="image/svg+xml" href="nysa_logo.svg">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
     rel="stylesheet">
@@ -19,7 +19,7 @@
 
   <!-- ── NAV ── -->
   <nav id="nav">
-    <a href="index.html" class="nav-logo"><img src="nysa_logo.jpeg" alt="Nyasa Haus Logo"></a>
+    <a href="index.html" class="nav-logo"><img src="nysa_logo.svg" alt="Nyasa Haus Logo"></a>
     <ul class="nav-links">
       <li><a href="about.html">Our Story</a></li>
       <li><a href="products.html">Products</a></li>
@@ -81,7 +81,16 @@
       </div>
     </div>
     <div class="hero-right">
-      <img src="hero_luxury_furniture.png" class="hero-right-img" alt="Custom Luxury Furniture">
+      <!-- Revolving Banner Slider -->
+      <div class="hero-slider" id="heroSlider">
+        <img src="HOME%20BANNER%20PHOTOS/img1.jpeg" class="hero-slide active" alt="Luxury Custom Furniture">
+        <img src="HOME%20BANNER%20PHOTOS/img2.jpeg" class="hero-slide" alt="Luxury Home Interior">
+        <img src="HOME%20BANNER%20PHOTOS/img3.jpeg" class="hero-slide" alt="Bespoke Furniture Design">
+        <img src="HOME%20BANNER%20PHOTOS/img4.jpeg" class="hero-slide" alt="Premium Wood Decor">
+        <img src="HOME%20BANNER%20PHOTOS/img5.jpeg" class="hero-slide" alt="Modern Minimalist Styling">
+        <img src="HOME%20BANNER%20PHOTOS/img6.jpeg" class="hero-slide" alt="Commercial Luxury Spaces">
+        <img src="HOME%20BANNER%20PHOTOS/img7.jpeg" class="hero-slide" alt="Exclusive Handcrafted Finish">
+      </div>
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num">50+</div>
@@ -113,7 +122,7 @@
       <h2 class="section-title reveal reveal-delay-1">Our Business<br><em>Verticals</em></h2>
       <div class="cat-grid reveal reveal-delay-2">
         <div class="cat-card" onclick="openCollection('residential')">
-          <div class="cat-bg" style="background: url('residential_demo.png') center/cover no-repeat;"></div>
+          <div class="cat-bg" style="background: url('residential_ai.png') center/cover no-repeat;"></div>
           <div class="cat-overlay">
             <div class="cat-num">01</div>
             <div class="cat-title">Residential Furniture</div>
@@ -133,7 +142,7 @@
           </div>
         </div>
         <div class="cat-card" onclick="openCollection('commercial')">
-          <div class="cat-bg" style="background: url('commercial_demo.png') center/cover no-repeat;"></div>
+          <div class="cat-bg" style="background: url('hospitality_ai.png') center/cover no-repeat;"></div>
           <div class="cat-overlay">
             <div class="cat-num">03</div>
             <div class="cat-title">Commercial / Hospitality</div>
