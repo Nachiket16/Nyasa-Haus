@@ -1701,8 +1701,12 @@ footer {
   }
 
   .about-visual {
-    height: 350px;
-    margin-bottom: 20px;
+    height: auto;       /* let the LinkedIn badge push the height naturally */
+    margin-bottom: 40px;
+  }
+
+  .about-visual .about-card.about-card-main {
+    height: 280px;      /* explicit height only on the image card, not the whole column */
   }
 
   .about-pillars {
