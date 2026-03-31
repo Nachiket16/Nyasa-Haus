@@ -2049,6 +2049,7 @@ footer {
   border: 1px solid rgba(181, 101, 29, 0.2);
   border-radius: 8px;
   text-decoration: none;
+  color: inherit; /* prevent browser default link colour */
   transition: border-color 0.3s, background 0.3s, transform 0.2s;
 }
 
@@ -2056,6 +2057,7 @@ footer {
   border-color: #0a66c2;
   background: rgba(10, 102, 194, 0.08);
   transform: translateY(-2px);
+  color: inherit; /* keep text colours unchanged on hover */
 }
 
 .founder-badge-info {
