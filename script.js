@@ -1,4 +1,4 @@
-﻿// ════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 //  STEP 1 of 2 — Paste your Google Apps Script Web App URL
 // ════════════════════════════════════════════════════════════
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxzaHnN5HcerwnD_usD6DNMV7fnTsuYGlplnV79DDZs3Y3u-XAFvZsTINZbC8KXP0pirg/exec';
@@ -454,21 +454,4 @@ document.addEventListener('keydown', e => {
   });
 })();
 
-// ═══════════════════════════════════════════════════════════════
-//  HOME PAGE HERO SLIDER
-// ═══════════════════════════════════════════════════════════════
-(function () {
-  const slides = document.querySelectorAll('.hero-slide');
-  if (slides.length <= 1) return;
-
-  let currentSlideIdx = 0;
-
-  function advanceSlide() {
-    slides[currentSlideIdx].classList.remove('active');
-    currentSlideIdx = (currentSlideIdx + 1) % slides.length;
-    slides[currentSlideIdx].classList.add('active');
-  }
-
-  // Rotate every 2.5 seconds for a luxurious, slow-paced feel
-  setInterval(advanceSlide, 2500);
-})();
+// Static hero image (No slider needed)
