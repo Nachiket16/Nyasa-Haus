@@ -228,7 +228,7 @@ nav.scrolled .nav-logo img {
 
 /* â”€â”€ HERO â”€â”€ */
 #hero {
-  min-height: 100vh;
+  min-height: 62vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -240,7 +240,7 @@ nav.scrolled .nav-logo img {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 100px 70px 80px;
+  padding: 65px 60px 45px;
   position: relative;
   overflow: hidden;
 }
@@ -253,22 +253,22 @@ nav.scrolled .nav-logo img {
 }
 
 .hero-tag {
-  font-size: 1.0rem;
+  font-size: 0.95rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   opacity: 0;
   animation: fadeUp 0.8s 0.3s forwards;
 }
 
 .hero-headline {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
   font-weight: 300;
   line-height: 1.08;
   color: var(--cream);
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   opacity: 0;
   animation: fadeUp 0.8s 0.5s forwards;
 }
@@ -279,11 +279,11 @@ nav.scrolled .nav-logo img {
 }
 
 .hero-desc {
-  font-size: 0.92rem;
-  line-height: 1.8;
+  font-size: 0.82rem;
+  line-height: 1.6;
   color: rgba(249, 244, 238, 0.6);
-  max-width: 380px;
-  margin-bottom: 24px;
+  max-width: 320px;
+  margin-bottom: 18px;
   font-weight: 300;
   opacity: 0;
   animation: fadeUp 0.8s 0.7s forwards;
@@ -298,8 +298,8 @@ nav.scrolled .nav-logo img {
   background: rgba(200, 150, 60, 0.15);
   border: 1px solid rgba(200, 150, 60, 0.3);
   color: var(--cream);
-  font-size: 0.8rem;
-  margin-bottom: 40px;
+  font-size: 0.78rem;
+  margin-bottom: 32px;
   opacity: 0;
   animation: fadeUp 0.8s 0.8s forwards;
   width: fit-content;
@@ -1561,8 +1561,8 @@ footer {
   }
 
   .hero-left {
-    min-height: 80vh;
-    padding: 100px 40px 80px;
+    min-height: 55vh;
+    padding: 70px 40px 50px;
   }
 
   .hero-right {
@@ -1646,12 +1646,12 @@ footer {
   }
 
   .hero-left {
-    padding: 100px 20px 60px;
+    padding: 70px 20px 40px;
     min-height: auto;
   }
 
   .hero-headline {
-    font-size: 2.8rem;
+    font-size: 1.85rem;
   }
 
   .hero-desc {
