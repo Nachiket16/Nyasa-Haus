@@ -2582,3 +2582,36 @@ footer {
     right: 8px;
   }
 }
+/* ── SOCIAL LINKS ── */
+.social-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.social-icon {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.mobile-socials {
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.footer-socials {
+  margin-top: 15px;
+}
