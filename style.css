@@ -1,4 +1,4 @@
-﻿*,
+*,
 *::before,
 *::after {
   margin: 0;
@@ -160,6 +160,8 @@ nav.scrolled .nav-logo img {
   z-index: 102;
   /* Above overlay */
   padding: 10px;
+  height: 44px;
+  justify-content: center;
 }
 
 .hamburger span {
@@ -578,7 +580,7 @@ section {
   gap: 0;
 }
 
-/* ── Founder photo block ── */
+/* -- Founder photo block -- */
 .founder-photo-wrap {
   width: 100%;
   height: auto;
@@ -2041,11 +2043,16 @@ footer {
 
 /* LOGO & TAGLINE & BROCHURE UPDATES â”€â”€ */
 .nav-logo img {
-  height: 115px;
-  margin-top: -20px;
+  height: clamp(80px, 10vw, 105px); 
+  transition: height 0.3s ease;
+  margin-top: 0;
 }
 
-/* ── Founder LinkedIn Badge (About page) ── */
+nav.scrolled .nav-logo img {
+  height: 60px;
+}
+
+/* -- Founder LinkedIn Badge (About page) -- */
 .founder-badge {
   display: flex;
   align-items: center;
@@ -2403,8 +2410,8 @@ footer {
   border-radius: 4px;
 }
 
-/* ── Hover zoom preview (desktop only) ── */
-/* ── Hover image float preview (desktop pointer devices only) ── */
+/* -- Hover zoom preview (desktop only) -- */
+/* -- Hover image float preview (desktop pointer devices only) -- */
 .prod-img-hover-preview {
   position: fixed;
   z-index: 9500;
@@ -2582,7 +2589,7 @@ footer {
     right: 8px;
   }
 }
-/* ── SOCIAL LINKS ── */
+/* -- SOCIAL LINKS -- */
 .social-links {
   display: flex;
   gap: 20px;
