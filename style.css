@@ -1,4 +1,4 @@
-﻿*,
+*,
 *::before,
 *::after {
   margin: 0;
@@ -614,15 +614,19 @@ section {
 /* -- Founder photo block -- */
 .founder-photo-wrap {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4/5; /* Standard portrait ratio */
   border-radius: 8px;
   overflow: hidden;
   background: #1a1510;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .founder-photo {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -1743,7 +1747,7 @@ footer {
   }
 
   .founder-photo-wrap {
-    height: 260px;
+    height: auto; /* Remove fixed height, use aspect-ratio instead */
   }
 
   .about-pillars {
