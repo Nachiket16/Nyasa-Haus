@@ -60,17 +60,8 @@ nav.scrolled {
 .page-projects nav {
   background: rgba(253, 250, 246, 0.95);
   backdrop-filter: blur(12px);
-  padding: 14px 60px; /* Match scrolled padding */
   box-shadow: 0 1px 0 var(--border);
 }
-
-.page-contact nav .nav-logo img,
-.page-projects nav .nav-logo img {
-  height: 42px; /* Match scrolled logo height */
-}
-
-
-
 
 .nav-logo {
   display: flex;
@@ -80,15 +71,16 @@ nav.scrolled {
 }
 
 .nav-logo img {
-  height: 56px;
+  height: clamp(80px, 10vw, 105px);
   width: auto;
   object-fit: contain;
   transition: opacity 0.3s, height 0.3s;
 }
 
 nav.scrolled .nav-logo img {
-  height: 42px;
+  height: 60px;
 }
+
 
 .nav-links {
   display: flex;
@@ -2212,16 +2204,8 @@ footer {
   }
 }
 
-/* LOGO & TAGLINE & BROCHURE UPDATES â”€â”€ */
-.nav-logo img {
-  height: 56px; /* Restoring standard height */
-  transition: height 0.3s ease;
-  margin-top: 0;
-}
 
-nav.scrolled .nav-logo img {
-  height: 42px;
-}
+
 
 
 /* -- Founder LinkedIn Badge (About page) -- */
