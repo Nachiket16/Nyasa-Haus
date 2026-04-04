@@ -31,51 +31,8 @@ body {
   overflow-x: hidden;
 }
 
-/* â”€â”€ CURSOR â”€â”€ */
-body {
-  cursor: none;
-}
+/* Navigation styles are defined below */
 
-#cursor {
-  width: 10px;
-  height: 10px;
-  background: var(--teak);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  /* Remove translate from here, we will handle it in JS for performance */
-  transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, opacity 0.25s ease;
-  transform: translate(-50%, -50%);
-  /* Base centering */
-  will-change: transform;
-}
-
-#cursor.big {
-  width: 44px;
-  height: 44px;
-  background: transparent;
-  border: 1.5px solid var(--teak);
-}
-
-/* Click animation */
-.cursor-pulse {
-  animation: cursorPulse 0.4s ease-out;
-}
-
-@keyframes cursorPulse {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate(-50%, -50%) scale(2.5);
-    opacity: 0;
-  }
-}
 
 /* NAV */
 nav {
@@ -103,8 +60,15 @@ nav.scrolled {
 .page-projects nav {
   background: rgba(253, 250, 246, 0.95);
   backdrop-filter: blur(12px);
+  padding: 14px 60px; /* Match scrolled padding */
   box-shadow: 0 1px 0 var(--border);
 }
+
+.page-contact nav .nav-logo img,
+.page-projects nav .nav-logo img {
+  height: 42px; /* Match scrolled logo height */
+}
+
 
 
 
@@ -795,7 +759,7 @@ section {
   position: relative;
   height: 400px;
   overflow: hidden;
-  cursor: none;
+
 }
 
 .cat-bg {
@@ -933,7 +897,7 @@ section {
   padding: 10px 20px;
   border: none;
   background: none;
-  cursor: none;
+
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   transition: color 0.3s, border-color 0.3s;
@@ -1198,7 +1162,7 @@ section {
   gap: 16px;
   align-items: center;
   transition: border-color 0.3s, background 0.3s;
-  cursor: none;
+
 }
 
 .mfg-location-card:hover {
@@ -1315,7 +1279,7 @@ section {
 .gallery-item {
   overflow: hidden;
   position: relative;
-  cursor: none;
+
 }
 
 .gallery-item.tall {
@@ -1630,7 +1594,7 @@ section {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   border-radius: 2px;
-  cursor: none;
+
   align-self: flex-start;
   transition: background 0.3s, transform 0.2s;
 }
@@ -2033,9 +1997,6 @@ footer {
     cursor: auto;
   }
 
-  #cursor {
-    display: none;
-  }
 
   .cat-card,
   .pillar,
@@ -2253,14 +2214,15 @@ footer {
 
 /* LOGO & TAGLINE & BROCHURE UPDATES â”€â”€ */
 .nav-logo img {
-  height: clamp(80px, 10vw, 105px);
+  height: 56px; /* Restoring standard height */
   transition: height 0.3s ease;
   margin-top: 0;
 }
 
 nav.scrolled .nav-logo img {
-  height: 60px;
+  height: 42px;
 }
+
 
 /* -- Founder LinkedIn Badge (About page) -- */
 .founder-badge {

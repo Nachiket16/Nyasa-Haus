@@ -9,38 +9,8 @@ const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxzaHnN5HcerwnD_usD6D
 const WA_PHONE = '9158786236'; // e.g. 917798900022
 const WA_APIKEY = '';
 
-// ── Custom cursor ──────────────────────────────────────────
-const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  // Use translate3d for hardware-accelerated movement to prevent artifacts
-  cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
-});
-
-// Click pulse effect to give feedback and fix "leftover pixel" confusion
-document.addEventListener('mousedown', e => {
-  const pulse = document.createElement('div');
-  pulse.className = 'cursor-pulse';
-  pulse.style.position = 'fixed';
-  pulse.style.left = e.clientX + 'px';
-  pulse.style.top = e.clientY + 'px';
-  pulse.style.width = '10px';
-  pulse.style.height = '10px';
-  pulse.style.background = 'var(--gold)';
-  pulse.style.borderRadius = '50%';
-  pulse.style.zIndex = '9998';
-  pulse.style.pointerEvents = 'none';
-  document.body.appendChild(pulse);
-  
-  // Self-destruct after animation
-  setTimeout(() => pulse.remove(), 400);
-});
-
-document.querySelectorAll('a, button, .cat-card, .pillar, .mat-tab, .gallery-item, .mfg-location-card').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
-});
-
 // ── Sticky nav ─────────────────────────────────────────────
+
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
