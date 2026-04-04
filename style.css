@@ -48,7 +48,8 @@ body {
   z-index: 9999;
   /* Remove translate from here, we will handle it in JS for performance */
   transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, opacity 0.25s ease;
-  transform: translate(-50%, -50%); /* Base centering */
+  transform: translate(-50%, -50%);
+  /* Base centering */
   will-change: transform;
 }
 
@@ -65,11 +66,18 @@ body {
 }
 
 @keyframes cursorPulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
 }
 
-/* â”€â”€ NAV â”€â”€ */
+/* NAV */
 nav {
   position: fixed;
   top: 0;
@@ -89,6 +97,16 @@ nav.scrolled {
   padding: 14px 60px;
   box-shadow: 0 1px 0 var(--border);
 }
+
+/* Ensure nav is always visible on pages with dark headers before scroll */
+.page-contact nav,
+.page-projects nav {
+  background: rgba(253, 250, 246, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+}
+
+
 
 .nav-logo {
   display: flex;
@@ -630,7 +648,8 @@ section {
 /* -- Founder photo block -- */
 .founder-photo-wrap {
   width: 100%;
-  aspect-ratio: 4/5; /* Standard portrait ratio */
+  aspect-ratio: 4/5;
+  /* Standard portrait ratio */
   border-radius: 8px;
   overflow: hidden;
   background: #1a1510;
@@ -1421,19 +1440,129 @@ section {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 4px; /* Reduced from 10px */
+  margin-bottom: 4px;
+  /* Reduced from 10px */
+}
+
+/* -- Reviews Section -- */
+#reviews {
+  background: var(--charcoal);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.reviews-scroll-container {
+  margin-top: 40px;
+  position: relative;
+}
+
+.reviews-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 20px 0 40px;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.reviews-scroll::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.review-card {
+  flex: 0 0 320px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(181, 101, 29, 0.15);
+  border-radius: 12px;
+  padding: 32px;
+  scroll-snap-align: start;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(181, 101, 29, 0.4);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--charcoal);
+}
+
+.avatar.f {
+  background: linear-gradient(135deg, #e9d5ca 0%, #c8963c 100%);
+}
+
+.avatar.m {
+  background: linear-gradient(135deg, #d2e0eb 0%, #7da0ca 100%);
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.stars span {
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.review-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--cream);
+  margin-bottom: 20px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.reviewer-name {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(249, 244, 238, 0.5);
+}
+
+/* Ensure container doesn't clip children during scroll animation */
+#reviews .container {
+  overflow: visible;
 }
 
 .contact-block-value {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem; /* Slightly smaller for compactness */
+  font-size: 1.15rem;
+  /* Slightly smaller for compactness */
   color: var(--cream);
   font-weight: 300;
   line-height: 1.4;
 }
 
 .contact-block {
-  margin-bottom: 10px; /* Reduced from 24px */
+  margin-bottom: 10px;
+  /* Reduced from 24px */
 }
 
 .contact-form {
@@ -1517,7 +1646,8 @@ section {
   height: 140px;
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 12px; /* Reduced from 20px */
+  margin-bottom: 12px;
+  /* Reduced from 20px */
   border: 1px solid var(--border);
   background: var(--charcoal);
   position: relative;
@@ -1785,7 +1915,8 @@ footer {
   }
 
   .founder-photo-wrap {
-    height: auto; /* Remove fixed height, use aspect-ratio instead */
+    height: auto;
+    /* Remove fixed height, use aspect-ratio instead */
   }
 
   .about-pillars {
@@ -1858,11 +1989,13 @@ footer {
 
   .contact-grid {
     margin-top: 20px;
-    gap: 20px; /* Reduced from 30px */
+    gap: 20px;
+    /* Reduced from 30px */
   }
 
   #contact {
-    padding: 40px 0 25px; /* Reduced bottom padding further for mobile */
+    padding: 40px 0 25px;
+    /* Reduced bottom padding further for mobile */
   }
 
   #setupGuide {
