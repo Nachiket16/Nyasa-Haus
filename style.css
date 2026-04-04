@@ -46,8 +46,10 @@ body {
   left: 0;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+  /* Remove translate from here, we will handle it in JS for performance */
+  transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+  transform: translate(-50%, -50%); /* Base centering */
+  will-change: transform;
 }
 
 #cursor.big {
@@ -55,6 +57,16 @@ body {
   height: 44px;
   background: transparent;
   border: 1.5px solid var(--teak);
+}
+
+/* Click animation */
+.cursor-pulse {
+  animation: cursorPulse 0.4s ease-out;
+}
+
+@keyframes cursorPulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
 }
 
 /* â”€â”€ NAV â”€â”€ */
@@ -595,6 +607,10 @@ section {
 /* â”€â”€ ABOUT â”€â”€ */
 #about {
   background: var(--warm-white);
+}
+
+#contact {
+  padding: var(--section-gap) 0 80px;
 }
 
 .about-grid {
@@ -1405,15 +1421,19 @@ section {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 10px;
+  margin-bottom: 4px; /* Reduced from 10px */
 }
 
 .contact-block-value {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
+  font-size: 1.15rem; /* Slightly smaller for compactness */
   color: var(--cream);
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.4;
+}
+
+.contact-block {
+  margin-bottom: 10px; /* Reduced from 24px */
 }
 
 .contact-form {
@@ -1489,6 +1509,24 @@ section {
 .form-submit:hover {
   background: var(--teak-light);
   transform: translateY(-2px);
+}
+
+/* -- Contact Map -- */
+.contact-map {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px; /* Reduced from 20px */
+  border: 1px solid var(--border);
+  background: var(--charcoal);
+  position: relative;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(0.2) contrast(1.1);
 }
 
 /* â”€â”€ FOOTER â”€â”€ */
@@ -1819,8 +1857,12 @@ footer {
   }
 
   .contact-grid {
-    margin-top: 40px;
-    gap: 40px;
+    margin-top: 20px;
+    gap: 20px; /* Reduced from 30px */
+  }
+
+  #contact {
+    padding: 40px 0 25px; /* Reduced bottom padding further for mobile */
   }
 
   #setupGuide {
